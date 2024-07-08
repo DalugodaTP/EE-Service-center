@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import io.github.palexdev.materialfx.controls.MFXButton?>
+<?import io.github.palexdev.materialfx.controls.MFXTableColumn?>
 <?import io.github.palexdev.materialfx.controls.MFXTableView?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.Cursor?>
@@ -22,7 +23,8 @@
             <center>
                 <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #E4F8FC;" BorderPane.alignment="CENTER">
                <children>
-                  <MFXTableView layoutX="80.0" layoutY="108.0" prefHeight="600.0" prefWidth="1044.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                  <MFXTableView fx:id="tblManageCustomers" layoutX="80.0" layoutY="108.0" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="600.0" prefWidth="1044.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                  <MFXTableColumn layoutX="149.0" layoutY="103.0" />
                </children></AnchorPane>
             </center>
             <bottom>
