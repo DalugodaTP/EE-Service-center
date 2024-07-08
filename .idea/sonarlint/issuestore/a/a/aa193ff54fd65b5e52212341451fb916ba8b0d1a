@@ -1,0 +1,34 @@
+
+Q
+java:S3740'"/Provide the parametrized type for this generic.(ºšãÿıÿÿÿÿ8†Ø®ˆ2
+L
+java:S3740*"/Provide the parametrized type for this generic.(Œà•®8‡Ø®ˆ2
+L
+java:S3740-"/Provide the parametrized type for this generic.(´°æ¸8‡Ø®ˆ2
+Q
+java:S37400"/Provide the parametrized type for this generic.(ù‚©·üÿÿÿÿ8‡Ø®ˆ2
+Q
+java:S37403"/Provide the parametrized type for this generic.(€®ÀÆüÿÿÿÿ8ˆØ®ˆ2
+i
+java:S2095Z"GUse try-with-resources or close this "Statement" in a "finally" clause.(ôÅ¹Îıÿÿÿÿ8ŠÍæßˆ2
+i
+java:S2095|"GUse try-with-resources or close this "Statement" in a "finally" clause.(ôÅ¹Îıÿÿÿÿ8‹Íæßˆ2
+j
+java:S2095–"GUse try-with-resources or close this "Statement" in a "finally" clause.(ôÅ¹Îıÿÿÿÿ8ß¯¥êˆ2
+j
+java:S2095¿"GUse try-with-resources or close this "Statement" in a "finally" clause.(ôÅ¹Îıÿÿÿÿ8Ş¯¥êˆ2
+I
+java:S1602C",Remove useless curly braces around statement(ŠĞå™8ıé¹ˆ2
+I
+java:S1602j",Remove useless curly braces around statement(ë¹¬8ê¹ˆ2
+G	java:S106t"+Replace this use of System.out by a logger.(¹Âîµ8‚ê¹ˆ2
+M	java:S106†"+Replace this use of System.out by a logger.(ˆÄüÿÿÿÿ8„ê¹ˆ2
+O
+java:S1172‹"2Remove this unused method parameter "actionEvent".(ôÍf8„ê¹ˆ2
+P
+java:S1172¦"2Remove this unused method parameter "actionEvent".(Ñ®ìŞ8‡ê¹ˆ2
+P
+java:S1172µ"2Remove this unused method parameter "actionEvent".(°§¾8ßˆ2
+U
+java:S1172Ì"2Remove this unused method parameter "actionEvent".(Íáå‘ùÿÿÿÿ8¢î÷·ˆ2
+H	java:S106Ò"+Replace this use of System.out by a logger.(É“à¤8©î÷·ˆ2
