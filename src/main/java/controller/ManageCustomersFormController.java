@@ -71,8 +71,6 @@ public class ManageCustomersFormController {
         double tableWidth = tblManageCustomers.getPrefWidth();
         double columnWidth = (tableWidth-40) / 4;
 
-        System.out.println("Column width is "+columnWidth);
-
         customerIdColumn.setPrefWidth(columnWidth);
         customerNameColumn.setPrefWidth(columnWidth);
         customerAddressColumn.setPrefWidth(columnWidth);
@@ -144,9 +142,16 @@ public class ManageCustomersFormController {
         }
     }
 
-    public void inventoryButtonOnAction(ActionEvent actionEvent) {
+    public void settingButtonOnAction(ActionEvent actionEvent) {
     }
 
-    public void settingButtonOnAction(ActionEvent actionEvent) {
+    public void orderManagementButtonOnAction(ActionEvent actionEvent) {
+        Stage stage = (Stage)tblManageCustomers.getScene().getWindow();
+        try {
+            stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("../view/OrderManagementForm.fxml"))));
+            stage.show();
+        } catch (IOException e) {
+            System.out.println("Dashboard window in the path is missing");
+        }
     }
 }

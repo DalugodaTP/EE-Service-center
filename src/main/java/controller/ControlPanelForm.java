@@ -3,6 +3,7 @@ package controller;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
@@ -22,12 +23,23 @@ public class ControlPanelForm {
         }
     }
 
-    public void InventoryButtonOnAction(ActionEvent actionEvent) {
-    }
 
     public void SettingsButtonOnAction(ActionEvent actionEvent) {
+        //        No implementation
     }
 
     public void dashBoardButtonOnAction(ActionEvent actionEvent) {
+        //        Current Pane
+    }
+
+    public void orderManagementButtonOnAction(ActionEvent actionEvent) {
+        Stage stage = (Stage)controlPanelPane.getScene().getWindow();
+        try {
+            //stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("../view/ManageCustomersForm.fxml"))));
+            stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("../view/OrderManagementForm.fxml"))));
+            stage.show();
+        } catch (IOException e) {
+            System.out.println("Order Management window in the path is missing");
+        }
     }
 }

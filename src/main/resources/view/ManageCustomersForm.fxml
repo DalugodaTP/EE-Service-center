@@ -93,7 +93,7 @@
                                         <Cursor fx:constant="HAND" />
                                     </cursor>
                                 </MFXButton>
-                                <MFXButton buttonType="RAISED" contentDisplay="GRAPHIC_ONLY" depthLevel="LEVEL5" onAction="#inventoryButtonOnAction" prefHeight="70.0" prefWidth="229.0" rippleAnimateShadow="true" rippleAnimationSpeed="0.5" rippleRadiusMultiplier="4.0" style="-fx-background-radius: 10; -fx-background-color: #03507C;" text="Dashboard" textFill="WHITE" GridPane.columnIndex="5" GridPane.rowIndex="1">
+                                <MFXButton buttonType="RAISED" contentDisplay="GRAPHIC_ONLY" depthLevel="LEVEL5" onAction="#orderManagementButtonOnAction" prefHeight="70.0" prefWidth="229.0" rippleAnimateShadow="true" rippleAnimationSpeed="0.5" rippleRadiusMultiplier="4.0" style="-fx-background-radius: 10; -fx-background-color: #03507C;" text="Dashboard" textFill="WHITE" GridPane.columnIndex="5" GridPane.rowIndex="1">
                                     <font>
                                         <Font name="System Bold" size="15.0" />
                                     </font>
@@ -108,7 +108,7 @@
                                                         <Image url="@../img/inventory-icon.png" />
                                                     </image>
                                                 </ImageView>
-                                                <Label text="Inventory" textFill="#fcfcfc" />
+                                                <Label text="Order Management" textFill="#fcfcfc" />
                                             </children>
                                         </VBox>
                                     </graphic>
