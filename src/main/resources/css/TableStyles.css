@@ -1,0 +1,36 @@
+/* styles.css */
+.mfx-table-view {
+    -fx-border-color:  #2590d1;
+    -fx-border-width: 2px;
+    -fx-font-size: 20px;
+}
+
+
+
+/*Table column edit*/
+.mfx-table-column {
+    -fx-border-color: #2590d1;
+    -fx-padding: 10 15 10 15;
+    /*-fx-background-color: #DBF2FD;*/
+}
+
+/*Table row edit*/
+.mfx-table-row:hover {
+    -fx-background-color:  #DBF2FD;
+    color: white;
+}
+
+.mfx-table-row-cell {
+    -fx-border-color: #2590d1;
+    -fx-border-width: 1px;
+}
+
+/********************
+Virtual Flow
+********************/
+.mfx-table-view .virtual-flow {
+    -fx-background-color: transparent;
+    -track-color: rgb(230, 230, 230);
+    -thumb-color: #2590d1;
+    -thumb-hover-color: rgb(89, 88, 91);
+}
