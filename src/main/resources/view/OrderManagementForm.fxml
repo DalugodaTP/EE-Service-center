@@ -1,0 +1,219 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import io.github.palexdev.materialfx.controls.MFXButton?>
+<?import io.github.palexdev.materialfx.controls.MFXTableView?>
+<?import io.github.palexdev.materialfx.controls.MFXTextField?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane fx:id="orderManagementPane" prefHeight="800.0" prefWidth="1400.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.OrderManagementFormController">
+    <children>
+        <BorderPane prefHeight="800.0" prefWidth="1400.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <center>
+                <AnchorPane maxWidth="-Infinity" prefHeight="200.0" prefWidth="1044.0" BorderPane.alignment="CENTER">
+               <children>
+                  <MFXTableView fx:id="tblOrderManagement" layoutX="80.0" layoutY="108.0" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="600.0" prefWidth="1044.0" style="-fx-border-color: #2590d1; -fx-border-radius: 10; -fx-border-width: 5;" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="10.0" />
+               </children></AnchorPane>
+            </center>
+            <bottom>
+                <AnchorPane prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+                    <children>
+                        <GridPane prefHeight="200.0" prefWidth="1400.0" style="-fx-background-color: #103B66;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                            <columnConstraints>
+                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="-Infinity" minWidth="10.0" prefWidth="10.0" />
+                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="-Infinity" minWidth="10.0" prefWidth="10.0" />
+                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="-Infinity" minWidth="10.0" prefWidth="10.0" />
+                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                            </columnConstraints>
+                            <rowConstraints>
+                                <RowConstraints maxHeight="-Infinity" minHeight="10.0" prefHeight="50.0" vgrow="SOMETIMES" />
+                                <RowConstraints maxHeight="-Infinity" minHeight="10.0" prefHeight="100.0" vgrow="SOMETIMES" />
+                                <RowConstraints maxHeight="-Infinity" minHeight="10.0" prefHeight="50.0" vgrow="SOMETIMES" />
+                            </rowConstraints>
+                            <children>
+                                <MFXButton buttonType="RAISED" contentDisplay="GRAPHIC_ONLY" depthLevel="LEVEL5" onAction="#dashboardButtonOnAction" prefHeight="70.0" prefWidth="229.0" rippleAnimateShadow="true" rippleAnimationSpeed="0.5" rippleRadiusMultiplier="4.0" style="-fx-background-radius: 10; -fx-background-color: #03507C;" text="Dashboard" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                                    <font>
+                                        <Font name="System Bold" size="15.0" />
+                                    </font>
+                                    <graphic>
+                                        <VBox alignment="CENTER" nodeOrientation="LEFT_TO_RIGHT" prefHeight="200.0" prefWidth="100.0">
+                                            <children>
+                                                <ImageView fitHeight="32.0" fitWidth="191.0" pickOnBounds="true" preserveRatio="true">
+                                                    <cursor>
+                                                        <Cursor fx:constant="HAND" />
+                                                    </cursor>
+                                                    <image>
+                                                        <Image url="@../img/dashboard.png" />
+                                                    </image>
+                                                </ImageView>
+                                                <Label text="Dashboard" textFill="#fcfcfc" />
+                                            </children>
+                                        </VBox>
+                                    </graphic>
+                                    <cursor>
+                                        <Cursor fx:constant="HAND" />
+                                    </cursor>
+                                </MFXButton>
+                                <MFXButton buttonType="RAISED" contentDisplay="GRAPHIC_ONLY" depthLevel="LEVEL5" onAction="#manageCustomersButtonOnAction" prefHeight="70.0" prefWidth="229.0" rippleAnimateShadow="true" rippleAnimationSpeed="0.5" rippleRadiusMultiplier="4.0" style="-fx-background-radius: 10; -fx-background-color: #03507C;" text="Dashboard" textFill="WHITE" GridPane.columnIndex="3" GridPane.rowIndex="1">
+                                    <font>
+                                        <Font name="System Bold" size="15.0" />
+                                    </font>
+                                    <graphic>
+                                        <VBox alignment="CENTER" nodeOrientation="LEFT_TO_RIGHT" prefHeight="200.0" prefWidth="100.0">
+                                            <children>
+                                                <ImageView fitHeight="32.0" fitWidth="191.0" pickOnBounds="true" preserveRatio="true">
+                                                    <cursor>
+                                                        <Cursor fx:constant="HAND" />
+                                                    </cursor>
+                                                    <image>
+                                                        <Image url="@../img/icon-user-50.png" />
+                                                    </image>
+                                                </ImageView>
+                                                <Label text="Manage Customers" textFill="#fcfcfc" />
+                                            </children>
+                                        </VBox>
+                                    </graphic>
+                                    <cursor>
+                                        <Cursor fx:constant="HAND" />
+                                    </cursor>
+                                </MFXButton>
+                                <MFXButton buttonType="RAISED" contentDisplay="GRAPHIC_ONLY" depthLevel="LEVEL5" disable="true" onAction="#orderManagementButtonOnAction" prefHeight="70.0" prefWidth="229.0" rippleAnimateShadow="true" rippleAnimationSpeed="0.5" rippleRadiusMultiplier="4.0" style="-fx-background-radius: 10; -fx-background-color: #03507C;" text="Dashboard" textFill="WHITE" GridPane.columnIndex="5" GridPane.rowIndex="1">
+                                    <font>
+                                        <Font name="System Bold" size="15.0" />
+                                    </font>
+                                    <graphic>
+                                        <VBox alignment="CENTER" nodeOrientation="LEFT_TO_RIGHT" prefHeight="200.0" prefWidth="100.0">
+                                            <children>
+                                                <ImageView fitHeight="32.0" fitWidth="191.0" pickOnBounds="true" preserveRatio="true">
+                                                    <cursor>
+                                                        <Cursor fx:constant="HAND" />
+                                                    </cursor>
+                                                    <image>
+                                                        <Image url="@../img/inventory-icon.png" />
+                                                    </image>
+                                                </ImageView>
+                                                <Label text="Order Management" textFill="#fcfcfc" />
+                                            </children>
+                                        </VBox>
+                                    </graphic>
+                                    <cursor>
+                                        <Cursor fx:constant="HAND" />
+                                    </cursor>
+                                </MFXButton>
+                                <MFXButton buttonType="RAISED" contentDisplay="GRAPHIC_ONLY" onAction="#settingButtonOnAction" prefHeight="70.0" prefWidth="229.0" rippleAnimationSpeed="0.5" rippleRadiusMultiplier="4.0" style="-fx-background-radius: 10; -fx-background-color: #03507C;" text="Dashboard" textFill="WHITE" GridPane.columnIndex="7" GridPane.rowIndex="1">
+                                    <font>
+                                        <Font name="System Bold" size="15.0" />
+                                    </font>
+                                    <graphic>
+                                        <VBox alignment="CENTER" nodeOrientation="LEFT_TO_RIGHT" prefHeight="200.0" prefWidth="100.0">
+                                            <children>
+                                                <ImageView fitHeight="32.0" fitWidth="191.0" pickOnBounds="true" preserveRatio="true">
+                                                    <cursor>
+                                                        <Cursor fx:constant="HAND" />
+                                                    </cursor>
+                                                    <image>
+                                                        <Image url="@../img/icons8-settings-50.png" />
+                                                    </image>
+                                                </ImageView>
+                                                <Label text="Setting" textFill="#fcfcfc" />
+                                            </children>
+                                        </VBox>
+                                    </graphic>
+                                    <cursor>
+                                        <Cursor fx:constant="HAND" />
+                                    </cursor>
+                                </MFXButton>
+                            </children>
+                        </GridPane>
+                    </children>
+                </AnchorPane>
+            </bottom>
+            <top>
+                <AnchorPane maxHeight="-Infinity" prefHeight="100.0" prefWidth="200.0" style="-fx-border-width: 1; -fx-border-insets: 0; -fx-background-insets: 0 0 -1 0; -fx-background-color: #103B66;" BorderPane.alignment="CENTER">
+                    <children>
+                        <GridPane prefHeight="200.0" prefWidth="1400.0" style="-fx-background-color: #E4F8FC;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                            <columnConstraints>
+                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="-Infinity" minWidth="10.0" prefWidth="100.0" />
+                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="-Infinity" minWidth="10.0" prefWidth="100.0" />
+                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="-Infinity" minWidth="10.0" prefWidth="50.0" />
+                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="-Infinity" minWidth="10.0" prefWidth="20.0" />
+                            </columnConstraints>
+                            <rowConstraints>
+                                <RowConstraints maxHeight="-Infinity" minHeight="10.0" prefHeight="50.0" vgrow="SOMETIMES" />
+                                <RowConstraints maxHeight="-Infinity" minHeight="10.0" prefHeight="50.0" vgrow="SOMETIMES" />
+                            </rowConstraints>
+                            <children>
+                                <Text fill="#2590d1" strokeType="OUTSIDE" strokeWidth="0.0" text="E &amp; E Service Center" wrappingWidth="457.6708984375" GridPane.rowSpan="2">
+                                    <font>
+                                        <Font name="AdobeGothicStd-Bold" size="50.0" />
+                                    </font>
+                                    <GridPane.margin>
+                                        <Insets left="10.0" />
+                                    </GridPane.margin>
+                                </Text>
+                                <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="3" GridPane.rowSpan="2">
+                                    <image>
+                                        <Image url="@../img/icons8-logout-50.png" />
+                                    </image>
+                                    <cursor>
+                                        <Cursor fx:constant="HAND" />
+                                    </cursor>
+                                </ImageView>
+                                <Label alignment="CENTER" contentDisplay="CENTER" text="User" textFill="#2590d1" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowSpan="2" GridPane.valignment="CENTER">
+                                    <font>
+                                        <Font name="System Bold" size="28.0" />
+                                    </font>
+                                </Label>
+                            </children>
+                        </GridPane>
+                    </children>
+                </AnchorPane>
+            </top>
+         <right>
+            <AnchorPane prefHeight="600.0" prefWidth="385.0" style="-fx-border-radius: 10;" BorderPane.alignment="CENTER">
+               <children>
+                  <GridPane layoutX="121.0" layoutY="224.0" prefHeight="580.0" prefWidth="385.0" style="-fx-background-color: #E4F8FC; -fx-border-radius: 10; -fx-border-width: 5; -fx-border-color: #2590d1;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                    <columnConstraints>
+                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                    </columnConstraints>
+                    <rowConstraints>
+                        <RowConstraints maxHeight="-Infinity" minHeight="10.0" prefHeight="50.0" vgrow="SOMETIMES" />
+                      <RowConstraints maxHeight="-Infinity" minHeight="10.0" prefHeight="10.0" vgrow="SOMETIMES" />
+                      <RowConstraints maxHeight="-Infinity" minHeight="10.0" prefHeight="100.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="-Infinity" minHeight="10.0" prefHeight="10.0" vgrow="SOMETIMES" />
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                    </rowConstraints>
+                     <children>
+                        <Label text="Label">
+                           <padding>
+                              <Insets left="10.0" />
+                           </padding>
+                        </Label>
+                        <MFXTextField prefHeight="46.0" prefWidth="298.0" GridPane.rowIndex="2" />
+                     </children>
+                  </GridPane>
+               </children>
+               <BorderPane.margin>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </BorderPane.margin></AnchorPane>
+         </right>
+        </BorderPane>
+    </children>
+</AnchorPane>
