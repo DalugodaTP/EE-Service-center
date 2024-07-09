@@ -13,3 +13,11 @@ N
 src/main/java/dto/ItemDto.java,3\d\3d0380508e9c218720144ded2d55164c08dc8381
 k
 ;src/main/java/controller/ManageCustomersFormController.java,d\8\d85ffd347e0e70eb5477111800c0c7c456b2ea0e
+R
+"src/main/java/dto/CustomerDto.java,6\d\6d52140f8b36d29a5a6973b0fa1a1f02a9fabaeb
+T
+$src/main/java/dto/tm/CustomerTm.java,2\a\2a0edce3160840b5e1dff3a221d2fba22c0b3f67
+S
+#.idea/sonarlint/issuestore/index.pb,9\f\9fe84ebb15faf917b7def6236dba604453cc61e0
+]
+-.idea/sonarlint/securityhotspotstore/index.pb,8\8\88a9255124c95bdc913197c120a8d560edc59c8e
