@@ -14,6 +14,7 @@ public class ControlPanelForm {
     public void ManageCustomersButtonOnAction(ActionEvent actionEvent) {
         Stage stage = (Stage)controlPanelPane.getScene().getWindow();
         try {
+            //stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("../view/ManageCustomersForm.fxml"))));
             stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("../view/ManageCustomersForm.fxml"))));
             stage.show();
         } catch (IOException e) {
