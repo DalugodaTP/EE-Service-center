@@ -3,6 +3,7 @@ package controller;
 import com.jfoenix.controls.JFXButton;
 import db.DBConnection;
 import dto.CustomerDto;
+import dto.tm.CustomerTm;
 import io.github.palexdev.materialfx.controls.MFXTableColumn;
 import io.github.palexdev.materialfx.controls.MFXTableView;
 import io.github.palexdev.materialfx.controls.MFXTextField;
@@ -18,34 +19,38 @@ import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.stage.Stage;
+import model.CustomerModel;
+import model.impl.CustomerModelImpl;
 
 import java.io.IOException;
-import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.SQLIntegrityConstraintViolationException;
 import java.sql.Statement;
 import java.util.Comparator;
+import java.util.List;
 
 public class ManageCustomersFormController {
 
-    public MFXTableView<CustomerDto> tblManageCustomers;
+    public MFXTableView<CustomerTm> tblManageCustomers;
     public MFXTextField txtCustomerId;
     public MFXTextField txtCustomerName;
     public MFXTextField txtCustomerAddress;
     public MFXTextField txtCustomerSalary;
 
-    private CustomerDto selectedCustomer;
+    private CustomerTm selectedCustomer;
 
-    public void initialize(){
-//        tblManageCustomers.autosizeColumnsOnInitialization();
+    //--Create an instance of the customerModel
+    CustomerModel customerModel = new CustomerModelImpl();
+
+    public void initialize() throws SQLException, ClassNotFoundException {
         loadCustomerTable();
-
         tblManageCustomers.getSelectionModel().selectionProperty().addListener((observableValue, oldValue, newValue) -> {
             setData(newValue);
         });
     }
 
-    private void setData(ObservableMap<Integer, CustomerDto> newValue) {
+    //--Set selected row to the fields
+    private void setData(ObservableMap<Integer, CustomerTm> newValue) {
         if (newValue != null && !newValue.isEmpty()) {
             selectedCustomer = newValue.values().iterator().next();
             if (selectedCustomer != null) {
@@ -57,105 +62,97 @@ public class ManageCustomersFormController {
         }
     }
 
-    private void loadCustomerTable() {
-        //--Define the height of the table
+    private void loadCustomerTable() throws SQLException, ClassNotFoundException {
         tblManageCustomers.setPrefHeight(100);
-        //--Create Observable list to pass the data into the table
-        ObservableList<CustomerDto> tmList = FXCollections.observableArrayList();
 
-        //--Create columns for the table
-        MFXTableColumn<CustomerDto> customerIdColumn = new MFXTableColumn<>("Customer ID", false, Comparator.comparing(CustomerDto::getId));
-        MFXTableColumn<CustomerDto> customerNameColumn = new MFXTableColumn<>("Name", false, Comparator.comparing(CustomerDto::getName));
-        MFXTableColumn<CustomerDto> customerAddressColumn = new MFXTableColumn<>("Address", false, Comparator.comparing(CustomerDto::getAddress));
-        MFXTableColumn<CustomerDto> customerSalaryColumn = new MFXTableColumn<>("Salary", false, Comparator.comparing(CustomerDto::getSalary));
+        MFXTableColumn<CustomerTm> customerIdColumn =
+                new MFXTableColumn<>("Customer ID", false, Comparator.comparing(CustomerTm::getId));
+        MFXTableColumn<CustomerTm> customerNameColumn =
+                new MFXTableColumn<>("Name", false, Comparator.comparing(CustomerTm::getName));
+        MFXTableColumn<CustomerTm> customerAddressColumn =
+                new MFXTableColumn<>("Address", false, Comparator.comparing(CustomerTm::getAddress));
+        MFXTableColumn<CustomerTm> customerSalaryColumn =
+                new MFXTableColumn<>("Salary", false, Comparator.comparing(CustomerTm::getSalary));
+        MFXTableColumn<CustomerTm> customerDeleteColumn =
+                new MFXTableColumn<>("Options", false);
 
+        customerIdColumn.setRowCellFactory(item -> new MFXTableRowCell<>(CustomerTm::getId){{
+            setAlignment(Pos.CENTER); }});
+        customerNameColumn.setRowCellFactory(item -> new MFXTableRowCell<>(CustomerTm::getName){{
+            setAlignment(Pos.CENTER); }});
+        customerAddressColumn.setRowCellFactory(item -> new MFXTableRowCell<>(CustomerTm::getAddress){{
+            setAlignment(Pos.CENTER); }});
+        customerSalaryColumn.setRowCellFactory(item -> new MFXTableRowCell<>(CustomerTm::getSalary){{
+            setAlignment(Pos.CENTER); }});
 
-        customerIdColumn.setRowCellFactory(item -> new MFXTableRowCell<>(CustomerDto::getId){{
-            //--Alignment of rows
-            setAlignment(Pos.CENTER);
-        }});
-        customerNameColumn.setRowCellFactory(item -> new MFXTableRowCell<>(CustomerDto::getName){{
-            //--Alignment of rows
-            setAlignment(Pos.CENTER);
-        }});
-        customerAddressColumn.setRowCellFactory(item -> new MFXTableRowCell<>(CustomerDto::getAddress){{
-            //--Alignment of rows
-            setAlignment(Pos.CENTER);
-        }});
-        customerSalaryColumn.setRowCellFactory(item -> new MFXTableRowCell<>(CustomerDto::getSalary){{
-            setAlignment(Pos.CENTER);
-        }});
+        customerDeleteColumn.setRowCellFactory(item -> {
+            MFXTableRowCell<CustomerTm, JFXButton> mfxTableRowCell = new MFXTableRowCell<>(CustomerTm::getBtn);
+            mfxTableRowCell.setAlignment(Pos.CENTER);
+            return mfxTableRowCell;
+        });
 
-        //--Set the alignment of the table headings
         customerIdColumn.setAlignment(Pos.CENTER);
         customerNameColumn.setAlignment(Pos.CENTER);
         customerAddressColumn.setAlignment(Pos.CENTER);
         customerSalaryColumn.setAlignment(Pos.CENTER);
+        customerDeleteColumn.setAlignment(Pos.CENTER);
 
-        //--Customize the table width
-        // Calculate the width of each column based on the table width
         double tableWidth = tblManageCustomers.getPrefWidth();
-        double columnWidth = (tableWidth-40) / 4;
+        double columnWidth = (tableWidth) / 5;
 
         customerIdColumn.setPrefWidth(columnWidth);
         customerNameColumn.setPrefWidth(columnWidth);
         customerAddressColumn.setPrefWidth(columnWidth);
         customerSalaryColumn.setPrefWidth(columnWidth);
+        customerDeleteColumn.setPrefWidth(columnWidth);
 
-        //--Add the columns to the table
         tblManageCustomers.getTableColumns().addAll(
                 customerIdColumn,
                 customerNameColumn,
                 customerAddressColumn,
-                customerSalaryColumn
+                customerSalaryColumn,
+                customerDeleteColumn
         );
 
-        //--Ser filters to the columns
-        tblManageCustomers.getFilters().addAll(
-                new StringFilter<>("Id", CustomerDto::getId),
-                new StringFilter<>("Name", CustomerDto::getName),
-                new StringFilter<>("Address", CustomerDto::getAddress),
-                new DoubleFilter<>("Salary", CustomerDto::getSalary)
-        );
-
-        //--Create the sql statement
-        String sql = "SELECT * FROM customer";
-
-        try {
-            Statement stm = DBConnection.getInstance().getConnection().createStatement();
-            //--Return a set
-            ResultSet result = stm.executeQuery(sql);
-
-            //--Load into the observable arraylist from db
-            while(result.next()){
-                JFXButton btn = new JFXButton("Delete");
-
-                CustomerDto c = new CustomerDto(
-                        result.getString(1),
-                        result.getString(2),
-                        result.getString(3),
-                        result.getDouble(4)
-                );
-                //--Bundle the action of deletion at the place of creating the btn reference (lamda expression)
-                btn.setOnAction(actionEvent -> {
-                   // deleteCustomer(c.getId());
-                });
-
-                tmList.add(c);
-            }
-
-            //--Populate the table using the observable list
-            tblManageCustomers.setItems(tmList);
-
-        } catch (ClassNotFoundException | SQLException e) {
-            System.out.println("failed to fetch customer list");
-        }
-
-        // Load the CSS file
+        setFilters();
+        tblManageCustomers.setItems(getUsers());
         tblManageCustomers.getStylesheets().add(getClass().getResource("../css/TableStyles.css").toExternalForm());
         tblManageCustomers.getStyleClass().add("mfx-table-view");
+    }
 
+    private void setFilters() {
+        tblManageCustomers.getFilters().addAll(
+                new StringFilter<>("Id", CustomerTm::getId),
+                new StringFilter<>("Name", CustomerTm::getName),
+                new StringFilter<>("Address", CustomerTm::getAddress),
+                new DoubleFilter<>("Salary", CustomerTm::getSalary)
+        );
+    }
 
+    private ObservableList<CustomerTm> getUsers() throws SQLException, ClassNotFoundException {
+        ObservableList<CustomerTm> returnList = FXCollections.observableArrayList();
+        List<CustomerDto> dtoList = customerModel.allCustomers();
+
+        for (CustomerDto dto : dtoList) {
+            JFXButton deleteBtn = new JFXButton("Delete");
+
+            CustomerTm customerTm = new CustomerTm(
+                    dto.getId(),
+                    dto.getName(),
+                    dto.getAddress(),
+                    dto.getSalary(),
+                    deleteBtn
+            );
+
+            deleteBtn.setOnAction(actionEvent -> {
+                customerModel.deleteCustomer(dto);
+                returnList.remove(customerTm);
+            });
+
+            returnList.add(customerTm);
+        }
+
+        return returnList;
     }
 
     public void dashboardButtonOnAction(ActionEvent actionEvent) {
@@ -169,6 +166,7 @@ public class ManageCustomersFormController {
     }
 
     public void settingButtonOnAction(ActionEvent actionEvent) {
+        //--No implementations
     }
 
     public void orderManagementButtonOnAction(ActionEvent actionEvent) {
