@@ -1,33 +1,33 @@
 
 L
-java:S3740"/Provide the parametrized type for this generic.(ĞŒ ç8íî—´‰2
+java:S3740"/Provide the parametrized type for this generic.(ĞŒ ç8ŒÇ‚½‰2
 {
-java:S1104"^Make tblManageCustomers a static final constant or non-public and provide accessors if needed.(ĞŒ ç8ïî—´‰2
+java:S1104"^Make tblManageCustomers a static final constant or non-public and provide accessors if needed.(ĞŒ ç8Ç‚½‰2
 i
-java:S2095e"GUse try-with-resources or close this "Statement" in a "finally" clause.(ôÅ¹Îıÿÿÿÿ8¿ï—´‰2
-Ÿ
-java:S1186“"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(“‚çğ8Àï—´‰2
+java:S2095c"GUse try-with-resources or close this "Statement" in a "finally" clause.(ôÅ¹Îıÿÿÿÿ8íÇ‚½‰2
 ¤
-java:S1186–"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(¶ô¹¤üÿÿÿÿ8Àï—´‰2
+java:S1186‘"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(¶ô¹¤üÿÿÿÿ8ğÇ‚½‰2
 N
-java:S3599/",Use another way to initialize this instance.(øˆÿÏúÿÿÿÿ8Éï—´‰2
+java:S3599/",Use another way to initialize this instance.(øˆÿÏúÿÿÿÿ8ıÇ‚½‰2
 {
-java:S1171/"YMove the contents of this initializer to a standard constructor or to field initializers.(øˆÿÏúÿÿÿÿ8Êï—´‰2
+java:S1171/"YMove the contents of this initializer to a standard constructor or to field initializers.(øˆÿÏúÿÿÿÿ8ÿÇ‚½‰2
 H
-java:S35993",Use another way to initialize this instance.(‘õìJ8Ëï—´‰2
+java:S35993",Use another way to initialize this instance.(‘õìJ8€È‚½‰2
 u
-java:S11713"YMove the contents of this initializer to a standard constructor or to field initializers.(‘õìJ8Ëï—´‰2
+java:S11713"YMove the contents of this initializer to a standard constructor or to field initializers.(‘õìJ8‚È‚½‰2
 I
-java:S35997",Use another way to initialize this instance.(¿‰ É8Ìï—´‰2
+java:S35997",Use another way to initialize this instance.(¿‰ É8„È‚½‰2
 v
-java:S11717"YMove the contents of this initializer to a standard constructor or to field initializers.(¿‰ É8Ìï—´‰2
+java:S11717"YMove the contents of this initializer to a standard constructor or to field initializers.(¿‰ É8†È‚½‰2
 N
-java:S3599;",Use another way to initialize this instance.(ƒ‰Ç€üÿÿÿÿ8Íï—´‰2
+java:S3599;",Use another way to initialize this instance.(ƒ‰Ç€üÿÿÿÿ8‡È‚½‰2
 {
-java:S1171;"YMove the contents of this initializer to a standard constructor or to field initializers.(ƒ‰Ç€üÿÿÿÿ8Íï—´‰2
-L	java:S106J"+Replace this use of System.out by a logger.(€£˜üÿÿÿÿ8Ïï—´‰2
-X	java:S125u"<This block of commented-out lines of code should be removed.(ÄÙóä8Ôï—´‰2
-G	java:S106"+Replace this use of System.out by a logger.(¹Âîµ8Õï—´‰2
+java:S1171;"YMove the contents of this initializer to a standard constructor or to field initializers.(ƒ‰Ç€üÿÿÿÿ8‰È‚½‰2
+X	java:S125s"<This block of commented-out lines of code should be removed.(ÄÙóä8•È‚½‰2
+G	java:S106}"+Replace this use of System.out by a logger.(¹Âîµ8–È‚½‰2
 P
-java:S1172‰"2Remove this unused method parameter "actionEvent".(·†Á¯8×ï—´‰2
-M	java:S106"+Replace this use of System.out by a logger.(ê¥Í–ÿÿÿÿÿ8âï—´‰2
+java:S1172‡"2Remove this unused method parameter "actionEvent".(·†Á¯8šÈ‚½‰2
+M	java:S106"+Replace this use of System.out by a logger.(ê¥Í–ÿÿÿÿÿ8¨È‚½‰2
+U
+java:S1172”"2Remove this unused method parameter "actionEvent".(­¿Ÿúÿÿÿÿ8åÉƒ½‰2
+M	java:S106š"+Replace this use of System.out by a logger.(ê¥Í–ÿÿÿÿÿ8èÉƒ½‰2

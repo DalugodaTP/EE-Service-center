@@ -5,33 +5,59 @@ import db.DBConnection;
 import dto.CustomerDto;
 import io.github.palexdev.materialfx.controls.MFXTableColumn;
 import io.github.palexdev.materialfx.controls.MFXTableView;
+import io.github.palexdev.materialfx.controls.MFXTextField;
 import io.github.palexdev.materialfx.controls.cell.MFXTableRowCell;
 import io.github.palexdev.materialfx.filter.DoubleFilter;
 import io.github.palexdev.materialfx.filter.StringFilter;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.collections.ObservableMap;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.SQLIntegrityConstraintViolationException;
 import java.sql.Statement;
 import java.util.Comparator;
 
 public class ManageCustomersFormController {
 
-    public MFXTableView tblManageCustomers;
+    public MFXTableView<CustomerDto> tblManageCustomers;
+    public MFXTextField txtCustomerId;
+    public MFXTextField txtCustomerName;
+    public MFXTextField txtCustomerAddress;
+    public MFXTextField txtCustomerSalary;
+
+    private CustomerDto selectedCustomer;
 
     public void initialize(){
+//        tblManageCustomers.autosizeColumnsOnInitialization();
+        loadCustomerTable();
 
-        loadItemTable();
+        tblManageCustomers.getSelectionModel().selectionProperty().addListener((observableValue, oldValue, newValue) -> {
+            setData(newValue);
+        });
     }
 
-    private void loadItemTable() {
+    private void setData(ObservableMap<Integer, CustomerDto> newValue) {
+        if (newValue != null && !newValue.isEmpty()) {
+            selectedCustomer = newValue.values().iterator().next();
+            if (selectedCustomer != null) {
+                txtCustomerId.setText(selectedCustomer.getId());
+                txtCustomerName.setText(selectedCustomer.getName());
+                txtCustomerAddress.setText(selectedCustomer.getAddress());
+                txtCustomerSalary.setText(String.valueOf(selectedCustomer.getSalary()));
+            }
+        }
+    }
+
+    private void loadCustomerTable() {
         //--Define the height of the table
         tblManageCustomers.setPrefHeight(100);
         //--Create Observable list to pass the data into the table
@@ -152,6 +178,63 @@ public class ManageCustomersFormController {
             stage.show();
         } catch (IOException e) {
             System.out.println("Dashboard window in the path is missing");
+        }
+    }
+
+    public void saveButtonOnAction(ActionEvent actionEvent) {
+        //--Create an object and store the data from the fields
+        CustomerDto c = new CustomerDto(txtCustomerId.getText(),
+                txtCustomerName.getText(),
+                txtCustomerAddress.getText(),
+                Double.parseDouble(txtCustomerSalary.getText()
+                ));
+        //--Concat and get the query
+        String sql = "INSERT INTO customer VALUES('"+c.getId()+"','"+c.getName()+"','"+c.getAddress()+"',"+c.getSalary()+")";
+
+        try {
+            Statement stm = DBConnection.getInstance().getConnection().createStatement();
+            int result = stm.executeUpdate(sql);
+            if (result>0){
+                new Alert(Alert.AlertType.INFORMATION,"Customer Saved!").show();
+                loadCustomerTable();
+                clearFields();
+            }
+
+        } catch (SQLIntegrityConstraintViolationException ex){
+            new Alert(Alert.AlertType.ERROR,"Duplicate Entry").show();
+        } catch (ClassNotFoundException | SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void clearFields() {
+        txtCustomerSalary.clear();
+        txtCustomerAddress.clear();
+        txtCustomerName.clear();
+        txtCustomerId.clear();
+        txtCustomerId.setEditable(false);
+    }
+
+    public void updateButtonOnAction(ActionEvent actionEvent) {
+        CustomerDto c = new CustomerDto(
+                txtCustomerId.getText(),
+                txtCustomerName.getText(),
+                txtCustomerAddress.getText(),
+                Double.parseDouble(txtCustomerSalary.getText())
+        );
+        String sql = "UPDATE customer SET name='"+c.getName()+"', address='"+c.getAddress()+"', salary="+c.getSalary()+" WHERE id='"+c.getId()+"'";
+
+        try {
+            Statement stm = DBConnection.getInstance().getConnection().createStatement();
+            int result = stm.executeUpdate(sql);
+            if (result>0){
+                new Alert(Alert.AlertType.INFORMATION,"Customer "+c.getId()+" Updated!").show();
+                loadCustomerTable();
+                clearFields();
+            }
+
+        } catch (ClassNotFoundException | SQLException e) {
+            e.printStackTrace();
         }
     }
 }

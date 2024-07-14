@@ -13,5 +13,5 @@ public class CustomerTm {
     private String name;
     private String address;
     private double salary;
-    private JFXButton btn;
+//    private JFXButton btn;
 }
