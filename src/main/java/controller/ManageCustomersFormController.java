@@ -24,8 +24,6 @@ import model.impl.CustomerModelImpl;
 
 import java.io.IOException;
 import java.sql.SQLException;
-import java.sql.SQLIntegrityConstraintViolationException;
-import java.sql.Statement;
 import java.util.Comparator;
 import java.util.List;
 
@@ -145,7 +143,13 @@ public class ManageCustomersFormController {
             );
 
             deleteBtn.setOnAction(actionEvent -> {
-                customerModel.deleteCustomer(dto);
+                try {
+                    customerModel.deleteCustomer(dto);
+                } catch (SQLException e) {
+                    throw new RuntimeException(e);
+                } catch (ClassNotFoundException e) {
+                    throw new RuntimeException(e);
+                }
                 returnList.remove(customerTm);
             });
 
@@ -179,29 +183,20 @@ public class ManageCustomersFormController {
         }
     }
 
-    public void saveButtonOnAction(ActionEvent actionEvent) {
+    public void saveButtonOnAction(ActionEvent actionEvent) throws SQLException, ClassNotFoundException, NullPointerException {
         //--Create an object and store the data from the fields
         CustomerDto c = new CustomerDto(txtCustomerId.getText(),
                 txtCustomerName.getText(),
                 txtCustomerAddress.getText(),
                 Double.parseDouble(txtCustomerSalary.getText()
                 ));
-        //--Concat and get the query
-        String sql = "INSERT INTO customer VALUES('"+c.getId()+"','"+c.getName()+"','"+c.getAddress()+"',"+c.getSalary()+")";
+        //--Use customerModelImpl to save the customer
+        boolean isCustomerSaved = customerModel.saveCustomer(c);
 
-        try {
-            Statement stm = DBConnection.getInstance().getConnection().createStatement();
-            int result = stm.executeUpdate(sql);
-            if (result>0){
-                new Alert(Alert.AlertType.INFORMATION,"Customer Saved!").show();
-                loadCustomerTable();
-                clearFields();
-            }
-
-        } catch (SQLIntegrityConstraintViolationException ex){
-            new Alert(Alert.AlertType.ERROR,"Duplicate Entry").show();
-        } catch (ClassNotFoundException | SQLException e) {
-            e.printStackTrace();
+        if (isCustomerSaved){
+            new Alert(Alert.AlertType.INFORMATION,"Customer Saved!").show();
+            loadCustomerTable();
+            clearFields();
         }
     }
 
@@ -213,26 +208,22 @@ public class ManageCustomersFormController {
         txtCustomerId.setEditable(false);
     }
 
-    public void updateButtonOnAction(ActionEvent actionEvent) {
+    public void updateButtonOnAction(ActionEvent actionEvent) throws SQLException, ClassNotFoundException {
         CustomerDto c = new CustomerDto(
                 txtCustomerId.getText(),
                 txtCustomerName.getText(),
                 txtCustomerAddress.getText(),
                 Double.parseDouble(txtCustomerSalary.getText())
         );
-        String sql = "UPDATE customer SET name='"+c.getName()+"', address='"+c.getAddress()+"', salary="+c.getSalary()+" WHERE id='"+c.getId()+"'";
 
-        try {
-            Statement stm = DBConnection.getInstance().getConnection().createStatement();
-            int result = stm.executeUpdate(sql);
-            if (result>0){
-                new Alert(Alert.AlertType.INFORMATION,"Customer "+c.getId()+" Updated!").show();
-                loadCustomerTable();
-                clearFields();
-            }
+        //--Use customerModel to update the entry
+        boolean isCustomerUpdated = customerModel.updateCustomer(c);
 
-        } catch (ClassNotFoundException | SQLException e) {
-            e.printStackTrace();
+        if (isCustomerUpdated){
+            new Alert(Alert.AlertType.INFORMATION,"Customer "+c.getId()+" Updated!").show();
+            loadCustomerTable();
+            clearFields();
         }
+
     }
 }
