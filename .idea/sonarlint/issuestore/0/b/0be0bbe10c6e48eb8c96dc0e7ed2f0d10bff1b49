@@ -1,7 +1,18 @@
 
 l
-java:S2095("OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(Ìû—8ØıŸ‘‹2
-W
-java:S1128";Remove this unused import 'com.jfoenix.controls.JFXButton'.(„•£8¢éé‹2
-L
-java:S1128"/Remove this unused import 'java.sql.Statement'.(ÏÖÔø8¢éé‹2
+java:S2095j"OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(Ìû—8ØıŸ‘‹2
+l
+java:S2095"OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(Ìû—8ä”Œ2
+l
+java:S2095="OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(Ìû—8å”Œ2
+l
+java:S2095)"OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(Ìû—8å”Œ2
+l
+java:S2095R"OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(Ìû—8å”Œ2
+c
+java:S1126"AReplace this if-then-else statement by a single return statement.(ˆˆ¦„şÿÿÿÿ8ï”Œ2
+]	java:S125%"<This block of commented-out lines of code should be removed.(ÿÖ‹Œüÿÿÿÿ8ñ”Œ2
+c
+java:S11263"AReplace this if-then-else statement by a single return statement.(ˆˆ¦„şÿÿÿÿ8ø”Œ2
+c
+java:S1126C"AReplace this if-then-else statement by a single return statement.(ˆˆ¦„şÿÿÿÿ8ş”Œ2
