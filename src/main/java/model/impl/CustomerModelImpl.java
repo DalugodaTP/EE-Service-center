@@ -2,6 +2,7 @@ package model.impl;
 
 import db.DBConnection;
 import dto.CustomerDto;
+import dto.tm.CustomerTm;
 import model.CustomerModel;
 
 import java.sql.PreparedStatement;
@@ -34,7 +35,7 @@ public class CustomerModelImpl implements CustomerModel {
 
     @Override
     public boolean updateCustomer(CustomerDto dto) throws SQLException, ClassNotFoundException {
-        //String sql = "UPDATE customer SET name='"+c.getName()+"', address='"+c.getAddress()+"', salary="+c.getSalary()+" WHERE id='"+c.getId()+"'";
+
         String sql = "UPDATE customer SET name=?, address=?, salary=? WHERE id=?";
 
         //--Get the connection
@@ -55,7 +56,7 @@ public class CustomerModelImpl implements CustomerModel {
     }
 
     @Override
-    public boolean deleteCustomer(CustomerDto dto) throws SQLException, ClassNotFoundException {
+    public boolean deleteCustomer(CustomerTm dto) throws SQLException, ClassNotFoundException {
         String sql = "DELETE FROM customer WHERE id=?";
 
         PreparedStatement pstm = DBConnection.getInstance().getConnection().prepareStatement(sql);

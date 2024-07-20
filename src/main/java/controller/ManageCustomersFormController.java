@@ -1,9 +1,9 @@
 package controller;
 
 import com.jfoenix.controls.JFXButton;
-import db.DBConnection;
 import dto.CustomerDto;
 import dto.tm.CustomerTm;
+import io.github.palexdev.materialfx.controls.MFXButton;
 import io.github.palexdev.materialfx.controls.MFXTableColumn;
 import io.github.palexdev.materialfx.controls.MFXTableView;
 import io.github.palexdev.materialfx.controls.MFXTextField;
@@ -18,14 +18,18 @@ import javafx.fxml.FXMLLoader;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
 import javafx.stage.Stage;
 import model.CustomerModel;
 import model.impl.CustomerModelImpl;
 
+import javafx.scene.input.MouseEvent;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.Comparator;
 import java.util.List;
+
+import static java.awt.event.MouseEvent.MOUSE_PRESSED;
 
 public class ManageCustomersFormController {
 
@@ -72,7 +76,7 @@ public class ManageCustomersFormController {
         MFXTableColumn<CustomerTm> customerSalaryColumn =
                 new MFXTableColumn<>("Salary", false, Comparator.comparing(CustomerTm::getSalary));
         MFXTableColumn<CustomerTm> customerDeleteColumn =
-                new MFXTableColumn<>("Options", false);
+                new MFXTableColumn<>("Action", false);
 
         customerIdColumn.setRowCellFactory(item -> new MFXTableRowCell<>(CustomerTm::getId){{
             setAlignment(Pos.CENTER); }});
@@ -84,8 +88,26 @@ public class ManageCustomersFormController {
             setAlignment(Pos.CENTER); }});
 
         customerDeleteColumn.setRowCellFactory(item -> {
-            MFXTableRowCell<CustomerTm, JFXButton> mfxTableRowCell = new MFXTableRowCell<>(CustomerTm::getBtn);
+            MFXTableRowCell<CustomerTm, String> mfxTableRowCell = new MFXTableRowCell<>(CustomerTm::getAction);
+            MFXButton btnDelete = new MFXButton("❌");
+            btnDelete.addEventFilter(MouseEvent.MOUSE_PRESSED, event -> {
+                try {
+                    deleteCustomer(item);
+                } catch (SQLException e) {
+                    throw new RuntimeException(e);
+                } catch (ClassNotFoundException e) {
+                    throw new RuntimeException(e);
+                }
+            });
+
+            mfxTableRowCell.setLeadingGraphic(btnDelete);
             mfxTableRowCell.setAlignment(Pos.CENTER);
+            mfxTableRowCell.mouseTransparentProperty().addListener((observable, oldValue, newValue) -> {
+                if (newValue) {
+                    mfxTableRowCell.setMouseTransparent(false);
+                }
+            });
+
             return mfxTableRowCell;
         });
 
@@ -118,6 +140,26 @@ public class ManageCustomersFormController {
         tblManageCustomers.getStyleClass().add("mfx-table-view");
     }
 
+    private void deleteCustomer(CustomerTm id) throws SQLException, ClassNotFoundException {
+        Alert confirmAlert = new Alert
+                (Alert.AlertType.CONFIRMATION,
+                        "Do you want to delete this item?",
+                        ButtonType.YES, ButtonType.NO);
+
+        confirmAlert.showAndWait();
+
+        if (confirmAlert.getResult() == ButtonType.YES) {
+            if (customerModel.deleteCustomer(id)) {
+                operationSuccessAlert("Deleted!", "Item Deleted Successfully!");
+            }
+            confirmAlert.close();
+            clearFields();
+            tblManageCustomers.setItems(getUsers());
+            return;
+        }
+
+    }
+
     private void setFilters() {
         tblManageCustomers.getFilters().addAll(
                 new StringFilter<>("Id", CustomerTm::getId),
@@ -139,19 +181,8 @@ public class ManageCustomersFormController {
                     dto.getName(),
                     dto.getAddress(),
                     dto.getSalary(),
-                    deleteBtn
+                    ""
             );
-
-            deleteBtn.setOnAction(actionEvent -> {
-                try {
-                    customerModel.deleteCustomer(dto);
-                } catch (SQLException e) {
-                    throw new RuntimeException(e);
-                } catch (ClassNotFoundException e) {
-                    throw new RuntimeException(e);
-                }
-                returnList.remove(customerTm);
-            });
 
             returnList.add(customerTm);
         }
@@ -225,5 +256,12 @@ public class ManageCustomersFormController {
             clearFields();
         }
 
+    }
+
+    void operationSuccessAlert(String title, String content) {
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle(title);
+        alert.setContentText(content);
+        alert.show();
     }
 }
