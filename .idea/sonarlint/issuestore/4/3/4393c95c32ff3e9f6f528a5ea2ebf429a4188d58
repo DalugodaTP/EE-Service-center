@@ -1,0 +1,19 @@
+
+k
+java:S2095"OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(ƒªİ>8àçİ´Œ2
+i
+java:S2095O"GUse try-with-resources or close this "Statement" in a "finally" clause.(ôÅ¹Îıÿÿÿÿ8Ê‰Ñ´Œ2
+l
+java:S2095b"OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(Ìû—8ôÀÍ´Œ2
+k
+java:S2095+"OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(ƒªİ>8‡ Û´Œ2
+l
+java:S2095>"OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(Ìû—8ôÀÍ´Œ2
+c
+java:S1126"AReplace this if-then-else statement by a single return statement.(ˆˆ¦„şÿÿÿÿ8÷ÀÍ´Œ2
+c
+java:S11264"AReplace this if-then-else statement by a single return statement.(ˆˆ¦„şÿÿÿÿ8ùÀÍ´Œ2
+c
+java:S1126D"AReplace this if-then-else statement by a single return statement.(ˆˆ¦„şÿÿÿÿ8úÀÍ´Œ2
+N
+java:S1128",Remove this unused import 'dto.CustomerDto'.(ÛàÀÖüÿÿÿÿ8İµ½ÌŒ2
