@@ -1,47 +1,39 @@
 
-h	java:S112•"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òéüÿÿÿÿ8±™”Œ2
-h	java:S112—"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òéüÿÿÿÿ8³™”Œ2
+g	java:S112]"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òéüÿÿÿÿ8¬şŠ€2
+g	java:S112_"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òéüÿÿÿÿ8¬şŠ€2
 €
-java:S1104 "^Make tblManageCustomers a static final constant or non-public and provide accessors if needed.(ıäùíÿÿÿÿÿ8¸™”Œ2
+java:S1104$"^Make tblManageCustomers a static final constant or non-public and provide accessors if needed.(ıäùíÿÿÿÿÿ8®şŠ€2
 {
-java:S1104!"YMake txtCustomerId a static final constant or non-public and provide accessors if needed.(»€şÜùÿÿÿÿ8º™”Œ2
+java:S1104%"YMake txtCustomerId a static final constant or non-public and provide accessors if needed.(»€şÜùÿÿÿÿ8®şŠ€2
 x
-java:S1104""[Make txtCustomerName a static final constant or non-public and provide accessors if needed.(Š®ùà8¼™”Œ2
+java:S1104&"[Make txtCustomerName a static final constant or non-public and provide accessors if needed.(Š®ùà8®şŠ€2
 {
-java:S1104#"^Make txtCustomerAddress a static final constant or non-public and provide accessors if needed.(Ø¼ç8¾™”Œ2
+java:S1104'"^Make txtCustomerAddress a static final constant or non-public and provide accessors if needed.(Ø¼ç8®şŠ€2
 z
-java:S1104$"]Make txtCustomerSalary a static final constant or non-public and provide accessors if needed.(€€½Œ8¿™”Œ2
+java:S1104("]Make txtCustomerSalary a static final constant or non-public and provide accessors if needed.(€€½Œ8®şŠ€2
+J
+java:S5411f"(Use a primitive boolean expression here.(¬‰‘™şÿÿÿÿ8®şŠ€2
 
-java:S1450&"_Remove the "selectedCustomer" field and declare it as a local variable in the relevant methods.(ë­„Äúÿÿÿÿ8¼š”Œ2
+java:S1450*"_Remove the "selectedCustomer" field and declare it as a local variable in the relevant methods.(ë­„Äúÿÿÿÿ8õşŠ€2
 I
-java:S1602-",Remove useless curly braces around statement(†˜®»8Æš”Œ2
-N
-java:S3599M",Use another way to initialize this instance.(Ó¨ùãøÿÿÿÿ8Şš”Œ2
-{
-java:S1171M"YMove the contents of this initializer to a standard constructor or to field initializers.(Ó¨ùãøÿÿÿÿ8ßš”Œ2
-N
-java:S3599O",Use another way to initialize this instance.(ÎÎ²ıÿÿÿÿ8âš”Œ2
-{
-java:S1171O"YMove the contents of this initializer to a standard constructor or to field initializers.(ÎÎ²ıÿÿÿÿ8äš”Œ2
-N
-java:S3599Q",Use another way to initialize this instance.(ˆáêøÿÿÿÿ8èš”Œ2
-{
-java:S1171Q"YMove the contents of this initializer to a standard constructor or to field initializers.(ˆáêøÿÿÿÿ8éš”Œ2
-I
-java:S3599S",Use another way to initialize this instance.(²ß²8ìš”Œ2
-v
-java:S1171S"YMove the contents of this initializer to a standard constructor or to field initializers.(²ß²8îš”Œ2
-c
-java:S2147–"ECombine this catch with the one at line 148, which has the same body.(ıàÑÎ8›”Œ2
+java:S16021",Remove useless curly braces around statement(†˜®»8øşŠ€2
+a
+java:S2147^"DCombine this catch with the one at line 92, which has the same body.(ıàÑÎ8„ÿŠ€2
+9
+java:S3626š"Remove this redundant jump.(ûÁİ…8ŠÿŠ€2
+[
+java:S1854­"=Remove this useless assignment to local variable "deleteBtn".(¬ßÉ°8ÿŠ€2
+L
+java:S1481­".Remove this unused "deleteBtn" local variable.(¬ßÉ°8ÿŠ€2
 P
-java:S1172¢"2Remove this unused method parameter "actionEvent".(·†Á¯8˜›”Œ2
-M	java:S106¨"+Replace this use of System.out by a logger.(ê¥Í–ÿÿÿÿÿ8«›”Œ2
+java:S1172½"2Remove this unused method parameter "actionEvent".(·†Á¯8ÿŠ€2
+M	java:S106Ã"+Replace this use of System.out by a logger.(ê¥Í–ÿÿÿÿÿ8›ÿŠ€2
 U
-java:S1172°"2Remove this unused method parameter "actionEvent".(­¿Ÿúÿÿÿÿ8¯›”Œ2
-M	java:S106¶"+Replace this use of System.out by a logger.(ê¥Í–ÿÿÿÿÿ8·›”Œ2
+java:S1172Ë"2Remove this unused method parameter "actionEvent".(­¿Ÿúÿÿÿÿ8ÿŠ€2
+M	java:S106Ñ"+Replace this use of System.out by a logger.(ê¥Í–ÿÿÿÿÿ8ÿŠ€2
 P
-java:S1172º"2Remove this unused method parameter "actionEvent".(—ŸûÜ8¹›”Œ2
+java:S1172Õ"2Remove this unused method parameter "actionEvent".(—ŸûÜ8ÿŠ€2
 O
-java:S1172Ó"2Remove this unused method parameter "actionEvent".(³øH8Í›”Œ2
-I
-java:S1128",Remove this unused import 'db.DBConnection'.(Šùà†8×›”Œ2
+java:S1172î"2Remove this unused method parameter "actionEvent".(³øH8¡ÿŠ€2
+a
+java:S1128 "DRemove this unused import 'java.awt.event.MouseEvent.MOUSE_PRESSED'.(£»Ğê8¥ÿŠ€2
