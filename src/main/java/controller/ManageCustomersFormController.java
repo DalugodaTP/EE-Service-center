@@ -78,18 +78,14 @@ public class ManageCustomersFormController {
         MFXTableColumn<CustomerTm> customerDeleteColumn =
                 new MFXTableColumn<>("Action", false);
 
-        customerIdColumn.setRowCellFactory(item -> new MFXTableRowCell<>(CustomerTm::getId){{
-            setAlignment(Pos.CENTER); }});
-        customerNameColumn.setRowCellFactory(item -> new MFXTableRowCell<>(CustomerTm::getName){{
-            setAlignment(Pos.CENTER); }});
-        customerAddressColumn.setRowCellFactory(item -> new MFXTableRowCell<>(CustomerTm::getAddress){{
-            setAlignment(Pos.CENTER); }});
-        customerSalaryColumn.setRowCellFactory(item -> new MFXTableRowCell<>(CustomerTm::getSalary){{
-            setAlignment(Pos.CENTER); }});
+        customerIdColumn.setRowCellFactory(item -> new MFXTableRowCell<>(CustomerTm::getId));
+        customerNameColumn.setRowCellFactory(item -> new MFXTableRowCell<>(CustomerTm::getName));
+        customerAddressColumn.setRowCellFactory(item -> new MFXTableRowCell<>(CustomerTm::getAddress));
+        customerSalaryColumn.setRowCellFactory(item -> new MFXTableRowCell<>(CustomerTm::getSalary));
 
         customerDeleteColumn.setRowCellFactory(item -> {
             MFXTableRowCell<CustomerTm, String> mfxTableRowCell = new MFXTableRowCell<>(CustomerTm::getAction);
-            MFXButton btnDelete = new MFXButton("❌");
+            MFXButton btnDelete = new MFXButton("Delete");
             btnDelete.addEventFilter(MouseEvent.MOUSE_PRESSED, event -> {
                 try {
                     deleteCustomer(item);
@@ -190,7 +186,7 @@ public class ManageCustomersFormController {
         return returnList;
     }
 
-    public void dashboardButtonOnAction(ActionEvent actionEvent) {
+    public void dashBoardButtonOnAction(ActionEvent actionEvent) {
         Stage stage = (Stage)tblManageCustomers.getScene().getWindow();
         try {
             stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("../view/ControlPanelForm.fxml"))));
@@ -200,7 +196,7 @@ public class ManageCustomersFormController {
         }
     }
 
-    public void settingButtonOnAction(ActionEvent actionEvent) {
+    public void SettingsButtonOnAction(ActionEvent actionEvent) {
         //--No implementations
     }
 
@@ -226,8 +222,8 @@ public class ManageCustomersFormController {
 
         if (isCustomerSaved){
             new Alert(Alert.AlertType.INFORMATION,"Customer Saved!").show();
-            loadCustomerTable();
-            clearFields();
+           initialize();
+           loadCustomerTable();
         }
     }
 
@@ -263,5 +259,19 @@ public class ManageCustomersFormController {
         alert.setTitle(title);
         alert.setContentText(content);
         alert.show();
+    }
+
+    public void ManageCustomersButtonOnAction(ActionEvent actionEvent) {
+        //--This window
+    }
+
+    public void inventoryButtonOnAction(ActionEvent actionEvent) {
+        Stage stage = (Stage)tblManageCustomers.getScene().getWindow();
+        try {
+            stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("../view/InventoryForm.fxml"))));
+            stage.show();
+        } catch (IOException e) {
+            System.out.println("Inventory window in the path is missing");
+        }
     }
 }

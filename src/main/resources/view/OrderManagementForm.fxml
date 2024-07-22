@@ -39,6 +39,8 @@
                                 <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                                 <ColumnConstraints hgrow="SOMETIMES" maxWidth="-Infinity" minWidth="10.0" prefWidth="10.0" />
                                 <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="-Infinity" minWidth="10.0" prefWidth="10.0" />
+                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                                 <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                             </columnConstraints>
                             <rowConstraints>
@@ -47,7 +49,7 @@
                                 <RowConstraints maxHeight="-Infinity" minHeight="10.0" prefHeight="50.0" vgrow="SOMETIMES" />
                             </rowConstraints>
                             <children>
-                                <MFXButton buttonType="RAISED" contentDisplay="GRAPHIC_ONLY" depthLevel="LEVEL5" onAction="#dashboardButtonOnAction" prefHeight="70.0" prefWidth="229.0" rippleAnimateShadow="true" rippleAnimationSpeed="0.5" rippleRadiusMultiplier="4.0" style="-fx-background-radius: 10; -fx-background-color: #03507C;" text="Dashboard" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                                <MFXButton buttonType="RAISED" contentDisplay="GRAPHIC_ONLY" depthLevel="LEVEL5" onAction="#dashBoardButtonOnAction" prefHeight="70.0" prefWidth="229.0" rippleAnimateShadow="true" rippleAnimationSpeed="0.5" rippleRadiusMultiplier="4.0" style="-fx-background-radius: 10; -fx-background-color: #03507C;" text="Dashboard" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="1">
                                     <font>
                                         <Font name="System Bold" size="15.0" />
                                     </font>
@@ -70,7 +72,7 @@
                                         <Cursor fx:constant="HAND" />
                                     </cursor>
                                 </MFXButton>
-                                <MFXButton buttonType="RAISED" contentDisplay="GRAPHIC_ONLY" depthLevel="LEVEL5" onAction="#manageCustomersButtonOnAction" prefHeight="70.0" prefWidth="229.0" rippleAnimateShadow="true" rippleAnimationSpeed="0.5" rippleRadiusMultiplier="4.0" style="-fx-background-radius: 10; -fx-background-color: #03507C;" text="Dashboard" textFill="WHITE" GridPane.columnIndex="3" GridPane.rowIndex="1">
+                                <MFXButton buttonType="RAISED" contentDisplay="GRAPHIC_ONLY" depthLevel="LEVEL5" onAction="#ManageCustomersButtonOnAction" prefHeight="70.0" prefWidth="229.0" rippleAnimateShadow="true" rippleAnimationSpeed="0.5" rippleRadiusMultiplier="4.0" style="-fx-background-radius: 10; -fx-background-color: #03507C;" text="Dashboard" textFill="WHITE" GridPane.columnIndex="3" GridPane.rowIndex="1">
                                     <font>
                                         <Font name="System Bold" size="15.0" />
                                     </font>
@@ -93,7 +95,7 @@
                                         <Cursor fx:constant="HAND" />
                                     </cursor>
                                 </MFXButton>
-                                <MFXButton buttonType="RAISED" contentDisplay="GRAPHIC_ONLY" depthLevel="LEVEL5" disable="true" onAction="#orderManagementButtonOnAction" prefHeight="70.0" prefWidth="229.0" rippleAnimateShadow="true" rippleAnimationSpeed="0.5" rippleRadiusMultiplier="4.0" style="-fx-background-radius: 10; -fx-background-color: #03507C;" text="Dashboard" textFill="WHITE" GridPane.columnIndex="5" GridPane.rowIndex="1">
+                                <MFXButton buttonType="RAISED" contentDisplay="GRAPHIC_ONLY" depthLevel="LEVEL5" disable="true" onAction="#orderManagementButtonOnAction" prefHeight="70.0" prefWidth="229.0" rippleAnimateShadow="true" rippleAnimationSpeed="0.5" rippleRadiusMultiplier="4.0" style="-fx-background-radius: 10; -fx-background-color: #03507C;" text="Dashboard" textFill="WHITE" GridPane.columnIndex="7" GridPane.rowIndex="1">
                                     <font>
                                         <Font name="System Bold" size="15.0" />
                                     </font>
@@ -105,7 +107,7 @@
                                                         <Cursor fx:constant="HAND" />
                                                     </cursor>
                                                     <image>
-                                                        <Image url="@../img/inventory-icon.png" />
+                                                        <Image url="@../img/icons8-order-50.png" />
                                                     </image>
                                                 </ImageView>
                                                 <Label text="Order Management" textFill="#fcfcfc" />
@@ -116,7 +118,7 @@
                                         <Cursor fx:constant="HAND" />
                                     </cursor>
                                 </MFXButton>
-                                <MFXButton buttonType="RAISED" contentDisplay="GRAPHIC_ONLY" onAction="#settingButtonOnAction" prefHeight="70.0" prefWidth="229.0" rippleAnimationSpeed="0.5" rippleRadiusMultiplier="4.0" style="-fx-background-radius: 10; -fx-background-color: #03507C;" text="Dashboard" textFill="WHITE" GridPane.columnIndex="7" GridPane.rowIndex="1">
+                                <MFXButton buttonType="RAISED" contentDisplay="GRAPHIC_ONLY" depthLevel="LEVEL5" onAction="#SettingsButtonOnAction" prefHeight="70.0" prefWidth="229.0" rippleAnimationSpeed="0.5" rippleRadiusMultiplier="4.0" style="-fx-background-radius: 10; -fx-background-color: #03507C;" text="Dashboard" textFill="WHITE" GridPane.columnIndex="9" GridPane.rowIndex="1">
                                     <font>
                                         <Font name="System Bold" size="15.0" />
                                     </font>
@@ -132,6 +134,29 @@
                                                     </image>
                                                 </ImageView>
                                                 <Label text="Setting" textFill="#fcfcfc" />
+                                            </children>
+                                        </VBox>
+                                    </graphic>
+                                    <cursor>
+                                        <Cursor fx:constant="HAND" />
+                                    </cursor>
+                                </MFXButton>
+                                <MFXButton buttonType="RAISED" contentDisplay="GRAPHIC_ONLY" depthLevel="LEVEL5" onAction="#inventoryButtonOnAction" prefHeight="70.0" prefWidth="229.0" rippleAnimateShadow="true" rippleAnimationSpeed="0.5" rippleRadiusMultiplier="4.0" style="-fx-background-radius: 10; -fx-background-color: #03507C;" text="Dashboard" textFill="WHITE" GridPane.columnIndex="5" GridPane.rowIndex="1">
+                                    <font>
+                                        <Font name="System Bold" size="15.0" />
+                                    </font>
+                                    <graphic>
+                                        <VBox alignment="CENTER" nodeOrientation="LEFT_TO_RIGHT" prefHeight="200.0" prefWidth="100.0">
+                                            <children>
+                                                <ImageView fitHeight="32.0" fitWidth="191.0" pickOnBounds="true" preserveRatio="true">
+                                                    <cursor>
+                                                        <Cursor fx:constant="HAND" />
+                                                    </cursor>
+                                                    <image>
+                                                        <Image url="@../img/inventory-icon.png" />
+                                                    </image>
+                                                </ImageView>
+                                                <Label text="Inventory" textFill="#fcfcfc" />
                                             </children>
                                         </VBox>
                                     </graphic>
