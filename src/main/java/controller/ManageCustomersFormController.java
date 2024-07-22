@@ -222,8 +222,8 @@ public class ManageCustomersFormController {
 
         if (isCustomerSaved){
             new Alert(Alert.AlertType.INFORMATION,"Customer Saved!").show();
-            loadCustomerTable();
-            clearFields();
+           initialize();
+           loadCustomerTable();
         }
     }
 
@@ -262,6 +262,7 @@ public class ManageCustomersFormController {
     }
 
     public void ManageCustomersButtonOnAction(ActionEvent actionEvent) {
+        //--This window
     }
 
     public void inventoryButtonOnAction(ActionEvent actionEvent) {

@@ -155,3 +155,5 @@ R
 "src/main/java/model/ItemModel.java,6\4\64e26bb1992ad0f7e3462ed7202d9066fa6e9fb5
 [
 +src/main/java/model/impl/ItemModelImpl.java,4\3\4393c95c32ff3e9f6f528a5ea2ebf429a4188d58
+e
+5src/main/java/controller/InventoryFormController.java,4\e\4efe3c5bf5a9cd1e85de269cf488550207fd1549

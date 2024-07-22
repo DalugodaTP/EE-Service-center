@@ -49,6 +49,7 @@
                                     <children>
                                         <GridPane prefHeight="100.0" prefWidth="975.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                             <columnConstraints>
+                                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="-Infinity" minWidth="10.0" prefWidth="100.0" />
                                                 <ColumnConstraints hgrow="SOMETIMES" maxWidth="-Infinity" minWidth="10.0" prefWidth="10.0" />
                                                 <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                                                 <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -61,7 +62,15 @@
                                                 <RowConstraints maxHeight="-Infinity" minHeight="10.0" prefHeight="10.0" vgrow="SOMETIMES" />
                                             </rowConstraints>
                                             <children>
-                                                <MFXTextField fx:id="txtSearch" maxHeight="-Infinity" prefHeight="20.0" prefWidth="298.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                                <MFXTextField fx:id="txtSearch" maxHeight="-Infinity" prefHeight="50.0" prefWidth="298.0" GridPane.columnIndex="2" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
+                                    <Label text="Search" textFill="#2590d1" GridPane.rowIndex="1" GridPane.valignment="BOTTOM">
+                                       <padding>
+                                          <Insets left="10.0" />
+                                       </padding>
+                                       <font>
+                                          <Font name="System Bold" size="25.0" />
+                                       </font>
+                                    </Label>
                                             </children>
                                         </GridPane>
                                     </children>
@@ -394,6 +403,11 @@
                                         </MFXButton>
                                     </children>
                                 </GridPane>
+                        <MFXTextField fx:id="txtCode" maxHeight="-Infinity" prefHeight="20.0" prefWidth="298.0" GridPane.rowIndex="2">
+                           <GridPane.margin>
+                              <Insets left="10.0" />
+                           </GridPane.margin>
+                        </MFXTextField>
                             </children>
                         </GridPane>
                     </children>
