@@ -5,6 +5,7 @@ import com.jfoenix.controls.JFXTreeTableView;
 import com.jfoenix.controls.RecursiveTreeItem;
 import com.jfoenix.controls.datamodels.treetable.RecursiveTreeObject;
 import dto.ItemDto;
+import dto.tm.CustomerTm;
 import dto.tm.ItemTm;
 import io.github.palexdev.materialfx.controls.MFXTextField;
 import javafx.collections.FXCollections;
@@ -12,6 +13,8 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.TreeItem;
 import javafx.scene.control.TreeTableColumn;
 import javafx.scene.control.cell.TreeItemPropertyValueFactory;
@@ -95,7 +98,7 @@ public class InventoryFormController {
 
             btn.setOnAction(actionEvent -> {
                 try {
-                    itemModel.deleteItem(x);
+                    deleteItem(x);
                 } catch (SQLException e) {
                     throw new RuntimeException(e);
                 } catch (ClassNotFoundException e) {
@@ -110,10 +113,72 @@ public class InventoryFormController {
 
     }
 
+    private void deleteItem(ItemDto tm) throws SQLException, ClassNotFoundException {
+        Alert confirmAlert = new Alert
+                (Alert.AlertType.CONFIRMATION,
+                        "Do you want to delete this item?",
+                        ButtonType.YES, ButtonType.NO);
+
+        confirmAlert.showAndWait();
+
+        if (confirmAlert.getResult() == ButtonType.YES) {
+            if (itemModel.deleteItem(tm)) {
+                operationSuccessAlert("Deleted!", "Item Deleted Successfully!");
+            }
+            else{
+                operationErrorAlert("Failed!", "Item failed to delete!");
+            }
+            confirmAlert.close();
+            clearFields();
+            loadItemTable();
+        }
+    }
+
+    private void clearFields() {
+        tblItems.refresh();
+        txtCode.clear();
+        txtUnitPrice.clear();
+        txtQtyOnHand.clear();
+        txtDescription.clear();
+        txtCode.setEditable(true);
+    }
+
     public void updateButtonOnAction(ActionEvent actionEvent) {
+        ItemDto c = new ItemDto(
+                txtCode.getText(),
+                txtDescription.getText(),
+                Double.parseDouble(txtUnitPrice.getText()),
+                Integer.parseInt(txtQtyOnHand.getText())
+        );
+
+        try {
+            if (itemModel.updateItem(c)){
+                operationSuccessAlert("Udated succefully", "Customer "+c.getDesc()+" Updated!");
+                loadItemTable();
+                clearFields();
+            }
+        } catch (Exception e) {
+            operationErrorAlert("Filed to update", "The item failed to update, please try again!");
+        }
     }
 
     public void saveButtonOnAction(ActionEvent actionEvent) {
+        ItemDto c = new ItemDto(
+                txtCode.getText(),
+                txtDescription.getText(),
+                Double.parseDouble(txtUnitPrice.getText()),
+                Integer.parseInt(txtQtyOnHand.getText())
+        );
+
+        try {
+            if (itemModel.saveItem(c)){
+                operationSuccessAlert("Saved succefully", "Customer "+c.getDesc()+" Saved!");
+                loadItemTable();
+                clearFields();
+            }
+        } catch (Exception e) {
+            operationErrorAlert("Filed to Save", "The item failed to Save, please try again!");
+        }
     }
 
     //--Routing
@@ -153,5 +218,20 @@ public class InventoryFormController {
 
     public void inventoryButtonOnAction(ActionEvent actionEvent) {
         //--Current Window
+    }
+
+    //--Alerts
+    void operationSuccessAlert(String title, String content) {
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle(title);
+        alert.setContentText(content);
+        alert.show();
+    }
+
+    void operationErrorAlert(String title, String content) {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle(title);
+        alert.setContentText(content);
+        alert.show();
     }
 }
