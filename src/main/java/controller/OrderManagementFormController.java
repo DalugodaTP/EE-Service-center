@@ -7,7 +7,8 @@ import com.jfoenix.controls.RecursiveTreeItem;
 import com.jfoenix.controls.datamodels.treetable.RecursiveTreeObject;
 import dto.CustomerDto;
 import dto.ItemDto;
-import dto.tm.ItemTm;
+
+import dto.OrderDto;
 import dto.tm.OrderTm;
 import io.github.palexdev.materialfx.controls.MFXTextField;
 import javafx.collections.FXCollections;
@@ -16,6 +17,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.control.TreeItem;
 import javafx.scene.control.TreeTableColumn;
@@ -24,15 +26,17 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import model.CustomerModel;
 import model.ItemModel;
+import model.OrderModel;
 import model.impl.CustomerModelImpl;
 import model.impl.ItemModelImpl;
+import model.impl.OrderModelImpl;
 
 import java.io.IOException;
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.List;
 
 public class OrderManagementFormController {
+    public Label lblOrderID;
     @FXML
     private AnchorPane orderManagementPane;
 
@@ -81,12 +85,17 @@ public class OrderManagementFormController {
     private List<CustomerDto> customers;
     private List<ItemDto> items;
 
+    private double tot;
+
     //--To Store orders before passing into order
     private ObservableList<OrderTm> tmList = FXCollections.observableArrayList();
 
+
     //--Import Models
-    CustomerModel customerModel = new CustomerModelImpl();
-    ItemModel itemModel = new ItemModelImpl();
+    private CustomerModel customerModel = new CustomerModelImpl();
+    private ItemModel itemModel = new ItemModelImpl();
+
+    private OrderModel orderModel = new OrderModelImpl();
     public void initialize(){
         //------Declare columns and mapping the ItemTm with the columns
         colCode.setCellValueFactory(new TreeItemPropertyValueFactory<>("code"));
@@ -96,6 +105,7 @@ public class OrderManagementFormController {
         colOptions.setCellValueFactory(new TreeItemPropertyValueFactory<>("btn"));
 
         loadCustomerId();
+        generateId();
         loadItemCode();
 
         cmbCustomerId.getSelectionModel().selectedItemProperty().addListener(((observableValue, oldValue, id) -> {
@@ -110,7 +120,7 @@ public class OrderManagementFormController {
             for (ItemDto dto:items) {
                 if (dto.getCode().equals(code)){
                     txtDescription.setText(dto.getDesc());
-                    txtUnitPrice.setText(String.valueOf(dto.getUnitPrice()));
+                    txtUnitPrice.setText(String.format("%.2f",dto.getUnitPrice()));
                 }
             }
         }));
@@ -148,39 +158,100 @@ public class OrderManagementFormController {
     }
 
     public void addToCartButtonOnAction(ActionEvent actionEvent) throws SQLException, ClassNotFoundException {
-        double amount =itemModel.getItem(cmbItemCode.getValue().toString()).getUnitPrice()* Integer.parseInt(txtBuyingQty.getText());
-        JFXButton btn = new JFXButton("Delete");
-        OrderTm tm = new OrderTm(
-                cmbItemCode.getValue().toString(),
-                txtDescription.getText(),
-                Integer.parseInt(txtBuyingQty.getText()),
-                amount,
-                btn
+        //--Capture the new amount of new added items
+        double amount =itemModel.getItem(
+                cmbItemCode.getValue().toString()).getUnitPrice()* Integer.parseInt(txtBuyingQty.getText()
         );
 
-        boolean isExist = false;
-        //--Check if the item has been added previously and update that item
-        for (OrderTm order:tmList) {
-            if (order.getCode().equals(tm.getCode())){
-                order.setQty(order.getQty()+tm.getQty());
-                order.setAmount(order.getAmount()+tm.getAmount());
-                isExist =true;
+        //--Get the quantity in hand before placing the order
+        int qtyInHand = itemModel.getItem(cmbItemCode.getValue().toString()).getQty();
+
+        if (qtyInHand > Integer.parseInt(txtBuyingQty.getText())){
+            //--Create a button to delete the items
+            JFXButton btn = new JFXButton("Delete");
+
+            //--Create a table object to insert the data into the table by getting the values from fields
+            OrderTm tm = new OrderTm(
+                    cmbItemCode.getValue().toString(),
+                    txtDescription.getText(),
+                    Integer.parseInt(txtBuyingQty.getText()),
+                    amount,
+                    btn
+            );
+
+            //--Set action to delete button
+            btn.setOnAction(actionEvent1 -> {
+                tmList.remove(tm);
+                tot-=tm.getAmount();
+                tblOrders.refresh();
+                lblTotal.setText(String.valueOf(tot));
+            });
+
+            //--Variable to store if the item already exists
+            boolean isExist = false;
+
+
+            //--Check if the item has been added previously and update that item
+            for (OrderTm order:tmList) {
+                if (order.getCode().equals(tm.getCode())){
+                    order.setQty(order.getQty()+tm.getQty());
+                    order.setAmount(order.getAmount()+tm.getAmount());
+                    isExist =true;
+                    tot+=order.getAmount();
+                }
             }
-        }
 
-        if (!isExist){
-            tmList.add(tm);
-        }
+            //--If the item does not exist then perform this block
+            if (!isExist){
+                tmList.add(tm);
+                tot+=tm.getAmount();
+            }
 
-        TreeItem<OrderTm> treeObject = new RecursiveTreeItem<OrderTm>(tmList, RecursiveTreeObject::getChildren);
-        tblOrders.setRoot(treeObject);
-        tblOrders.setShowRoot(false);
+            //--Add the item list into the table
+            TreeItem<OrderTm> treeObject = new RecursiveTreeItem<>(tmList, RecursiveTreeObject::getChildren);
+            tblOrders.setRoot(treeObject);
+            tblOrders.setShowRoot(false);
+
+            //--Set the value to the label
+            lblTotal.setText(String.format("%.2f",tot));
+            clearFields();
+        }
+        else{
+            operationErrorAlert("Failed to place order", "Please place a lesser quantity than "+itemModel.getItem(cmbItemCode.getValue().toString()).getQty()+"");
+            clearFields();
+        }
+    }
+
+    public void generateId(){
+        try {
+            OrderDto dto = orderModel.lastOrder();
+            if (dto!=null){
+                String id = dto.getOrderId();
+                int num = Integer.parseInt(id.split("[D]")[1]);
+                num++;
+                lblOrderID.setText(String.format("D%03d",num));
+            }else{
+                lblOrderID.setText("D001");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
     }
 
     public void placeOrderButtonOnAction(ActionEvent actionEvent) {
+        if (!tmList.isEmpty()){
+            //orderModel.saveOrder();
+        }
     }
     public void settingButtonOnAction(ActionEvent actionEvent) {
         //        No implemenation
+    }
+
+    private void clearFields() {
+        tblOrders.refresh();
+        txtBuyingQty.clear();
     }
 
     //--Routing
@@ -189,8 +260,8 @@ public class OrderManagementFormController {
         try {
             stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("../view/ControlPanelForm.fxml"))));
             stage.show();
-        } catch (IOException e) {
-            System.out.println("Dashboard window in the path is missing");
+        } catch (Exception e) {
+            operationErrorAlert("Failed to Load window", "Dashboard window in the path is missing");
         }
     }
     public void orderManagementButtonOnAction(ActionEvent actionEvent) {
@@ -219,5 +290,20 @@ public class OrderManagementFormController {
         } catch (IOException e) {
             System.out.println("Inventory window in the path is missing");
         }
+    }
+
+    //--Alerts
+    void operationSuccessAlert(String title, String content) {
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle(title);
+        alert.setContentText(content);
+        alert.show();
+    }
+
+    void operationErrorAlert(String title, String content) {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle(title);
+        alert.setContentText(content);
+        alert.show();
     }
 }

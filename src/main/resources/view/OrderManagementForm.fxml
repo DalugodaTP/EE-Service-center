@@ -398,6 +398,22 @@
                               <Cursor fx:constant="HAND" />
                            </cursor>
                         </MFXButton>
+                        <Label fx:id="lblOrderID" text="0" GridPane.columnIndex="2" GridPane.rowIndex="15">
+                           <padding>
+                              <Insets left="10.0" />
+                           </padding>
+                           <font>
+                              <Font name="System Bold" size="25.0" />
+                           </font>
+                        </Label>
+                        <Label text="Order Id" textFill="#2590d1" GridPane.columnIndex="2" GridPane.rowIndex="13">
+                           <padding>
+                              <Insets left="10.0" />
+                           </padding>
+                           <font>
+                              <Font name="System Bold" size="18.0" />
+                           </font>
+                        </Label>
                        </children>
                    </GridPane>
                </children>

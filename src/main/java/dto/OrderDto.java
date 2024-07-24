@@ -1,10 +1,17 @@
 package dto;
 
-import com.jfoenix.controls.JFXButton;
+import lombok.*;
 
+import java.util.List;
+
+@AllArgsConstructor
+@NoArgsConstructor
+@Getter
+@Setter
+@ToString
 public class OrderDto {
-    private String code;
-    private String description;
-    private int qty;
-    private double amount;
+    private String orderId;
+    private String date;
+    private String custId;
+    private List<OrderDetailsDto> dto;
 }
