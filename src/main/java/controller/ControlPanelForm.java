@@ -15,14 +15,12 @@ public class ControlPanelForm {
     public void ManageCustomersButtonOnAction(ActionEvent actionEvent) {
         Stage stage = (Stage)controlPanelPane.getScene().getWindow();
         try {
-            //stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("../view/ManageCustomersForm.fxml"))));
-            stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("../view/ManageCustomersForm.fxml"))));
+            stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("/view/ManageCustomersForm.fxml"))));
             stage.show();
         } catch (IOException e) {
             System.out.println("CustomerForm window in the path is missing");
         }
     }
-
 
     public void SettingsButtonOnAction(ActionEvent actionEvent) {
         //        No implementation
@@ -35,18 +33,18 @@ public class ControlPanelForm {
     public void orderManagementButtonOnAction(ActionEvent actionEvent) {
         Stage stage = (Stage)controlPanelPane.getScene().getWindow();
         try {
-            //stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("../view/ManageCustomersForm.fxml"))));
-            stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("../view/OrderManagementForm.fxml"))));
+            stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("/view/OrderManagementForm.fxml"))));
             stage.show();
         } catch (IOException e) {
-            System.out.println("Order Management window in the path is missing");
+            System.out.println("Order Management window in the path is missing: " + e.getMessage());
+            e.printStackTrace();
         }
     }
 
     public void inventoryButtonOnAction(ActionEvent actionEvent) {
         Stage stage = (Stage)controlPanelPane.getScene().getWindow();
         try {
-            stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("../view/InventoryForm.fxml"))));
+            stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("/view/InventoryForm.fxml"))));
             stage.show();
         } catch (IOException e) {
             System.out.println("Inventory window in the path is missing");

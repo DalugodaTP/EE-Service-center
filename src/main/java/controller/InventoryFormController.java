@@ -60,13 +60,17 @@ public class InventoryFormController {
         });
 
         //--Search Table (JFoenix version)
+        //--When the txtSearch changes, the listener updates the predicate of tblItems
         txtSearch.textProperty().addListener((observableValue, oldValue, newValue) ->
+                //--retrieve code and description properties from each item in table
                 tblItems.setPredicate(itemTmTreeItem -> {
                     String code = itemTmTreeItem.getValue().getCode().toLowerCase();
                     String desc = itemTmTreeItem.getValue().getDescription().toLowerCase();
 
+                    //--If either code or description contains the newValue, the item is included in the filtered result
                     return code.contains(newValue.toLowerCase()) || desc.contains(newValue.toLowerCase());
-                }));
+                })
+        );
 
     }
 
@@ -185,7 +189,7 @@ public class InventoryFormController {
     public void dashBoardButtonOnAction(ActionEvent actionEvent) {
         Stage stage = (Stage)inventoryPane.getScene().getWindow();
         try {
-            stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("../view/ControlPanelForm.fxml"))));
+            stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("/view/ControlPanelForm.fxml"))));
             stage.show();
         } catch (IOException e) {
             System.out.println("Dashboard window in the path is missing");
@@ -195,7 +199,7 @@ public class InventoryFormController {
     public void ManageCustomersButtonOnAction(ActionEvent actionEvent) {
         Stage stage = (Stage)inventoryPane.getScene().getWindow();
         try {
-            stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("../view/ManageCustomersForm.fxml"))));
+            stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("/view/ManageCustomersForm.fxml"))));
             stage.show();
         } catch (IOException e) {
             System.out.println("Dashboard window in the path is missing");
@@ -205,7 +209,7 @@ public class InventoryFormController {
     public void orderManagementButtonOnAction(ActionEvent actionEvent) {
         Stage stage = (Stage)inventoryPane.getScene().getWindow();
         try {
-            stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("../view/OrderManagementForm.fxml"))));
+            stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("/view/OrderManagementForm.fxml"))));
             stage.show();
         } catch (IOException e) {
             System.out.println("Dashboard window in the path is missing");

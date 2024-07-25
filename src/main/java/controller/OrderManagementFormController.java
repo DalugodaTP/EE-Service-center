@@ -270,6 +270,7 @@ public class OrderManagementFormController {
 
                 if (isSaved){
                     operationSuccessAlert("Order status", "Order is saved successfully!");
+                    orderManagementButtonOnAction();
                 } else {
                     operationErrorAlert("Order Status", "Order failed to save");
                 }
@@ -291,21 +292,26 @@ public class OrderManagementFormController {
     public void dashBoardButtonOnAction(ActionEvent actionEvent) {
         Stage stage = (Stage)orderManagementPane.getScene().getWindow();
         try {
-            stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("../view/ControlPanelForm.fxml"))));
+            stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("/view/ControlPanelForm.fxml"))));
             stage.show();
         } catch (Exception e) {
             operationErrorAlert("Failed to Load window", "Dashboard window in the path is missing");
         }
     }
-    public void orderManagementButtonOnAction(ActionEvent actionEvent) {
-        //        Current pane
+    public void orderManagementButtonOnAction() {
+        Stage stage = (Stage)orderManagementPane.getScene().getWindow();
+        try {
+            stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("/view/OrderManagementForm.fxml"))));
+            stage.show();
+        } catch (Exception e) {
+            operationErrorAlert("Failed to Load window", "Order Management window in the path is missing");
+        }
     }
 
     public void ManageCustomersButtonOnAction(ActionEvent actionEvent) {
         Stage stage = (Stage)orderManagementPane.getScene().getWindow();
         try {
-            //stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("../view/ManageCustomersForm.fxml"))));
-            stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("../view/ManageCustomersForm.fxml"))));
+            stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("/view/ManageCustomersForm.fxml"))));
             stage.show();
         } catch (IOException e) {
             System.out.println("CustomerForm window in the path is missing");
@@ -318,7 +324,7 @@ public class OrderManagementFormController {
     public void inventoryButtonOnAction(ActionEvent actionEvent) {
         Stage stage = (Stage)orderManagementPane.getScene().getWindow();
         try {
-            stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("../view/InventoryForm.fxml"))));
+            stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("/view/InventoryForm.fxml"))));
             stage.show();
         } catch (IOException e) {
             System.out.println("Inventory window in the path is missing");
