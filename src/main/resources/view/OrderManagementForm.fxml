@@ -139,7 +139,7 @@
                                         <Cursor fx:constant="HAND" />
                                     </cursor>
                                 </MFXButton>
-                                <MFXButton buttonType="RAISED" contentDisplay="GRAPHIC_ONLY" depthLevel="LEVEL5" onAction="#SettingsButtonOnAction" prefHeight="70.0" prefWidth="229.0" rippleAnimationSpeed="0.5" rippleRadiusMultiplier="4.0" style="-fx-background-radius: 10; -fx-background-color: #03507C;" text="Dashboard" textFill="WHITE" GridPane.columnIndex="9" GridPane.rowIndex="1">
+                                <MFXButton buttonType="RAISED" contentDisplay="GRAPHIC_ONLY" depthLevel="LEVEL5" onAction="#settingsButtonOnAction" prefHeight="70.0" prefWidth="229.0" rippleAnimationSpeed="0.5" rippleRadiusMultiplier="4.0" style="-fx-background-radius: 10; -fx-background-color: #03507C;" text="Dashboard" textFill="WHITE" GridPane.columnIndex="9" GridPane.rowIndex="1">
                                     <font>
                                         <Font name="System Bold" size="15.0" />
                                     </font>

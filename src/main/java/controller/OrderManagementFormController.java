@@ -8,6 +8,7 @@ import com.jfoenix.controls.datamodels.treetable.RecursiveTreeObject;
 import dto.CustomerDto;
 import dto.ItemDto;
 
+import dto.OrderDetailsDto;
 import dto.OrderDto;
 import dto.tm.OrderTm;
 import io.github.palexdev.materialfx.controls.MFXTextField;
@@ -33,6 +34,9 @@ import model.impl.OrderModelImpl;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 import java.util.List;
 
 public class OrderManagementFormController {
@@ -241,12 +245,41 @@ public class OrderManagementFormController {
     }
 
     public void placeOrderButtonOnAction(ActionEvent actionEvent) {
-        if (!tmList.isEmpty()){
-            //orderModel.saveOrder();
+        //--From the temp list we have saved the orders, a new list with orderDetails is prepared
+        List<OrderDetailsDto> list = new ArrayList<>();
+
+        for (OrderTm tm:tmList) {
+            list.add(new OrderDetailsDto(
+                    lblOrderID.getText(),
+                    tm.getCode(),
+                    tm.getQty(),
+                    tm.getAmount()/tm.getQty()
+            ));
         }
-    }
-    public void settingButtonOnAction(ActionEvent actionEvent) {
-        //        No implemenation
+        //--Check if the order list is not empty
+        if (!tmList.isEmpty()){
+            //--proceed to save the orderlist (tmList) through orderModel
+            boolean isSaved = false;
+            try {
+                isSaved = orderModel.saveOrder(new OrderDto(
+                        lblOrderID.getText(),
+                        LocalDateTime.now().format(DateTimeFormatter.ofPattern("YYYY-MM-dd")),
+                        cmbCustomerId.getValue().toString(),
+                        list
+                ));
+
+                if (isSaved){
+                    operationSuccessAlert("Order status", "Order is saved successfully!");
+                } else {
+                    operationErrorAlert("Order Status", "Order failed to save");
+                }
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
+            } catch (ClassNotFoundException e) {
+                throw new RuntimeException(e);
+            }
+
+        }
     }
 
     private void clearFields() {
@@ -279,7 +312,7 @@ public class OrderManagementFormController {
         }
     }
 
-    public void SettingsButtonOnAction(ActionEvent actionEvent) {
+    public void settingsButtonOnAction(ActionEvent actionEvent) {
     }
 
     public void inventoryButtonOnAction(ActionEvent actionEvent) {

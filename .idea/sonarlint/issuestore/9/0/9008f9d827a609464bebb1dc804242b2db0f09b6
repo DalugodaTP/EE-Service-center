@@ -1,0 +1,7 @@
+
+l
+java:S2095"OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(Ìû—8Ü§ñ¦2
+M
+java:S1128"0Remove this unused import 'model.CustomerModel'.(äÑŸ8ß§ñ¦2
+I
+java:S1128",Remove this unused import 'model.ItemModel'.(´ş»â8ß§ñ¦2
