@@ -1,8 +1,10 @@
 package dao.custom.impl;
 
+import dao.util.CrudUtil;
 import db.DBConnection;
 import dto.ItemDto;
 import dao.custom.ItemDao;
+import entity.Item;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -13,62 +15,40 @@ import java.util.List;
 
 public class ItemDaoImpl implements ItemDao {
     @Override
-    public boolean saveItem(ItemDto dto) throws SQLException, ClassNotFoundException {
+    public boolean save(Item entity) throws SQLException, ClassNotFoundException {
         String sql = "INSERT INTO item VALUES (?,?,?,?)";
-
-        PreparedStatement pstm =
-                DBConnection.getInstance().getConnection().prepareStatement(sql);
-
-        //--Set values
-        pstm.setString(1, dto.getCode());
-        pstm.setString(2, dto.getDesc());
-        pstm.setDouble(3, dto.getUnitPrice());
-        pstm.setInt(4, dto.getQty());
-
-        int result = pstm.executeUpdate();
-
-        if (result>0){
-            return true;
-        }
-
-        return false;
+        return CrudUtil.execute(sql,entity.getCode(),entity.getDescription(),entity.getUnitPrice(),entity.getQtyOnHand());
     }
 
     @Override
-    public boolean updateItem(ItemDto dto) throws SQLException, ClassNotFoundException {
+    public boolean update(Item entity) throws SQLException, ClassNotFoundException {
         String sql = "UPDATE item SET description=?, unitPrice=?, qtyOnHand=? WHERE code=?";
-
-
-        PreparedStatement pstm =
-                DBConnection.getInstance().getConnection().prepareStatement(sql);
-
-        pstm.setString(1, dto.getDesc());
-        pstm.setDouble(2, dto.getUnitPrice());
-        pstm.setDouble(3, dto.getQty());
-        pstm.setString(4, dto.getCode());
-
-        int result = pstm.executeUpdate();
-
-        if (result>0){
-            return true;
-        }
-        return false;
+        return CrudUtil.execute(sql,entity.getDescription(),entity.getUnitPrice(),entity.getQtyOnHand(),entity.getCode());
     }
 
     @Override
-    public boolean deleteItem(ItemDto dto) throws SQLException, ClassNotFoundException {
+    public boolean Delete(String value) throws SQLException, ClassNotFoundException {
         String sql = "DELETE FROM item WHERE code=?";
+        return CrudUtil.execute(sql, value);
+    }
 
-        PreparedStatement pstm = DBConnection.getInstance().getConnection().prepareStatement(sql);
+    @Override
+    public List<Item> getAll() throws SQLException, ClassNotFoundException {
+        List<Item> resultList = new ArrayList<>();
+        //--SQL Query
+        String sql = "SELECT * FROM item";
 
-        pstm.setString(1, dto.getCode());
+        ResultSet resultSet = CrudUtil.execute(sql);
 
-        int result = pstm.executeUpdate();
-
-        if (result>0){
-            return true;
+        while (resultSet.next()){
+            resultList.add(new Item(
+                    resultSet.getString(1),
+                    resultSet.getString(2),
+                    resultSet.getDouble(3),
+                    resultSet.getInt(4)
+            ));
         }
-        return false;
+        return resultList;
     }
 
     @Override
@@ -86,25 +66,6 @@ public class ItemDaoImpl implements ItemDao {
             );
         }
         return null;
-    }
-
-    @Override
-    public List<ItemDto> allItems() throws SQLException, ClassNotFoundException {
-        List<ItemDto> resultList = new ArrayList<>();
-        //--SQL Query
-        String sql = "SELECT * FROM item";
-        Statement stm = DBConnection.getInstance().getConnection().createStatement();
-        ResultSet resultSet = stm.executeQuery(sql);
-
-        while (resultSet.next()){
-            resultList.add(new ItemDto(
-                    resultSet.getString(1),
-                    resultSet.getString(2),
-                    resultSet.getDouble(3),
-                    resultSet.getInt(4)
-            ));
-        }
-        return resultList;
     }
 
     @Override

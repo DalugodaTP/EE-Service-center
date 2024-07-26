@@ -3,7 +3,6 @@ package bo.custom.impl;
 import bo.custom.CustomerBo;
 import dao.DaoFactory;
 import dao.custom.CustomerDao;
-import dao.custom.impl.CustomerDaoImpl;
 import dao.util.DaoType;
 import dto.CustomerDto;
 import entity.Customer;
@@ -26,7 +25,7 @@ public class CustomerBoImpl implements CustomerBo {
 
     @Override
     public boolean updateCustomer(CustomerDto dto) throws SQLException, ClassNotFoundException {
-        return customerDao.save(new Customer(
+        return customerDao.update(new Customer(
                 dto.getId(),
                 dto.getName(),
                 dto.getAddress(),

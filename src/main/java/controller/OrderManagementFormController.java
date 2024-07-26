@@ -1,12 +1,15 @@
 package controller;
 
+import bo.BoFactory;
 import bo.custom.CustomerBo;
+import bo.custom.ItemBo;
 import bo.custom.impl.CustomerBoImpl;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXTreeTableView;
 import com.jfoenix.controls.RecursiveTreeItem;
 import com.jfoenix.controls.datamodels.treetable.RecursiveTreeObject;
+import dao.util.BoType;
 import dto.CustomerDto;
 import dto.ItemDto;
 
@@ -27,10 +30,7 @@ import javafx.scene.control.TreeTableColumn;
 import javafx.scene.control.cell.TreeItemPropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
-import dao.custom.CustomerDao;
-import dao.custom.ItemDao;
 import dao.custom.OrderDao;
-import dao.custom.impl.CustomerDaoImpl;
 import dao.custom.impl.ItemDaoImpl;
 import dao.custom.impl.OrderDaoImpl;
 
@@ -99,7 +99,7 @@ public class OrderManagementFormController {
 
     //--Import Models
     private CustomerBo customerBo = new CustomerBoImpl();
-    private ItemDao itemDao = new ItemDaoImpl();
+    private ItemBo itemBo = BoFactory.getInstance().getBo(BoType.ITEM);
 
     private OrderDao orderDao = new OrderDaoImpl();
     public void initialize() throws SQLException, ClassNotFoundException {
@@ -135,7 +135,7 @@ public class OrderManagementFormController {
 
     private void loadItemCode() {
         try {
-            items = itemDao.allItems();
+            items = itemBo.allItems();
             ObservableList list = FXCollections.observableArrayList();
             for(ItemDto x: items){
                 list.add(x.getCode());
@@ -159,12 +159,12 @@ public class OrderManagementFormController {
 
     public void addToCartButtonOnAction(ActionEvent actionEvent) throws SQLException, ClassNotFoundException {
         //--Capture the new amount of new added items
-        double amount = itemDao.getItem(
+        double amount = itemBo.getItem(
                 cmbItemCode.getValue().toString()).getUnitPrice()* Integer.parseInt(txtBuyingQty.getText()
         );
 
         //--Get the quantity in hand before placing the order
-        int qtyInHand = itemDao.getItem(cmbItemCode.getValue().toString()).getQty();
+        int qtyInHand = itemBo.getItem(cmbItemCode.getValue().toString()).getQty();
 
         if (qtyInHand > Integer.parseInt(txtBuyingQty.getText())){
             //--Create a button to delete the items
@@ -217,7 +217,7 @@ public class OrderManagementFormController {
             clearFields();
         }
         else{
-            operationErrorAlert("Failed to place order", "Please place a lesser quantity than "+ itemDao.getItem(cmbItemCode.getValue().toString()).getQty()+"");
+            operationErrorAlert("Failed to place order", "Please place a lesser quantity than "+ itemBo.getItem(cmbItemCode.getValue().toString()).getQty()+"");
             clearFields();
         }
     }

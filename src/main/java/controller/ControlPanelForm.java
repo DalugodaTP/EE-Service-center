@@ -47,7 +47,8 @@ public class ControlPanelForm {
             stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("/view/InventoryForm.fxml"))));
             stage.show();
         } catch (IOException e) {
-            System.out.println("Inventory window in the path is missing");
+            System.out.println("Inventory window in the path is missing: " + e.getMessage());
+            e.printStackTrace();
         }
     }
 }

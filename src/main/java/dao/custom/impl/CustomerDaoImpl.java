@@ -13,30 +13,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class CustomerDaoImpl implements CustomerDao {
-
-
-    @Override
-    public CustomerDto searchCustomer(String id) throws SQLException, ClassNotFoundException {
-        CustomerDto resultDto = new CustomerDto();
-        String sql = "SELECT * FROM customer WHERE id = ?";
-
-        PreparedStatement pstm = DBConnection.getInstance().getConnection().prepareStatement(sql);
-        pstm.setString(1, id);
-        ResultSet result = pstm.executeQuery();
-
-        //--Process the result set
-        while (result.next()) {
-            //--Add the result set into the list as CustomerDto
-            resultDto = new CustomerDto(
-                    result.getString(1),
-                    result.getString(2),
-                    result.getString(3),
-                    result.getDouble(4)
-            );
-        }
-        return resultDto;
-    }
-
     @Override
     public boolean save(Customer entity) throws SQLException, ClassNotFoundException {
         String sql = "INSERT INTO customer VALUES(?,?,?,?)";
@@ -80,6 +56,28 @@ public class CustomerDaoImpl implements CustomerDao {
         }
 
         return list;
+    }
+
+    @Override
+    public CustomerDto searchCustomer(String id) throws SQLException, ClassNotFoundException {
+        CustomerDto resultDto = new CustomerDto();
+        String sql = "SELECT * FROM customer WHERE id = ?";
+
+        PreparedStatement pstm = DBConnection.getInstance().getConnection().prepareStatement(sql);
+        pstm.setString(1, id);
+        ResultSet result = pstm.executeQuery();
+
+        //--Process the result set
+        while (result.next()) {
+            //--Add the result set into the list as CustomerDto
+            resultDto = new CustomerDto(
+                    result.getString(1),
+                    result.getString(2),
+                    result.getString(3),
+                    result.getDouble(4)
+            );
+        }
+        return resultDto;
     }
 }
 
