@@ -1,5 +1,6 @@
 package dao.custom.impl;
 
+import dao.util.CrudUtil;
 import db.DBConnection;
 import dto.CustomerDto;
 import dto.tm.CustomerTm;
@@ -39,61 +40,20 @@ public class CustomerDaoImpl implements CustomerDao {
 
     @Override
     public boolean save(Customer entity) throws SQLException, ClassNotFoundException {
-        //--Prepare SQL Query
         String sql = "INSERT INTO customer VALUES(?,?,?,?)";
-
-        //--Retrieve the db connection
-        PreparedStatement pstm = DBConnection.getInstance().getConnection().prepareStatement(sql);
-
-        //--Set the values to the prepareStatement
-        pstm.setString(1, entity.getId());
-        pstm.setString(2, entity.getName());
-        pstm.setString(3, entity.getAddress());
-        pstm.setDouble(4, entity.getSalary());
-
-        int result = pstm.executeUpdate();
-        if (result>0){
-            return true;
-        }
-        return false;
+        return CrudUtil.execute(sql,entity.getId(),entity.getName(),entity.getAddress(), entity.getSalary());
     }
 
     @Override
     public boolean update(Customer entity) throws SQLException, ClassNotFoundException {
-
         String sql = "UPDATE customer SET name=?, address=?, salary=? WHERE id=?";
-
-        //--Get the connection
-        PreparedStatement pstm = DBConnection.getInstance().getConnection().prepareStatement(sql);
-
-        //--Set values to the fields
-        pstm.setString(1, entity.getName());
-        pstm.setString(2, entity.getAddress());
-        pstm.setDouble(3, entity.getSalary());
-        pstm.setString(4, entity.getId());
-
-        int result = pstm.executeUpdate();
-
-        if (result>0){
-            return true;
-        }
-        return false;
+        return CrudUtil.execute(sql,entity.getName(),entity.getAddress(),entity.getSalary(), entity.getId());
     }
 
     @Override
     public boolean Delete(String value) throws SQLException, ClassNotFoundException {
         String sql = "DELETE FROM customer WHERE id=?";
-
-        PreparedStatement pstm = DBConnection.getInstance().getConnection().prepareStatement(sql);
-
-        pstm.setString(1, value);
-
-        int result = pstm.executeUpdate();
-
-        if (result>0){
-            return true;
-        }
-        return false;
+        return CrudUtil.execute(sql,value);
     }
 
     @Override
@@ -104,11 +64,10 @@ public class CustomerDaoImpl implements CustomerDao {
         //--Create the sql statement
         String sql = "SELECT * FROM customer";
 
-        //--Singleton connection to pass the SQL
-        PreparedStatement pstm = DBConnection.getInstance().getConnection().prepareStatement(sql);
 
         //--Execute the query and get the result set
-        ResultSet result = pstm.executeQuery();
+        ResultSet result = CrudUtil.execute(sql);
+
 
         //--Process the result set
         while (result.next()) {
