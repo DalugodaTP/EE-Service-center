@@ -1,5 +1,7 @@
 package controller;
 
+import bo.custom.CustomerBo;
+import bo.custom.impl.CustomerBoImpl;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXTreeTableView;
@@ -25,12 +27,12 @@ import javafx.scene.control.TreeTableColumn;
 import javafx.scene.control.cell.TreeItemPropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
-import dao.CustomerModel;
-import dao.ItemModel;
-import dao.OrderModel;
-import dao.impl.CustomerModelImpl;
-import dao.impl.ItemModelImpl;
-import dao.impl.OrderModelImpl;
+import dao.custom.CustomerDao;
+import dao.custom.ItemDao;
+import dao.custom.OrderDao;
+import dao.custom.impl.CustomerDaoImpl;
+import dao.custom.impl.ItemDaoImpl;
+import dao.custom.impl.OrderDaoImpl;
 
 import java.io.IOException;
 import java.sql.SQLException;
@@ -96,11 +98,11 @@ public class OrderManagementFormController {
 
 
     //--Import Models
-    private CustomerModel customerModel = new CustomerModelImpl();
-    private ItemModel itemModel = new ItemModelImpl();
+    private CustomerBo customerBo = new CustomerBoImpl();
+    private ItemDao itemDao = new ItemDaoImpl();
 
-    private OrderModel orderModel = new OrderModelImpl();
-    public void initialize(){
+    private OrderDao orderDao = new OrderDaoImpl();
+    public void initialize() throws SQLException, ClassNotFoundException {
         //------Declare columns and mapping the ItemTm with the columns
         colCode.setCellValueFactory(new TreeItemPropertyValueFactory<>("code"));
         colDesc.setCellValueFactory(new TreeItemPropertyValueFactory<>("description"));
@@ -133,7 +135,7 @@ public class OrderManagementFormController {
 
     private void loadItemCode() {
         try {
-            items = itemModel.allItems();
+            items = itemDao.allItems();
             ObservableList list = FXCollections.observableArrayList();
             for(ItemDto x: items){
                 list.add(x.getCode());
@@ -146,29 +148,23 @@ public class OrderManagementFormController {
         }
     }
 
-    private void loadCustomerId() {
-        try {
-            customers = customerModel.allCustomers();
-            ObservableList list = FXCollections.observableArrayList();
-            for(CustomerDto x: customers){
-                list.add(x.getId());
-            }
-            cmbCustomerId.setItems( list);
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        } catch (ClassNotFoundException e) {
-            throw new RuntimeException(e);
+    private void loadCustomerId() throws SQLException, ClassNotFoundException {
+        customers = customerBo.allCustomers();
+        ObservableList list = FXCollections.observableArrayList();
+        for(CustomerDto x: customers){
+            list.add(x.getId());
         }
+        cmbCustomerId.setItems( list);
     }
 
     public void addToCartButtonOnAction(ActionEvent actionEvent) throws SQLException, ClassNotFoundException {
         //--Capture the new amount of new added items
-        double amount =itemModel.getItem(
+        double amount = itemDao.getItem(
                 cmbItemCode.getValue().toString()).getUnitPrice()* Integer.parseInt(txtBuyingQty.getText()
         );
 
         //--Get the quantity in hand before placing the order
-        int qtyInHand = itemModel.getItem(cmbItemCode.getValue().toString()).getQty();
+        int qtyInHand = itemDao.getItem(cmbItemCode.getValue().toString()).getQty();
 
         if (qtyInHand > Integer.parseInt(txtBuyingQty.getText())){
             //--Create a button to delete the items
@@ -221,14 +217,14 @@ public class OrderManagementFormController {
             clearFields();
         }
         else{
-            operationErrorAlert("Failed to place order", "Please place a lesser quantity than "+itemModel.getItem(cmbItemCode.getValue().toString()).getQty()+"");
+            operationErrorAlert("Failed to place order", "Please place a lesser quantity than "+ itemDao.getItem(cmbItemCode.getValue().toString()).getQty()+"");
             clearFields();
         }
     }
 
     public void generateId(){
         try {
-            OrderDto dto = orderModel.lastOrder();
+            OrderDto dto = orderDao.lastOrder();
             if (dto!=null){
                 String id = dto.getOrderId();
                 int num = Integer.parseInt(id.split("[D]")[1]);
@@ -261,7 +257,7 @@ public class OrderManagementFormController {
             //--proceed to save the orderlist (tmList) through orderModel
             boolean isSaved = false;
             try {
-                isSaved = orderModel.saveOrder(new OrderDto(
+                isSaved = orderDao.saveOrder(new OrderDto(
                         lblOrderID.getText(),
                         LocalDateTime.now().format(DateTimeFormatter.ofPattern("YYYY-MM-dd")),
                         cmbCustomerId.getValue().toString(),

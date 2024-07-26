@@ -19,8 +19,8 @@ import javafx.scene.control.TreeTableColumn;
 import javafx.scene.control.cell.TreeItemPropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
-import dao.ItemModel;
-import dao.impl.ItemModelImpl;
+import dao.custom.ItemDao;
+import dao.custom.impl.ItemDaoImpl;
 
 import javax.swing.*;
 import java.io.IOException;
@@ -41,7 +41,7 @@ public class InventoryFormController {
     public MFXTextField txtQtyOnHand;
     public MFXTextField txtCode;
 
-    ItemModel itemModel = new ItemModelImpl();
+    ItemDao itemDao = new ItemDaoImpl();
 
     public void initialize() throws SQLException, ClassNotFoundException {
         //------Declare columns and mapping the ItemTm with the columns
@@ -84,7 +84,7 @@ public class InventoryFormController {
     }
 
     private void loadItemTable() throws SQLException, ClassNotFoundException {
-        List<ItemDto> itemDtos = itemModel.allItems();
+        List<ItemDto> itemDtos = itemDao.allItems();
         //--List needs to be an obervable list to be able to pass into customer table
         ObservableList<ItemTm> tmList = FXCollections.observableArrayList();
 
@@ -125,7 +125,7 @@ public class InventoryFormController {
         confirmAlert.showAndWait();
 
         if (confirmAlert.getResult() == ButtonType.YES) {
-            if (itemModel.deleteItem(tm)) {
+            if (itemDao.deleteItem(tm)) {
                 operationSuccessAlert("Deleted!", "Item Deleted Successfully!");
             }
             else{
@@ -155,7 +155,7 @@ public class InventoryFormController {
         );
 
         try {
-            if (itemModel.updateItem(c)){
+            if (itemDao.updateItem(c)){
                 operationSuccessAlert("Udated succefully", "Customer "+c.getDesc()+" Updated!");
                 loadItemTable();
                 clearFields();
@@ -174,7 +174,7 @@ public class InventoryFormController {
         );
 
         try {
-            if (itemModel.saveItem(c)){
+            if (itemDao.saveItem(c)){
                 operationSuccessAlert("Saved succefully", "Customer "+c.getDesc()+" Saved!");
                 loadItemTable();
                 clearFields();

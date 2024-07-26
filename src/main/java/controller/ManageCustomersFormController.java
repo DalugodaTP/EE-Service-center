@@ -1,5 +1,7 @@
 package controller;
 
+import bo.custom.CustomerBo;
+import bo.custom.impl.CustomerBoImpl;
 import com.jfoenix.controls.JFXButton;
 import dto.CustomerDto;
 import dto.tm.CustomerTm;
@@ -20,8 +22,6 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
 import javafx.stage.Stage;
-import dao.CustomerModel;
-import dao.impl.CustomerModelImpl;
 
 import javafx.scene.input.MouseEvent;
 import java.io.IOException;
@@ -40,7 +40,7 @@ public class ManageCustomersFormController {
     private CustomerTm selectedCustomer;
 
     //--Create an instance of the customerModel
-    CustomerModel customerModel = new CustomerModelImpl();
+    private CustomerBo<CustomerDto> customerBo = new CustomerBoImpl();
 
     public void initialize() throws SQLException, ClassNotFoundException {
         loadCustomerTable();
@@ -143,13 +143,12 @@ public class ManageCustomersFormController {
         confirmAlert.showAndWait();
 
         if (confirmAlert.getResult() == ButtonType.YES) {
-            if (customerModel.deleteCustomer(id)) {
+            if (customerBo.deleteCustomer(id.getId())) {
                 operationSuccessAlert("Deleted!", "Item Deleted Successfully!");
             }
             confirmAlert.close();
             clearFields();
             tblManageCustomers.setItems(getUsers());
-            return;
         }
 
     }
@@ -165,7 +164,7 @@ public class ManageCustomersFormController {
 
     private ObservableList<CustomerTm> getUsers() throws SQLException, ClassNotFoundException {
         ObservableList<CustomerTm> returnList = FXCollections.observableArrayList();
-        List<CustomerDto> dtoList = customerModel.allCustomers();
+        List<CustomerDto> dtoList = customerBo.allCustomers();
 
         for (CustomerDto dto : dtoList) {
             JFXButton deleteBtn = new JFXButton("Delete");
@@ -216,7 +215,7 @@ public class ManageCustomersFormController {
                 Double.parseDouble(txtCustomerSalary.getText()
                 ));
         //--Use customerModelImpl to save the customer
-        boolean isCustomerSaved = customerModel.saveCustomer(c);
+        boolean isCustomerSaved = customerBo.saveCustomer(c);
 
         if (isCustomerSaved){
             new Alert(Alert.AlertType.INFORMATION,"Customer Saved!").show();
@@ -242,7 +241,7 @@ public class ManageCustomersFormController {
         );
 
         //--Use customerModel to update the entry
-        boolean isCustomerUpdated = customerModel.updateCustomer(c);
+        boolean isCustomerUpdated = customerBo.updateCustomer(c);
 
         if (isCustomerUpdated){
             new Alert(Alert.AlertType.INFORMATION,"Customer "+c.getId()+" Updated!").show();

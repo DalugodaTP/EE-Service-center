@@ -1,11 +1,10 @@
-package dao;
+package dao.custom;
 
 import dto.OrderDto;
-import org.hibernate.criterion.Order;
 
 import java.sql.SQLException;
 
-public interface OrderModel {
+public interface OrderDao {
     boolean saveOrder(OrderDto dto) throws SQLException, ClassNotFoundException;
     OrderDto lastOrder() throws SQLException, ClassNotFoundException;
 }
