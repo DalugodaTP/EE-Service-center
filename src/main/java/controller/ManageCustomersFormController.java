@@ -1,8 +1,10 @@
 package controller;
 
+import bo.BoFactory;
 import bo.custom.CustomerBo;
 import bo.custom.impl.CustomerBoImpl;
 import com.jfoenix.controls.JFXButton;
+import dao.util.BoType;
 import dto.CustomerDto;
 import dto.tm.CustomerTm;
 import io.github.palexdev.materialfx.controls.MFXButton;
@@ -40,7 +42,7 @@ public class ManageCustomersFormController {
     private CustomerTm selectedCustomer;
 
     //--Create an instance of the customerModel using factory design pattern
-    private CustomerBo customerBo = new CustomerBoImpl();
+    private CustomerBo customerBo = BoFactory.getInstance().getBo(BoType.CUSTOMER);
 
     public void initialize() throws SQLException, ClassNotFoundException {
         loadCustomerTable();
