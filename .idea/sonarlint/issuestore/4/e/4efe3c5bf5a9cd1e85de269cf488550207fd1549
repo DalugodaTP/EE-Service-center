@@ -1,6 +1,6 @@
 
-g	java:S112g"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òéüÿÿÿÿ8Ó‘Š–2
-g	java:S112i"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òéüÿÿÿÿ8Ó‘Š–2
+g	java:S112k"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òéüÿÿÿÿ8Ó‘Š–2
+g	java:S112m"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òéüÿÿÿÿ8Ó‘Š–2
 Q
 java:S3740""/Provide the parametrized type for this generic.(ŒĞ¶Ñøÿÿÿÿ8›‡Æ¯2
 L
@@ -12,7 +12,7 @@ java:S3740%"/Provide the parametrized type for this generic.(™¼…ÿ8ÊøÆ¯2
 Q
 java:S3740&"/Provide the parametrized type for this generic.(‹Ñø‰ÿÿÿÿÿ8şÇ¯2
 „
-java:S1192¿"hDefine a constant instead of duplicating this literal "Dashboard window in the path is missing" 3 times.(ê¥Í–ÿÿÿÿÿ
+java:S1192Ã"hDefine a constant instead of duplicating this literal "Dashboard window in the path is missing" 3 times.(ê¥Í–ÿÿÿÿÿ
 o
 java:S1104 "YMake inventoryPane a static final constant or non-public and provide accessors if needed.(–“…É
 v
@@ -42,21 +42,21 @@ java:S14819"2Remove this unused "itemTableView" local variable.(Í™ßóıÿÿÿÿ8“’Š–
 N
 java:S1602:",Remove useless curly braces around statement(Â³áÔûÿÿÿÿ8“’Š–2
 b
-java:S2147h"ECombine this catch with the one at line 102, which has the same body.(ıàÑÎ8š’Š–2
+java:S2147l"ECombine this catch with the one at line 106, which has the same body.(ıàÑÎ8š’Š–2
 P
-java:S1172’"2Remove this unused method parameter "actionEvent".(°§¾8Ÿ’Š–2
+java:S1172–"2Remove this unused method parameter "actionEvent".(°§¾8Ÿ’Š–2
 U
-java:S1172¥"2Remove this unused method parameter "actionEvent".(”µ³—ÿÿÿÿÿ8ª’Š–2
+java:S1172©"2Remove this unused method parameter "actionEvent".(”µ³—ÿÿÿÿÿ8ª’Š–2
 H
-java:S1172¹"2Remove this unused method parameter "actionEvent".(‰Ìù9
-F	java:S106¿"+Replace this use of System.out by a logger.(ê¥Í–ÿÿÿÿÿ
-d	java:S100Ã"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÃÅ¯™
+java:S1172½"2Remove this unused method parameter "actionEvent".(‰Ìù9
+F	java:S106Ã"+Replace this use of System.out by a logger.(ê¥Í–ÿÿÿÿÿ
+d	java:S100Ç"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÃÅ¯™
 I
-java:S1172Ã"2Remove this unused method parameter "actionEvent".(ÃÅ¯™
-F	java:S106É"+Replace this use of System.out by a logger.(ê¥Í–ÿÿÿÿÿ
+java:S1172Ç"2Remove this unused method parameter "actionEvent".(ÃÅ¯™
+F	java:S106Í"+Replace this use of System.out by a logger.(ê¥Í–ÿÿÿÿÿ
 N
-java:S1172Í"2Remove this unused method parameter "actionEvent".(­¿Ÿúÿÿÿÿ
-F	java:S106Ó"+Replace this use of System.out by a logger.(ê¥Í–ÿÿÿÿÿ
-c	java:S100×"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(äÿ±
+java:S1172Ñ"2Remove this unused method parameter "actionEvent".(­¿Ÿúÿÿÿÿ
+F	java:S106×"+Replace this use of System.out by a logger.(ê¥Í–ÿÿÿÿÿ
+c	java:S100Û"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(äÿ±
 P
 java:S1128".Remove this unused import 'dto.tm.CustomerTm'.(Ä¶™ûÿÿÿÿ8·’Š–2
