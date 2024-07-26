@@ -22,7 +22,7 @@
     <children>
         <BorderPane prefHeight="800.0" prefWidth="1400.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
             <center>
-                <AnchorPane maxWidth="-Infinity" prefHeight="200.0" prefWidth="1044.0" style="-fx-border-radius: 10;" BorderPane.alignment="CENTER">
+                <AnchorPane fx:id="tableViewPane" maxWidth="-Infinity" prefHeight="200.0" prefWidth="1044.0" style="-fx-border-radius: 10;" BorderPane.alignment="CENTER">
                     <children>
                         <GridPane prefHeight="580.0" prefWidth="975.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                             <columnConstraints>
