@@ -2,7 +2,6 @@ package controller;
 
 import bo.BoFactory;
 import bo.custom.CustomerBo;
-import bo.custom.impl.CustomerBoImpl;
 import com.jfoenix.controls.JFXButton;
 import dao.util.BoType;
 import dto.CustomerDto;
