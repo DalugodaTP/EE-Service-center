@@ -39,8 +39,8 @@ public class ManageCustomersFormController {
 
     private CustomerTm selectedCustomer;
 
-    //--Create an instance of the customerModel
-    private CustomerBo<CustomerDto> customerBo = new CustomerBoImpl();
+    //--Create an instance of the customerModel using factory design pattern
+    private CustomerBo customerBo = new CustomerBoImpl();
 
     public void initialize() throws SQLException, ClassNotFoundException {
         loadCustomerTable();

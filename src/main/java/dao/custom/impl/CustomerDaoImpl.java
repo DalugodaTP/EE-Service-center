@@ -3,7 +3,6 @@ package dao.custom.impl;
 import dao.util.CrudUtil;
 import db.DBConnection;
 import dto.CustomerDto;
-import dto.tm.CustomerTm;
 import dao.custom.CustomerDao;
 import entity.Customer;
 
