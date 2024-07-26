@@ -5,7 +5,6 @@ import com.jfoenix.controls.JFXTreeTableView;
 import com.jfoenix.controls.RecursiveTreeItem;
 import com.jfoenix.controls.datamodels.treetable.RecursiveTreeObject;
 import dto.ItemDto;
-import dto.tm.CustomerTm;
 import dto.tm.ItemTm;
 import io.github.palexdev.materialfx.controls.MFXTextField;
 import javafx.collections.FXCollections;
@@ -20,8 +19,8 @@ import javafx.scene.control.TreeTableColumn;
 import javafx.scene.control.cell.TreeItemPropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
-import model.ItemModel;
-import model.impl.ItemModelImpl;
+import dao.ItemModel;
+import dao.impl.ItemModelImpl;
 
 import javax.swing.*;
 import java.io.IOException;
