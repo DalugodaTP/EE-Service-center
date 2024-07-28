@@ -1,8 +1,11 @@
 package dao;
 
 import bo.custom.impl.ItemBoImpl;
+import dao.custom.OrderDao;
 import dao.custom.impl.CustomerDaoImpl;
 import dao.custom.impl.ItemDaoImpl;
+import dao.custom.impl.OrderDaoImpl;
+import dao.custom.impl.OrderDetailsDaoImpl;
 import dao.util.DaoType;
 
 public class DaoFactory {
@@ -19,6 +22,8 @@ public class DaoFactory {
         switch (type){
             case CUSTOMER: return (T)new CustomerDaoImpl();
             case ITEM: return (T)new ItemDaoImpl();
+            case ORDER: return (T)new OrderDaoImpl();
+            case ORDER_DETAIL: return (T)new OrderDetailsDaoImpl();
         }
         return null;
     }

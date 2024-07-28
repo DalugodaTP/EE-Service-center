@@ -3,6 +3,7 @@ package dao.custom.impl;
 import db.DBConnection;
 import dto.OrderDetailsDto;
 import dao.custom.OrderDetailsDao;
+import entity.OrderDetail;
 
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
@@ -26,5 +27,25 @@ public class OrderDetailsDaoImpl implements OrderDetailsDao {
             }
         }
         return isDetailsSaved;
+    }
+
+    @Override
+    public boolean save(OrderDetail entity) throws SQLException, ClassNotFoundException {
+        return false;
+    }
+
+    @Override
+    public boolean update(OrderDetail entity) throws SQLException, ClassNotFoundException {
+        return false;
+    }
+
+    @Override
+    public boolean Delete(String value) throws SQLException, ClassNotFoundException {
+        return false;
+    }
+
+    @Override
+    public List<OrderDetail> getAll() throws SQLException, ClassNotFoundException {
+        return null;
     }
 }

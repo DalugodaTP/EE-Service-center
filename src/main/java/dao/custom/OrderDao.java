@@ -1,12 +1,15 @@
 package dao.custom;
 
+import dao.CrudDao;
 import dto.OrderDto;
+import entity.Orders;
 
+import javax.persistence.criteria.Order;
 import java.sql.SQLException;
 
-public interface OrderDao {
-    boolean saveOrder(OrderDto dto) throws SQLException, ClassNotFoundException;
+public interface OrderDao extends CrudDao<Orders> {
     OrderDto lastOrder() throws SQLException, ClassNotFoundException;
+
 }
 
 //--No need to delete or update an order

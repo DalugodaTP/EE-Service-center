@@ -3,6 +3,7 @@ package controller;
 import bo.BoFactory;
 import bo.custom.CustomerBo;
 import bo.custom.ItemBo;
+import bo.custom.OrderBo;
 import bo.custom.impl.CustomerBoImpl;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXComboBox;
@@ -30,9 +31,6 @@ import javafx.scene.control.TreeTableColumn;
 import javafx.scene.control.cell.TreeItemPropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
-import dao.custom.OrderDao;
-import dao.custom.impl.ItemDaoImpl;
-import dao.custom.impl.OrderDaoImpl;
 
 import java.io.IOException;
 import java.sql.SQLException;
@@ -97,11 +95,11 @@ public class OrderManagementFormController {
     private ObservableList<OrderTm> tmList = FXCollections.observableArrayList();
 
 
-    //--Import Models
-    private CustomerBo customerBo = new CustomerBoImpl();
+    //--Import Business Object
+    private CustomerBo customerBo = BoFactory.getInstance().getBo(BoType.CUSTOMER);
     private ItemBo itemBo = BoFactory.getInstance().getBo(BoType.ITEM);
+    private OrderBo orderBo =BoFactory.getInstance().getBo(BoType.ORDER);
 
-    private OrderDao orderDao = new OrderDaoImpl();
     public void initialize() throws SQLException, ClassNotFoundException {
         //------Declare columns and mapping the ItemTm with the columns
         colCode.setCellValueFactory(new TreeItemPropertyValueFactory<>("code"));
@@ -224,7 +222,7 @@ public class OrderManagementFormController {
 
     public void generateId(){
         try {
-            OrderDto dto = orderDao.lastOrder();
+            OrderDto dto = orderBo.lastOrder();
             if (dto!=null){
                 String id = dto.getOrderId();
                 int num = Integer.parseInt(id.split("[D]")[1]);
@@ -240,7 +238,7 @@ public class OrderManagementFormController {
         }
     }
 
-    public void placeOrderButtonOnAction(ActionEvent actionEvent) {
+    public void placeOrderButtonOnAction(ActionEvent actionEvent) throws SQLException, ClassNotFoundException {
         //--From the temp list we have saved the orders, a new list with orderDetails is prepared
         List<OrderDetailsDto> list = new ArrayList<>();
 
@@ -256,24 +254,18 @@ public class OrderManagementFormController {
         if (!tmList.isEmpty()){
             //--proceed to save the orderlist (tmList) through orderModel
             boolean isSaved = false;
-            try {
-                isSaved = orderDao.saveOrder(new OrderDto(
-                        lblOrderID.getText(),
-                        LocalDateTime.now().format(DateTimeFormatter.ofPattern("YYYY-MM-dd")),
-                        cmbCustomerId.getValue().toString(),
-                        list
-                ));
+            isSaved = orderBo.saveOrder(new OrderDto(
+                    lblOrderID.getText(),
+                    LocalDateTime.now().format(DateTimeFormatter.ofPattern("YYYY-MM-dd")),
+                    cmbCustomerId.getValue().toString(),
+                    list
+            ));
 
-                if (isSaved){
-                    operationSuccessAlert("Order status", "Order is saved successfully!");
-                    orderManagementButtonOnAction();
-                } else {
-                    operationErrorAlert("Order Status", "Order failed to save");
-                }
-            } catch (SQLException e) {
-                throw new RuntimeException(e);
-            } catch (ClassNotFoundException e) {
-                throw new RuntimeException(e);
+            if (isSaved){
+                operationSuccessAlert("Order status", "Order is saved successfully!");
+                orderManagementButtonOnAction();
+            } else {
+                operationErrorAlert("Order Status", "Order failed to save");
             }
 
         }
