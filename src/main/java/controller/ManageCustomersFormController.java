@@ -1,6 +1,9 @@
 package controller;
 
+import bo.BoFactory;
+import bo.custom.CustomerBo;
 import com.jfoenix.controls.JFXButton;
+import dao.util.BoType;
 import dto.CustomerDto;
 import dto.tm.CustomerTm;
 import io.github.palexdev.materialfx.controls.MFXButton;
@@ -20,16 +23,12 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
 import javafx.stage.Stage;
-import model.CustomerModel;
-import model.impl.CustomerModelImpl;
 
 import javafx.scene.input.MouseEvent;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.Comparator;
 import java.util.List;
-
-import static java.awt.event.MouseEvent.MOUSE_PRESSED;
 
 public class ManageCustomersFormController {
 
@@ -41,8 +40,8 @@ public class ManageCustomersFormController {
 
     private CustomerTm selectedCustomer;
 
-    //--Create an instance of the customerModel
-    CustomerModel customerModel = new CustomerModelImpl();
+    //--Create an instance of the customerModel using factory design pattern
+    private CustomerBo customerBo = BoFactory.getInstance().getBo(BoType.CUSTOMER);
 
     public void initialize() throws SQLException, ClassNotFoundException {
         loadCustomerTable();
@@ -145,13 +144,12 @@ public class ManageCustomersFormController {
         confirmAlert.showAndWait();
 
         if (confirmAlert.getResult() == ButtonType.YES) {
-            if (customerModel.deleteCustomer(id)) {
+            if (customerBo.deleteCustomer(id.getId())) {
                 operationSuccessAlert("Deleted!", "Item Deleted Successfully!");
             }
             confirmAlert.close();
             clearFields();
             tblManageCustomers.setItems(getUsers());
-            return;
         }
 
     }
@@ -167,7 +165,7 @@ public class ManageCustomersFormController {
 
     private ObservableList<CustomerTm> getUsers() throws SQLException, ClassNotFoundException {
         ObservableList<CustomerTm> returnList = FXCollections.observableArrayList();
-        List<CustomerDto> dtoList = customerModel.allCustomers();
+        List<CustomerDto> dtoList = customerBo.allCustomers();
 
         for (CustomerDto dto : dtoList) {
             JFXButton deleteBtn = new JFXButton("Delete");
@@ -218,7 +216,7 @@ public class ManageCustomersFormController {
                 Double.parseDouble(txtCustomerSalary.getText()
                 ));
         //--Use customerModelImpl to save the customer
-        boolean isCustomerSaved = customerModel.saveCustomer(c);
+        boolean isCustomerSaved = customerBo.saveCustomer(c);
 
         if (isCustomerSaved){
             new Alert(Alert.AlertType.INFORMATION,"Customer Saved!").show();
@@ -244,7 +242,7 @@ public class ManageCustomersFormController {
         );
 
         //--Use customerModel to update the entry
-        boolean isCustomerUpdated = customerModel.updateCustomer(c);
+        boolean isCustomerUpdated = customerBo.updateCustomer(c);
 
         if (isCustomerUpdated){
             new Alert(Alert.AlertType.INFORMATION,"Customer "+c.getId()+" Updated!").show();

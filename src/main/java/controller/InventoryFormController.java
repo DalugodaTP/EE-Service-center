@@ -1,11 +1,13 @@
 package controller;
 
+import bo.BoFactory;
+import bo.custom.ItemBo;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTreeTableView;
 import com.jfoenix.controls.RecursiveTreeItem;
 import com.jfoenix.controls.datamodels.treetable.RecursiveTreeObject;
+import dao.util.BoType;
 import dto.ItemDto;
-import dto.tm.CustomerTm;
 import dto.tm.ItemTm;
 import io.github.palexdev.materialfx.controls.MFXTextField;
 import javafx.collections.FXCollections;
@@ -20,8 +22,8 @@ import javafx.scene.control.TreeTableColumn;
 import javafx.scene.control.cell.TreeItemPropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
-import model.ItemModel;
-import model.impl.ItemModelImpl;
+import dao.custom.ItemDao;
+import dao.custom.impl.ItemDaoImpl;
 
 import javax.swing.*;
 import java.io.IOException;
@@ -42,7 +44,7 @@ public class InventoryFormController {
     public MFXTextField txtQtyOnHand;
     public MFXTextField txtCode;
 
-    ItemModel itemModel = new ItemModelImpl();
+    ItemBo itemBo = BoFactory.getInstance().getBo(BoType.ITEM);
 
     public void initialize() throws SQLException, ClassNotFoundException {
         //------Declare columns and mapping the ItemTm with the columns
@@ -85,7 +87,7 @@ public class InventoryFormController {
     }
 
     private void loadItemTable() throws SQLException, ClassNotFoundException {
-        List<ItemDto> itemDtos = itemModel.allItems();
+        List<ItemDto> itemDtos = itemBo.allItems();
         //--List needs to be an obervable list to be able to pass into customer table
         ObservableList<ItemTm> tmList = FXCollections.observableArrayList();
 
@@ -126,7 +128,7 @@ public class InventoryFormController {
         confirmAlert.showAndWait();
 
         if (confirmAlert.getResult() == ButtonType.YES) {
-            if (itemModel.deleteItem(tm)) {
+            if (itemBo.deleteItem(tm.getCode())) {
                 operationSuccessAlert("Deleted!", "Item Deleted Successfully!");
             }
             else{
@@ -156,7 +158,7 @@ public class InventoryFormController {
         );
 
         try {
-            if (itemModel.updateItem(c)){
+            if (itemBo.updateItem(c)){
                 operationSuccessAlert("Udated succefully", "Customer "+c.getDesc()+" Updated!");
                 loadItemTable();
                 clearFields();
@@ -175,7 +177,7 @@ public class InventoryFormController {
         );
 
         try {
-            if (itemModel.saveItem(c)){
+            if (itemBo.saveItem(c)){
                 operationSuccessAlert("Saved succefully", "Customer "+c.getDesc()+" Saved!");
                 loadItemTable();
                 clearFields();
