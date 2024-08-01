@@ -2,14 +2,24 @@ package entity;
 
 import lombok.*;
 
+import javax.persistence.*;
 
-@AllArgsConstructor
-@NoArgsConstructor
+
 @Getter
 @Setter
 @ToString
+@Entity
 public class Orders {
+    @Id
     private String orderId;
     private String date;
-    private String customerId;
+
+    @ManyToOne
+    @JoinColumn(name = "customerId")
+    private Customer customer;
+
+    public Orders(String orderId, String date) {
+        this.orderId = orderId;
+        this.date = date;
+    }
 }
