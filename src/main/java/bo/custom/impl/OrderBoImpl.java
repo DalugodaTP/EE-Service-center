@@ -23,7 +23,7 @@ public class OrderBoImpl implements OrderBo {
 
     @Override
     public boolean saveOrder(OrderDto dto) throws SQLException, ClassNotFoundException {
-        return orderDao.save(new Orders(
+        return orderDao.save(new OrderDto(
                 dto.getOrderId(),
                 dto.getDate(),
                 dto.getCustId(),

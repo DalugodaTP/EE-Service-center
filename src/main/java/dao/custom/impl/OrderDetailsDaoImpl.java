@@ -48,4 +48,8 @@ public class OrderDetailsDaoImpl implements OrderDetailsDao {
     public List<OrderDetail> getAll() throws SQLException, ClassNotFoundException {
         return null;
     }
+
+    public List<OrderDetail> getOrderDetails(String id){
+        return null;
+    }
 }

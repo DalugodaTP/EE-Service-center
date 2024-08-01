@@ -35,7 +35,7 @@ public class OrderDaoImpl implements OrderDao {
     }
 
     @Override
-    public boolean save(Orders entity) throws SQLException, ClassNotFoundException {
+    public boolean save(OrderDto entity) throws SQLException, ClassNotFoundException {
         Connection connection = null;
         try{
             //--Transaction to save orderdetails before the order
@@ -46,7 +46,7 @@ public class OrderDaoImpl implements OrderDao {
             PreparedStatement pstm = connection.prepareStatement(sql);
             pstm.setString(1, entity.getOrderId());
             pstm.setString(2, entity.getDate());
-            pstm.setString(3, entity.getCustomerId());
+            pstm.setString(3, entity.getCustId());
 
             //--if the data was saved, now we need to save order details
             if (pstm.executeUpdate()>0){
@@ -63,6 +63,11 @@ public class OrderDaoImpl implements OrderDao {
             //--reset autocommit to auto save
             connection.setAutoCommit(true);
         }
+        return false;
+    }
+
+    @Override
+    public boolean save(Orders entity) throws SQLException, ClassNotFoundException {
         return false;
     }
 

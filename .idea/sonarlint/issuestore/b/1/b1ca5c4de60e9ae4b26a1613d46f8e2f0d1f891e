@@ -1,52 +1,12 @@
 
-h	java:S112‘"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òéüÿÿÿÿ8£ú†ü2
-h	java:S112“"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òéüÿÿÿÿ8£ú†ü2
-h	java:S112’"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òéüÿÿÿÿ8¤ú†ü2
-h	java:S112”"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òéüÿÿÿÿ8¤ú†ü2
-Q
-java:S3740G"/Provide the parametrized type for this generic.(íı’­úÿÿÿÿ8¤ú†ü2
-Q
-java:S3740J"/Provide the parametrized type for this generic.(Ú¢éÕùÿÿÿÿ8¤ú†ü2
-Q
-java:S3740M"/Provide the parametrized type for this generic.(ıø–»şÿÿÿÿ8¤ú†ü2
-Q
-java:S3740P"/Provide the parametrized type for this generic.(—ŒĞğüÿÿÿÿ8¤ú†ü2
-Q
-java:S3740S"/Provide the parametrized type for this generic.(”È—‚ÿÿÿÿÿ8¤ú†ü2
-Q
-java:S3740V"/Provide the parametrized type for this generic.(¤Á¦ÿúÿÿÿÿ8¤ú†ü2
-Q
-java:S3740Y"/Provide the parametrized type for this generic.(èµ×Ôÿÿÿÿÿ8¤ú†ü2
-M
-java:S3740‹"/Provide the parametrized type for this generic.(Ÿœ•¨8¤ú†ü2
-M
-java:S3740™"/Provide the parametrized type for this generic.(Ÿœ•¨8¤ú†ü2
-x
-java:S1104-"VMake lblOrderID a static final constant or non-public and provide accessors if needed.(˜Ã—ùÿÿÿÿ8¥ú†ü2
 Ÿ
-java:S1186½"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(¶ôî£8Îú†ü2
-c
-java:S2147’"ECombine this catch with the one at line 144, which has the same body.(ıàÑÎ8Ôú†ü2
-P
-java:S1172 "2Remove this unused method parameter "actionEvent".(ô£°¹8Öú†ü2
-c
-java:S2147î"ECombine this catch with the one at line 236, which has the same body.(ıàÑÎ8Üú†ü2
-S
-java:S6397æ"5Replace this character class by the character itself.(à‡·¬8Üú†ü2
-U
-java:S1172ó"2Remove this unused method parameter "actionEvent".(¨í‘Ïüÿÿÿÿ8İú†ü2
-c
-java:S2147“"ECombine this catch with the one at line 273, which has the same body.(ıàÑÎ8Şú†ü2
-f
-java:S3986†"HMake sure that week Year "YYYY" is expected here instead of Year "yyyy".(¦Ğ£¨8ßú†ü2
+java:S1186µ"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(¶ôî£8Îú†ü2
 O
-java:S1172 "2Remove this unused method parameter "actionEvent".(‰Ìù98àú†ü2
-k	java:S100³"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÃÅ¯™8åú†ü2
+java:S1172˜"2Remove this unused method parameter "actionEvent".(‰Ìù98àú†ü2
+k	java:S100«"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÃÅ¯™8åú†ü2
 P
-java:S1172³"2Remove this unused method parameter "actionEvent".(ÃÅ¯™8æú†ü2
-M	java:S106¹"+Replace this use of System.out by a logger.(Æ¾œ›úÿÿÿÿ8æú†ü2
+java:S1172«"2Remove this unused method parameter "actionEvent".(ÃÅ¯™8æú†ü2
+M	java:S106±"+Replace this use of System.out by a logger.(Æ¾œ›úÿÿÿÿ8æú†ü2
 P
-java:S1172À"2Remove this unused method parameter "actionEvent".(“‚çğ8çú†ü2
-M	java:S106Æ"+Replace this use of System.out by a logger.(ç…˜ìûÿÿÿÿ8èú†ü2
-Z
-java:S1128""8Remove this unused import 'dao.custom.impl.ItemDaoImpl'.(ä½õ¢ûÿÿÿÿ8’á×…2
+java:S1172¸"2Remove this unused method parameter "actionEvent".(“‚çğ8çú†ü2
+M	java:S106¾"+Replace this use of System.out by a logger.(ç…˜ìûÿÿÿÿ8èú†ü2
