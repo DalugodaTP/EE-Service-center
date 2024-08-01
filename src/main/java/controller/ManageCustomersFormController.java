@@ -4,6 +4,7 @@ import bo.BoFactory;
 import bo.custom.CustomerBo;
 import com.jfoenix.controls.JFXButton;
 import dao.util.BoType;
+import db.DBConnection;
 import dto.CustomerDto;
 import dto.tm.CustomerTm;
 import io.github.palexdev.materialfx.controls.MFXButton;
@@ -25,6 +26,12 @@ import javafx.scene.control.ButtonType;
 import javafx.stage.Stage;
 
 import javafx.scene.input.MouseEvent;
+import net.sf.jasperreports.engine.*;
+import net.sf.jasperreports.engine.design.JRDesignQuery;
+import net.sf.jasperreports.engine.design.JasperDesign;
+import net.sf.jasperreports.engine.xml.JRXmlLoader;
+import net.sf.jasperreports.view.JasperViewer;
+
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.Comparator;
@@ -270,6 +277,19 @@ public class ManageCustomersFormController {
             stage.show();
         } catch (IOException e) {
             System.out.println("Inventory window in the path is missing");
+        }
+    }
+
+    public void viewReportButtonOnAction(ActionEvent actionEvent){
+        try {
+            JasperDesign design = JRXmlLoader.load("src/main/resources/reports/customer_report.jrxml");
+            //
+            //
+            JasperReport jasperReport = JasperCompileManager.compileReport(design);
+            JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, null, DBConnection.getInstance().getConnection());
+            JasperViewer.viewReport(jasperPrint,false);
+        } catch (JRException | ClassNotFoundException | SQLException e) {
+            throw new RuntimeException(e);
         }
     }
 }
