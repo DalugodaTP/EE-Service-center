@@ -1,17 +1,23 @@
 package bo.custom.impl;
 
 import bo.custom.CustomerBo;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import dao.DaoFactory;
 import dao.custom.CustomerDao;
 import dao.util.DaoType;
+import dao.util.HibernateUtil;
 import dto.CustomerDto;
 import entity.Customer;
+import org.hibernate.Session;
+import org.hibernate.query.Query;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
 public class CustomerBoImpl implements CustomerBo {
+
+    ObjectMapper mapper = new ObjectMapper();
     private CustomerDao customerDao = DaoFactory.getInstance().getDao(DaoType.CUSTOMER);
     @Override
     public boolean saveCustomer(CustomerDto dto) throws SQLException, ClassNotFoundException {

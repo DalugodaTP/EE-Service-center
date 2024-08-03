@@ -18,7 +18,8 @@ public class ControlPanelForm {
             stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("/view/ManageCustomersForm.fxml"))));
             stage.show();
         } catch (IOException e) {
-            System.out.println("CustomerForm window in the path is missing");
+            e.printStackTrace();
+            System.out.println("Here CustomerForm window in the path is missing");
         }
     }
 

@@ -5,7 +5,5 @@ K
 java:S1940")Use the opposite operator ("<=") instead.(–Ê»¼ùÿÿÿÿ8Ñ¬ð·2
 H
 java:S11681"+Return an empty collection instead of null.(¥¹ï8Ò¬ð·2
-F
-java:S11724")Remove this unused method parameter "id".(«›«ð8Ó´‰¸2
 H
 java:S11685"+Return an empty collection instead of null.(¥¹ï8Ó´‰¸2

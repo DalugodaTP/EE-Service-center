@@ -2,15 +2,13 @@ package dao.custom.impl;
 
 import dao.custom.CustomerDao;
 import dao.util.HibernateUtil;
-import db.DBConnection;
 import dto.CustomerDto;
 import entity.Customer;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.query.Query;
 
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
+import javax.persistence.NoResultException;
 import java.sql.SQLException;
 import java.util.List;
 
@@ -18,12 +16,10 @@ public class CustomerDaoImpl implements CustomerDao {
     @Override
     public boolean save(Customer entity) throws SQLException, ClassNotFoundException {
         Session session = HibernateUtil.getSession();
-
         Transaction transaction = session.beginTransaction();
         session.save(entity);
         transaction.commit();
         session.close();
-
         return true;
     }
 
@@ -31,17 +27,24 @@ public class CustomerDaoImpl implements CustomerDao {
     public boolean update(Customer entity) throws SQLException, ClassNotFoundException {
         Session session = HibernateUtil.getSession();
 
+        //--begin Transaction
         Transaction transaction = session.beginTransaction();
-        //--find the customer
+
+        //--find the customer using id and store as a local variable (Persistent state)
         Customer customer = session.find(Customer.class, entity.getId());
-        //--set data to that customer
+
+        //--update data of that customer
         customer.setName(entity.getName());
         customer.setAddress(entity.getAddress());
         customer.setSalary(entity.getSalary());
+
         //--save back the customer
         session.save(customer);
 
+        //--Commit Transaction
         transaction.commit();
+
+        //--Detached state
         session.close();
 
         return true;
@@ -49,10 +52,21 @@ public class CustomerDaoImpl implements CustomerDao {
 
     @Override
     public boolean Delete(String value) throws SQLException, ClassNotFoundException {
+        //--Get session from util package
         Session session = HibernateUtil.getSession();
+
+        //--Begin Transaction
         Transaction transaction = session.beginTransaction();
+
+        //--delete the customer with pk that match the value
         session.delete(session.find(Customer.class,value));
+
+        //--Commit Transaction
         transaction.commit();
+
+        //--Detached state
+        session.close();
+
         return true;
     }
 
@@ -61,33 +75,23 @@ public class CustomerDaoImpl implements CustomerDao {
         Session session = HibernateUtil.getSession();
         Query query = session.createQuery("FROM Customer");
         List<Customer> list = query.list();
-
-
         session.close();
         return list;
     }
 
-    @Override
-    public CustomerDto searchCustomer(String id) throws SQLException, ClassNotFoundException {
-        CustomerDto resultDto = new CustomerDto();
-        String sql = "SELECT * FROM customer WHERE id = ?";
-
-        PreparedStatement pstm = DBConnection.getInstance().getConnection().prepareStatement(sql);
-        pstm.setString(1, id);
-        ResultSet result = pstm.executeQuery();
-
-        //--Process the result set
-        while (result.next()) {
-            //--Add the result set into the list as CustomerDto
-            resultDto = new CustomerDto(
-                    result.getString(1),
-                    result.getString(2),
-                    result.getString(3),
-                    result.getDouble(4)
-            );
+    public CustomerDto searchCustomer(String id) {
+        Session session = HibernateUtil.getSession();
+        Query query = session.createQuery("FROM Customer c WHERE id =:id");
+        query.setParameter("id", id);
+        try {
+            CustomerDto entity = (CustomerDto) query.getSingleResult();
+            session.close();
+            return entity;
+        } catch (NoResultException nre) {
+            session.close();
+            return null;
         }
-        return resultDto;
     }
+
 }
 
-//This is the main branch
