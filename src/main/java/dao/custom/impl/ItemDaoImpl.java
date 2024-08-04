@@ -105,6 +105,7 @@ public class ItemDaoImpl implements ItemDao {
         query.setParameter("code", code);
         try {
             ItemDto entity = (ItemDto) query.getSingleResult();
+            System.out.println("THis is after casting: "+entity);
             session.close();
             return entity;
         } catch (NoResultException nre) {

@@ -8,16 +8,5 @@
       <jdbc-url>jdbc:mysql://localhost:3306/Thogakade</jdbc-url>
       <working-dir>$ProjectFileDir$</working-dir>
     </data-source>
-    <data-source source="LOCAL" name="hibernate.cfg.xml/Hibernate" uuid="626d64ef-6f2b-4423-8d80-6a3d17c6a31c">
-      <driver-ref>mysql.8</driver-ref>
-      <synchronize>true</synchronize>
-      <imported>true</imported>
-      <remarks>Hibernate
-
-D:/sems/OneDrive - University of Moratuwa/Desktop/javaFX/Day 2/EE-Service-center/src/main/resources/hibernate.cfg.xml</remarks>
-      <jdbc-driver>com.mysql.cj.jdbc.Driver</jdbc-driver>
-      <jdbc-url>jdbc:mysql://localhost:3306/thogakade?createDatabaseIfNotExist=true</jdbc-url>
-      <working-dir>$ProjectFileDir$</working-dir>
-    </data-source>
   </component>
 </project>
