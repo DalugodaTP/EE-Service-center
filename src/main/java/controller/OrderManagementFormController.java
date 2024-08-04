@@ -220,22 +220,9 @@ public class OrderManagementFormController {
         }
     }
 
-    public void generateId(){
-        try {
-            OrderDto dto = orderBo.lastOrder();
-            if (dto!=null){
-                String id = dto.getOrderId();
-                int num = Integer.parseInt(id.split("[D]")[1]);
-                num++;
-                lblOrderID.setText(String.format("D%03d",num));
-            }else{
-                lblOrderID.setText("D001");
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-        }
+    public void generateId() throws SQLException, ClassNotFoundException {
+        String lastId = orderBo.generateId();
+        lblOrderID.setText(lastId);
     }
 
     public void placeOrderButtonOnAction(ActionEvent actionEvent) throws SQLException, ClassNotFoundException {

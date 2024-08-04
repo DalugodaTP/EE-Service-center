@@ -100,18 +100,19 @@ public class ItemDaoImpl implements ItemDao {
 
     @Override
     public ItemDto getItem(String code) throws SQLException, ClassNotFoundException {
-        Session session = HibernateUtil.getSession();
-        Query query = session.createQuery("FROM Item c WHERE code =:code");
-        query.setParameter("code", code);
-        try {
-            ItemDto entity = (ItemDto) query.getSingleResult();
-            System.out.println("THis is after casting: "+entity);
-            session.close();
-            return entity;
-        } catch (NoResultException nre) {
-            session.close();
-            return null;
+        String sql = "SELECT * FROM item WHERE code=?";
+        PreparedStatement pstm = DBConnection.getInstance().getConnection().prepareStatement(sql);
+        pstm.setString(1, code);
+        ResultSet resultSet = pstm.executeQuery();
+        if(resultSet.next()){
+            return new ItemDto(
+                    resultSet.getString(1),
+                    resultSet.getString(2),
+                    resultSet.getDouble(3),
+                    resultSet.getInt(4)
+            );
         }
+        return null;
     }
 
     @Override

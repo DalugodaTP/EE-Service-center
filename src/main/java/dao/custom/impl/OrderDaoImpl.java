@@ -2,17 +2,22 @@ package dao.custom.impl;
 
 import dao.DaoFactory;
 import dao.util.DaoType;
+import dao.util.HibernateUtil;
 import db.DBConnection;
+import dto.OrderDetailsDto;
 import dto.OrderDto;
 import dao.custom.OrderDetailsDao;
 import dao.custom.OrderDao;
-import entity.Orders;
+import entity.*;
+import org.hibernate.Session;
+import org.hibernate.Transaction;
 
 import javax.persistence.criteria.Order;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 public class OrderDaoImpl implements OrderDao {
@@ -20,7 +25,7 @@ public class OrderDaoImpl implements OrderDao {
 
     @Override
     public OrderDto lastOrder() throws SQLException, ClassNotFoundException {
-        String sql = "SELECT * FROM orders ORDER BY id DESC LIMIT 1";
+        String sql = "SELECT * FROM orders ORDER BY orderid DESC LIMIT 1";
         PreparedStatement pstm = DBConnection.getInstance().getConnection().prepareStatement(sql);
         ResultSet resultSet = pstm.executeQuery();
         if (resultSet.next()){
@@ -35,35 +40,32 @@ public class OrderDaoImpl implements OrderDao {
     }
 
     @Override
-    public boolean save(OrderDto entity) throws SQLException, ClassNotFoundException {
-        Connection connection = null;
-        try{
-            //--Transaction to save orderdetails before the order
-            connection =DBConnection.getInstance().getConnection();
-            connection.setAutoCommit(false);
+    public boolean save(OrderDto dto) throws SQLException, ClassNotFoundException {
+        Session session = HibernateUtil.getSession();
+        Transaction transaction = session.beginTransaction();
+        Orders order = new Orders(
+                dto.getOrderId(),
+                dto.getDate()
+        );
+        order.setCustomer(session.find(Customer.class,dto.getCustId()));
+        session.save(order);
 
-            String sql = "INSERT INTO orders VALUES(?,?,?)";
-            PreparedStatement pstm = connection.prepareStatement(sql);
-            pstm.setString(1, entity.getOrderId());
-            pstm.setString(2, entity.getDate());
-            pstm.setString(3, entity.getCustId());
+        List<OrderDetailsDto> list = dto.getDto(); //dto type
 
-            //--if the data was saved, now we need to save order details
-            if (pstm.executeUpdate()>0){
-                boolean isDetailSaved = orderDetailsDao.saveOrderDetails(entity.getDto());
-                if (isDetailSaved){
-                    connection.commit();
-                    return true;
-                }
-            }
-        }catch (SQLException | ClassNotFoundException ex){
-            //--if order details failed then rollback the changes
-            connection.rollback();
-        }finally {
-            //--reset autocommit to auto save
-            connection.setAutoCommit(true);
+        for (OrderDetailsDto detailDto:list) {
+            OrderDetail orderDetail = new OrderDetail(
+                    new OrderDetailsKey(detailDto.getOrderId(), detailDto.getItemCode()),
+                    session.find(Item.class, detailDto.getItemCode()),
+                    order,
+                    detailDto.getQty(),
+                    detailDto.getUnitPrice()
+            );
+            session.save(orderDetail);
         }
-        return false;
+        //--If saving both Orders and OrderDetails are successful, then commit the changes
+        transaction.commit();
+        session.close();
+        return true;
     }
 
     @Override

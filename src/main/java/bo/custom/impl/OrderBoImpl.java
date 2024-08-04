@@ -30,4 +30,23 @@ public class OrderBoImpl implements OrderBo {
                 dto.getDto()
         ));
     }
+
+    @Override
+    public String generateId() throws SQLException, ClassNotFoundException {
+        try{
+            OrderDto dto = orderDao.lastOrder();
+            if (dto!=null){
+                String id = orderDao.lastOrder().getOrderId();
+                int num = Integer.parseInt(id.split("[D]")[1]);
+                num++;
+                return String.format("D%03d", num);
+            }else{
+                return "D001";
+            }
+        }catch (Exception e){
+            System.out.println("Issue with the Id Generator");
+        }
+        return null;
+    }
+
 }
