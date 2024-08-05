@@ -1,3 +1,6 @@
 
+R
+java:S6397("5Replace this character class by the character itself.(à‡·¬8İœöí‘2
+G	java:S106/"+Replace this use of System.out by a logger.(ÅÛŠ­8•«óí‘2
 G
-java:S1128"*Remove this unused import 'entity.Orders'.(Û°ö¦8ÈÀÕâ2
+java:S1128"*Remove this unused import 'entity.Orders'.(Û°ö¦8Şœöí‘2

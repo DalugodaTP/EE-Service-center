@@ -1,13 +1,11 @@
 
-j
-java:S2259@"HA "NullPointerException" could be thrown; "connection" is nullable here.(Øîğ€ıÿÿÿÿ8Ş«÷á2
-e
-java:S2259="HA "NullPointerException" could be thrown; "connection" is nullable here.(İÌï8Ş«÷á2
 l
-java:S2095."OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(ĞÿŸÓ8Ş«÷á2
-e
-java:S2095"OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(Ìû—
+java:S2095"OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(Ìû—8ª§í‘2
 H
-java:S1168V"+Return an empty collection instead of null.(¥¹ï8ˆİƒá2
+java:S1168X"+Return an empty collection instead of null.(¥¹ï8¥ª§í‘2
 _
-java:S1128"=Remove this unused import 'javax.persistence.criteria.Order'.(ñ“¯Şøÿÿÿÿ8¿Õâ2
+java:S1128"=Remove this unused import 'javax.persistence.criteria.Order'.(ñ“¯Şøÿÿÿÿ8Ãİî‘2
+M
+java:S1128"0Remove this unused import 'java.sql.Connection'.(¥ËôÖ8Ãİî‘2
+M
+java:S1128"0Remove this unused import 'java.util.ArrayList'.(÷‰îƒ8Ãİî‘2
