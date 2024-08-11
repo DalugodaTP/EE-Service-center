@@ -142,7 +142,7 @@
                         <RowConstraints maxHeight="-Infinity" minHeight="10.0" prefHeight="10.0" vgrow="SOMETIMES" />
                     </rowConstraints>
                      <children>
-                        <MFXButton buttonType="RAISED" contentDisplay="GRAPHIC_ONLY" depthLevel="LEVEL0" minHeight="-Infinity" onAction="#ManageCustomersButtonOnAction" prefHeight="100.0" prefWidth="200.0" rippleAnimateShadow="true" rippleAnimationSpeed="0.5" rippleRadiusMultiplier="4.0" style="-fx-border-width: 2; -fx-border-color: #2590d1; -fx-border-radius: 5; -fx-background-color: #DBF2FD;" text="Dashboard" textFill="WHITE" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+                        <MFXButton buttonType="RAISED" contentDisplay="GRAPHIC_ONLY" depthLevel="LEVEL0" minHeight="-Infinity" prefHeight="100.0" prefWidth="200.0" rippleAnimateShadow="true" rippleAnimationSpeed="0.5" rippleRadiusMultiplier="4.0" style="-fx-border-width: 2; -fx-border-color: #2590d1; -fx-border-radius: 5; -fx-background-color: #DBF2FD;" text="Dashboard" textFill="WHITE" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
                            <font>
                               <Font name="System Bold" size="15.0" />
                            </font>
@@ -165,7 +165,7 @@
                               <Cursor fx:constant="HAND" />
                            </cursor>
                         </MFXButton>
-                        <MFXButton buttonType="RAISED" contentDisplay="GRAPHIC_ONLY" depthLevel="LEVEL0" minHeight="-Infinity" onAction="#ManageCustomersButtonOnAction" prefHeight="100.0" prefWidth="200.0" rippleAnimateShadow="true" rippleAnimationSpeed="0.5" rippleRadiusMultiplier="4.0" style="-fx-border-width: 2; -fx-border-color: #2590d1; -fx-border-radius: 5; -fx-background-color: #DBF2FD;" text="Dashboard" textFill="WHITE" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+                        <MFXButton buttonType="RAISED" contentDisplay="GRAPHIC_ONLY" depthLevel="LEVEL0" minHeight="-Infinity" prefHeight="100.0" prefWidth="200.0" rippleAnimateShadow="true" rippleAnimationSpeed="0.5" rippleRadiusMultiplier="4.0" style="-fx-border-width: 2; -fx-border-color: #2590d1; -fx-border-radius: 5; -fx-background-color: #DBF2FD;" text="Dashboard" textFill="WHITE" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
                            <font>
                               <Font name="System Bold" size="15.0" />
                            </font>
@@ -188,7 +188,7 @@
                               <Cursor fx:constant="HAND" />
                            </cursor>
                         </MFXButton>
-                        <MFXButton contentDisplay="GRAPHIC_ONLY" depthLevel="LEVEL0" minHeight="-Infinity" onAction="#ManageCustomersButtonOnAction" prefHeight="100.0" prefWidth="200.0" rippleAnimateShadow="true" rippleAnimationSpeed="0.5" rippleRadiusMultiplier="4.0" style="-fx-border-width: 2; -fx-border-color: #2590d1; -fx-border-radius: 5; -fx-background-color: #DBF2FD;" text="Dashboard" textFill="WHITE" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER">
+                        <MFXButton contentDisplay="GRAPHIC_ONLY" depthLevel="LEVEL0" minHeight="-Infinity" prefHeight="100.0" prefWidth="200.0" rippleAnimateShadow="true" rippleAnimationSpeed="0.5" rippleRadiusMultiplier="4.0" style="-fx-border-width: 2; -fx-border-color: #2590d1; -fx-border-radius: 5; -fx-background-color: #DBF2FD;" text="Dashboard" textFill="WHITE" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER">
                            <font>
                               <Font name="System Bold" size="15.0" />
                            </font>
@@ -211,7 +211,7 @@
                               <Cursor fx:constant="HAND" />
                            </cursor>
                         </MFXButton>
-                        <MFXButton contentDisplay="GRAPHIC_ONLY" depthLevel="LEVEL0" minHeight="-Infinity" onAction="#ManageCustomersButtonOnAction" prefHeight="100.0" prefWidth="200.0" rippleAnimateShadow="true" rippleAnimationSpeed="0.5" rippleRadiusMultiplier="4.0" style="-fx-border-width: 2; -fx-border-color: #2590d1; -fx-border-radius: 5; -fx-background-color: #DBF2FD;" text="Dashboard" textFill="WHITE" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER">
+                        <MFXButton contentDisplay="GRAPHIC_ONLY" depthLevel="LEVEL0" minHeight="-Infinity" onAction="#orderDetailsButtonOnAction" prefHeight="100.0" prefWidth="200.0" rippleAnimateShadow="true" rippleAnimationSpeed="0.5" rippleRadiusMultiplier="4.0" style="-fx-border-width: 2; -fx-border-color: #2590d1; -fx-border-radius: 5; -fx-background-color: #DBF2FD;" text="Dashboard" textFill="WHITE" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER">
                            <font>
                               <Font name="System Bold" size="15.0" />
                            </font>
@@ -226,7 +226,7 @@
                                           <Image url="@../img/icons8-documents-50.png" />
                                        </image>
                                     </ImageView>
-                                    <Label text="Orders" textFill="#2590d1" />
+                                    <Label text="Order Details" textFill="#2590d1" />
                                  </children>
                               </VBox>
                            </graphic>
@@ -234,7 +234,7 @@
                               <Cursor fx:constant="HAND" />
                            </cursor>
                         </MFXButton>
-                        <MFXButton contentDisplay="GRAPHIC_ONLY" depthLevel="LEVEL0" minHeight="-Infinity" onAction="#ManageCustomersButtonOnAction" prefHeight="100.0" prefWidth="200.0" rippleAnimateShadow="true" rippleAnimationSpeed="0.5" rippleRadiusMultiplier="4.0" style="-fx-border-width: 2; -fx-border-color: #2590d1; -fx-border-radius: 5; -fx-background-color: #DBF2FD;" text="Dashboard" textFill="WHITE" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="5" GridPane.valignment="CENTER">
+                        <MFXButton contentDisplay="GRAPHIC_ONLY" depthLevel="LEVEL0" minHeight="-Infinity" prefHeight="100.0" prefWidth="200.0" rippleAnimateShadow="true" rippleAnimationSpeed="0.5" rippleRadiusMultiplier="4.0" style="-fx-border-width: 2; -fx-border-color: #2590d1; -fx-border-radius: 5; -fx-background-color: #DBF2FD;" text="Dashboard" textFill="WHITE" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="5" GridPane.valignment="CENTER">
                            <font>
                               <Font name="System Bold" size="15.0" />
                            </font>
@@ -257,7 +257,7 @@
                               <Cursor fx:constant="HAND" />
                            </cursor>
                         </MFXButton>
-                        <MFXButton contentDisplay="GRAPHIC_ONLY" depthLevel="LEVEL0" minHeight="-Infinity" onAction="#ManageCustomersButtonOnAction" prefHeight="100.0" prefWidth="200.0" rippleAnimateShadow="true" rippleAnimationSpeed="0.5" rippleRadiusMultiplier="4.0" style="-fx-border-width: 2; -fx-border-color: #2590d1; -fx-border-radius: 5; -fx-background-color: #DBF2FD;" text="Dashboard" textFill="WHITE" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="5" GridPane.valignment="CENTER">
+                        <MFXButton contentDisplay="GRAPHIC_ONLY" depthLevel="LEVEL0" minHeight="-Infinity" prefHeight="100.0" prefWidth="200.0" rippleAnimateShadow="true" rippleAnimationSpeed="0.5" rippleRadiusMultiplier="4.0" style="-fx-border-width: 2; -fx-border-color: #2590d1; -fx-border-radius: 5; -fx-background-color: #DBF2FD;" text="Dashboard" textFill="WHITE" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="5" GridPane.valignment="CENTER">
                            <font>
                               <Font name="System Bold" size="15.0" />
                            </font>
@@ -280,7 +280,7 @@
                               <Cursor fx:constant="HAND" />
                            </cursor>
                         </MFXButton>
-                        <MFXButton contentDisplay="GRAPHIC_ONLY" depthLevel="LEVEL0" minHeight="-Infinity" onAction="#ManageCustomersButtonOnAction" prefHeight="100.0" prefWidth="200.0" rippleAnimateShadow="true" rippleAnimationSpeed="0.5" rippleRadiusMultiplier="4.0" style="-fx-border-width: 2; -fx-border-color: #2590d1; -fx-border-radius: 5; -fx-background-color: #DBF2FD;" text="Dashboard" textFill="WHITE" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="7" GridPane.valignment="CENTER">
+                        <MFXButton contentDisplay="GRAPHIC_ONLY" depthLevel="LEVEL0" minHeight="-Infinity" prefHeight="100.0" prefWidth="200.0" rippleAnimateShadow="true" rippleAnimationSpeed="0.5" rippleRadiusMultiplier="4.0" style="-fx-border-width: 2; -fx-border-color: #2590d1; -fx-border-radius: 5; -fx-background-color: #DBF2FD;" text="Dashboard" textFill="WHITE" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="7" GridPane.valignment="CENTER">
                            <font>
                               <Font name="System Bold" size="15.0" />
                            </font>
@@ -303,7 +303,7 @@
                               <Cursor fx:constant="HAND" />
                            </cursor>
                         </MFXButton>
-                        <MFXButton contentDisplay="GRAPHIC_ONLY" depthLevel="LEVEL0" minHeight="-Infinity" onAction="#ManageCustomersButtonOnAction" prefHeight="100.0" prefWidth="200.0" rippleAnimateShadow="true" rippleAnimationSpeed="0.5" rippleRadiusMultiplier="4.0" style="-fx-border-width: 2; -fx-border-color: #2590d1; -fx-border-radius: 5; -fx-background-color: #DBF2FD;" text="Dashboard" textFill="WHITE" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="7" GridPane.valignment="BASELINE">
+                        <MFXButton contentDisplay="GRAPHIC_ONLY" depthLevel="LEVEL0" minHeight="-Infinity" prefHeight="100.0" prefWidth="200.0" rippleAnimateShadow="true" rippleAnimationSpeed="0.5" rippleRadiusMultiplier="4.0" style="-fx-border-width: 2; -fx-border-color: #2590d1; -fx-border-radius: 5; -fx-background-color: #DBF2FD;" text="Dashboard" textFill="WHITE" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="7" GridPane.valignment="BASELINE">
                            <font>
                               <Font name="System Bold" size="15.0" />
                            </font>
@@ -326,7 +326,7 @@
                               <Cursor fx:constant="HAND" />
                            </cursor>
                         </MFXButton>
-                        <MFXButton contentDisplay="GRAPHIC_ONLY" depthLevel="LEVEL0" minHeight="-Infinity" onAction="#ManageCustomersButtonOnAction" prefHeight="100.0" prefWidth="200.0" rippleAnimateShadow="true" rippleAnimationSpeed="0.5" rippleRadiusMultiplier="4.0" style="-fx-border-width: 2; -fx-border-color: #2590d1; -fx-border-radius: 5; -fx-background-color: #DBF2FD;" text="Dashboard" textFill="WHITE" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="9" GridPane.valignment="CENTER">
+                        <MFXButton contentDisplay="GRAPHIC_ONLY" depthLevel="LEVEL0" minHeight="-Infinity" prefHeight="100.0" prefWidth="200.0" rippleAnimateShadow="true" rippleAnimationSpeed="0.5" rippleRadiusMultiplier="4.0" style="-fx-border-width: 2; -fx-border-color: #2590d1; -fx-border-radius: 5; -fx-background-color: #DBF2FD;" text="Dashboard" textFill="WHITE" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="9" GridPane.valignment="CENTER">
                            <font>
                               <Font name="System Bold" size="15.0" />
                            </font>
@@ -349,7 +349,7 @@
                               <Cursor fx:constant="HAND" />
                            </cursor>
                         </MFXButton>
-                        <MFXButton contentDisplay="GRAPHIC_ONLY" depthLevel="LEVEL0" minHeight="-Infinity" onAction="#ManageCustomersButtonOnAction" prefHeight="100.0" prefWidth="200.0" rippleAnimateShadow="true" rippleAnimationSpeed="0.5" rippleRadiusMultiplier="4.0" style="-fx-border-width: 2; -fx-border-color: #2590d1; -fx-border-radius: 5; -fx-background-color: #DBF2FD;" text="Dashboard" textFill="WHITE" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="9" GridPane.valignment="CENTER">
+                        <MFXButton contentDisplay="GRAPHIC_ONLY" depthLevel="LEVEL0" minHeight="-Infinity" prefHeight="100.0" prefWidth="200.0" rippleAnimateShadow="true" rippleAnimationSpeed="0.5" rippleRadiusMultiplier="4.0" style="-fx-border-width: 2; -fx-border-color: #2590d1; -fx-border-radius: 5; -fx-background-color: #DBF2FD;" text="Dashboard" textFill="WHITE" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="9" GridPane.valignment="CENTER">
                            <font>
                               <Font name="System Bold" size="15.0" />
                            </font>
@@ -546,7 +546,7 @@
                               <Insets left="10.0" />
                            </GridPane.margin>
                         </Text>
-                        <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="3" GridPane.rowSpan="2">
+                        <ImageView fitHeight="30.0" fitWidth="30.0" onMouseClicked="#logOutButtonOnAction" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="3" GridPane.rowSpan="2">
                            <image>
                               <Image url="@../img/icons8-logout-50.png" />
                            </image>

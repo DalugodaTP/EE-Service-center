@@ -249,7 +249,7 @@
                                         <Insets left="10.0" />
                                     </GridPane.margin>
                                 </Text>
-                                <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="3" GridPane.rowSpan="2">
+                                <ImageView fitHeight="30.0" fitWidth="30.0" onMouseClicked="#logOutButtonOnAction" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="3" GridPane.rowSpan="2">
                                     <image>
                                         <Image url="@../img/icons8-logout-50.png" />
                                     </image>

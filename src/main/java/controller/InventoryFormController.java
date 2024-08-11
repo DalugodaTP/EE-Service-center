@@ -20,6 +20,7 @@ import javafx.scene.control.ButtonType;
 import javafx.scene.control.TreeItem;
 import javafx.scene.control.TreeTableColumn;
 import javafx.scene.control.cell.TreeItemPropertyValueFactory;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import dao.custom.ItemDao;
@@ -239,5 +240,18 @@ public class InventoryFormController {
         alert.setTitle(title);
         alert.setContentText(content);
         alert.show();
+    }
+
+    public void logOutButtonOnAction(MouseEvent mouseEvent) {
+        Stage stage = (Stage)inventoryPane.getScene().getWindow();
+        try {
+            stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("/view/LoginForm.fxml"))));
+            stage.centerOnScreen();
+            stage.setResizable(false);
+            stage.show();
+        } catch (IOException e) {
+            System.out.println("Login window in the path is missing: " + e.getMessage());
+            e.printStackTrace();
+        }
     }
 }

@@ -152,7 +152,7 @@ public class OrderManagementFormController {
         for(CustomerDto x: customers){
             list.add(x.getId());
         }
-        cmbCustomerId.setItems( list);
+        cmbCustomerId.setItems(list);
     }
 
     public void addToCartButtonOnAction(ActionEvent actionEvent) throws SQLException, ClassNotFoundException {

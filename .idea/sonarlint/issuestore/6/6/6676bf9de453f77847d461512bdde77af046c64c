@@ -1,16 +1,22 @@
 
 ~
-java:S1104"\Make controlPanelPane a static final constant or non-public and provide accessors if needed.(ôúÜ‡ûÿÿÿÿ8ñ–‡Ç‘2
-j	java:S100"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÃÅ¯™8ÿ–‡Ç‘2
+java:S1104"\Make controlPanelPane a static final constant or non-public and provide accessors if needed.(ôúÜ‡ûÿÿÿÿ8âó•™’2
+j	java:S100"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÃÅ¯™8÷ó•™’2
 O
-java:S1172"2Remove this unused method parameter "actionEvent".(ÃÅ¯™8€—‡Ç‘2
-G	java:S106"+Replace this use of System.out by a logger.(Ùğú§8—‡Ç‘2
-i	java:S100"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(äÿ±8‘—‡Ç‘2
+java:S1172"2Remove this unused method parameter "actionEvent".(ÃÅ¯™8÷ó•™’2
+G	java:S106"+Replace this use of System.out by a logger.(Ùğú§8†ô•™’2
+i	java:S100"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(äÿ±8†ô•™’2
 T
-java:S1172""2Remove this unused method parameter "actionEvent".(­¿Ÿúÿÿÿÿ8‘—‡Ç‘2
-G	java:S106("+Replace this use of System.out by a logger.(çÅÍ8“—‡Ç‘2
+java:S1172#"2Remove this unused method parameter "actionEvent".(­¿Ÿúÿÿÿÿ8ˆô•™’2
+G	java:S106)"+Replace this use of System.out by a logger.(çÅÍ8Šô•™’2
 O
-java:S1172-"2Remove this unused method parameter "actionEvent".(“‚çğ8”—‡Ç‘2
-L	java:S1063"+Replace this use of System.out by a logger.(¹Äü»ûÿÿÿÿ8”—‡Ç‘2
+java:S1172."2Remove this unused method parameter "actionEvent".(“‚çğ8‹ô•™’2
+L	java:S1064"+Replace this use of System.out by a logger.(¹Äü»ûÿÿÿÿ8ô•™’2
+N
+java:S11729"1Remove this unused method parameter "mouseEvent".(å‚¾Ë8ô•™’2
+G	java:S106A"+Replace this use of System.out by a logger.(”ÿÓŸ8’ô•™’2
+N
+java:S1172F"2Remove this unused method parameter "actionEvent".(Õçõ8¼Ê¥›’2
+L	java:S106L"+Replace this use of System.out by a logger.(¹Äü»ûÿÿÿÿ8½Ê¥›’2
 Y
-java:S1128"7Remove this unused import 'javafx.scene.control.Label'.(ö²­ÿÿÿÿÿ8–—‡Ç‘2
+java:S1128"7Remove this unused import 'javafx.scene.control.Label'.(ö²­ÿÿÿÿÿ8“ô•™’2

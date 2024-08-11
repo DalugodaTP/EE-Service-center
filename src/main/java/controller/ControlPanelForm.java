@@ -4,6 +4,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
@@ -46,6 +47,30 @@ public class ControlPanelForm {
         Stage stage = (Stage)controlPanelPane.getScene().getWindow();
         try {
             stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("/view/InventoryForm.fxml"))));
+            stage.show();
+        } catch (IOException e) {
+            System.out.println("Inventory window in the path is missing: " + e.getMessage());
+            e.printStackTrace();
+        }
+    }
+
+    public void logOutButtonOnAction(MouseEvent mouseEvent) {
+        Stage stage = (Stage)controlPanelPane.getScene().getWindow();
+        try {
+            stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("/view/LoginForm.fxml"))));
+            stage.centerOnScreen();
+            stage.setResizable(false);
+            stage.show();
+        } catch (IOException e) {
+            System.out.println("Login window in the path is missing: " + e.getMessage());
+            e.printStackTrace();
+        }
+    }
+
+    public void orderDetailsButtonOnAction(ActionEvent actionEvent) {
+        Stage stage = (Stage)controlPanelPane.getScene().getWindow();
+        try {
+            stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("/view/OrderDetailViewForm.fxml"))));
             stage.show();
         } catch (IOException e) {
             System.out.println("Inventory window in the path is missing: " + e.getMessage());
