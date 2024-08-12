@@ -5,11 +5,8 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import dao.DaoFactory;
 import dao.custom.CustomerDao;
 import dao.util.DaoType;
-import dao.util.HibernateUtil;
 import dto.CustomerDto;
 import entity.Customer;
-import org.hibernate.Session;
-import org.hibernate.query.Query;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -23,9 +20,10 @@ public class CustomerBoImpl implements CustomerBo {
     public boolean saveCustomer(CustomerDto dto) throws SQLException, ClassNotFoundException {
         return customerDao.save(new Customer(
                 dto.getId(),
-                dto.getName(),
-                dto.getAddress(),
-                dto.getSalary()
+                dto.getFirstName(),
+                dto.getLastName(),
+                dto.getEmail(),
+                dto.getContact_no()
         ));
     }
 
@@ -33,9 +31,10 @@ public class CustomerBoImpl implements CustomerBo {
     public boolean updateCustomer(CustomerDto dto) throws SQLException, ClassNotFoundException {
         return customerDao.update(new Customer(
                 dto.getId(),
-                dto.getName(),
-                dto.getAddress(),
-                dto.getSalary()
+                dto.getFirstName(),
+                dto.getLastName(),
+                dto.getEmail(),
+                dto.getContact_no()
         ));
     }
 
@@ -51,9 +50,10 @@ public class CustomerBoImpl implements CustomerBo {
         for (Customer customer:entityList) {
             list.add( new CustomerDto(
                     customer.getId(),
-                    customer.getName(),
-                    customer.getAddress(),
-                    customer.getSalary()
+                    customer.getFirstName(),
+                    customer.getLastName(),
+                    customer.getEmail(),
+                    customer.getContact_no()
             ));
         }
         return list;

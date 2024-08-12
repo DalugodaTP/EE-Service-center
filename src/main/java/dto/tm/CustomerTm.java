@@ -9,8 +9,9 @@ import lombok.*;
 @ToString
 public class CustomerTm {
     private String id;
-    private String name;
+    private String firstName;
+    private String lastName;
     private String address;
-    private double salary;
-    private String action;
+    private String emailAddress;
+    private String contactNumber;
 }

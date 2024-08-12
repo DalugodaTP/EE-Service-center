@@ -3,48 +3,50 @@ package controller;
 import bo.BoFactory;
 import bo.custom.CustomerBo;
 import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXTreeTableView;
 import dao.util.BoType;
 import db.DBConnection;
 import dto.CustomerDto;
 import dto.tm.CustomerTm;
-import io.github.palexdev.materialfx.controls.MFXButton;
-import io.github.palexdev.materialfx.controls.MFXTableColumn;
-import io.github.palexdev.materialfx.controls.MFXTableView;
 import io.github.palexdev.materialfx.controls.MFXTextField;
-import io.github.palexdev.materialfx.controls.cell.MFXTableRowCell;
-import io.github.palexdev.materialfx.filter.DoubleFilter;
-import io.github.palexdev.materialfx.filter.StringFilter;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.collections.ObservableMap;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
-import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
+import javafx.scene.control.TreeTableColumn;
 import javafx.stage.Stage;
 
-import javafx.scene.input.MouseEvent;
 import net.sf.jasperreports.engine.*;
-import net.sf.jasperreports.engine.design.JRDesignQuery;
 import net.sf.jasperreports.engine.design.JasperDesign;
 import net.sf.jasperreports.engine.xml.JRXmlLoader;
 import net.sf.jasperreports.view.JasperViewer;
 
 import java.io.IOException;
 import java.sql.SQLException;
-import java.util.Comparator;
 import java.util.List;
 
 public class ManageCustomersFormController {
+    //--Table
+    public JFXTreeTableView tblManageCustomers;
 
-    public MFXTableView<CustomerTm> tblManageCustomers;
+    //--Columns
+    public TreeTableColumn customerIdCol;
+    public TreeTableColumn firstNameCol;
+    public TreeTableColumn lastNameCol;
+    public TreeTableColumn emailCol;
+    public TreeTableColumn contactNoCol;
+
+    //--Text fields
     public MFXTextField txtCustomerId;
-    public MFXTextField txtCustomerName;
+    public MFXTextField txtFirstName;
+    public MFXTextField txtlastName;
     public MFXTextField txtCustomerAddress;
-    public MFXTextField txtCustomerSalary;
-
+    public MFXTextField txtEmailAddress;
+    public MFXTextField txtContactNumber;
     private CustomerTm selectedCustomer;
 
     //--Create an instance of the customerModel using factory design pattern
@@ -52,9 +54,9 @@ public class ManageCustomersFormController {
 
     public void initialize() throws SQLException, ClassNotFoundException {
         loadCustomerTable();
-        tblManageCustomers.getSelectionModel().selectionProperty().addListener((observableValue, oldValue, newValue) -> {
-            setData(newValue);
-        });
+
+        //--Get Selection Model
+
     }
 
     //--Set selected row to the fields
@@ -63,83 +65,17 @@ public class ManageCustomersFormController {
             selectedCustomer = newValue.values().iterator().next();
             if (selectedCustomer != null) {
                 txtCustomerId.setText(selectedCustomer.getId());
-                txtCustomerName.setText(selectedCustomer.getName());
+                txtFirstName.setText(selectedCustomer.getFirstName());
+                txtlastName.setText(selectedCustomer.getLastName());
                 txtCustomerAddress.setText(selectedCustomer.getAddress());
-                txtCustomerSalary.setText(String.valueOf(selectedCustomer.getSalary()));
+                txtEmailAddress.setText(selectedCustomer.getEmailAddress());
+                txtContactNumber.setText(selectedCustomer.getContactNumber());
             }
         }
     }
 
     private void loadCustomerTable() throws SQLException, ClassNotFoundException {
-        tblManageCustomers.setPrefHeight(100);
 
-        MFXTableColumn<CustomerTm> customerIdColumn =
-                new MFXTableColumn<>("Customer ID", false, Comparator.comparing(CustomerTm::getId));
-        MFXTableColumn<CustomerTm> customerNameColumn =
-                new MFXTableColumn<>("Name", false, Comparator.comparing(CustomerTm::getName));
-        MFXTableColumn<CustomerTm> customerAddressColumn =
-                new MFXTableColumn<>("Address", false, Comparator.comparing(CustomerTm::getAddress));
-        MFXTableColumn<CustomerTm> customerSalaryColumn =
-                new MFXTableColumn<>("Salary", false, Comparator.comparing(CustomerTm::getSalary));
-        MFXTableColumn<CustomerTm> customerDeleteColumn =
-                new MFXTableColumn<>("Action", false);
-
-        customerIdColumn.setRowCellFactory(item -> new MFXTableRowCell<>(CustomerTm::getId));
-        customerNameColumn.setRowCellFactory(item -> new MFXTableRowCell<>(CustomerTm::getName));
-        customerAddressColumn.setRowCellFactory(item -> new MFXTableRowCell<>(CustomerTm::getAddress));
-        customerSalaryColumn.setRowCellFactory(item -> new MFXTableRowCell<>(CustomerTm::getSalary));
-
-        customerDeleteColumn.setRowCellFactory(item -> {
-            MFXTableRowCell<CustomerTm, String> mfxTableRowCell = new MFXTableRowCell<>(CustomerTm::getAction);
-            MFXButton btnDelete = new MFXButton("Delete");
-            btnDelete.addEventFilter(MouseEvent.MOUSE_PRESSED, event -> {
-                try {
-                    deleteCustomer(item);
-                } catch (SQLException e) {
-                    throw new RuntimeException(e);
-                } catch (ClassNotFoundException e) {
-                    throw new RuntimeException(e);
-                }
-            });
-
-            mfxTableRowCell.setLeadingGraphic(btnDelete);
-            mfxTableRowCell.setAlignment(Pos.CENTER);
-            mfxTableRowCell.mouseTransparentProperty().addListener((observable, oldValue, newValue) -> {
-                if (newValue) {
-                    mfxTableRowCell.setMouseTransparent(false);
-                }
-            });
-
-            return mfxTableRowCell;
-        });
-
-        customerIdColumn.setAlignment(Pos.CENTER);
-        customerNameColumn.setAlignment(Pos.CENTER);
-        customerAddressColumn.setAlignment(Pos.CENTER);
-        customerSalaryColumn.setAlignment(Pos.CENTER);
-        customerDeleteColumn.setAlignment(Pos.CENTER);
-
-        double tableWidth = tblManageCustomers.getPrefWidth();
-        double columnWidth = (tableWidth) / 5;
-
-        customerIdColumn.setPrefWidth(columnWidth);
-        customerNameColumn.setPrefWidth(columnWidth);
-        customerAddressColumn.setPrefWidth(columnWidth);
-        customerSalaryColumn.setPrefWidth(columnWidth);
-        customerDeleteColumn.setPrefWidth(columnWidth);
-
-        tblManageCustomers.getTableColumns().addAll(
-                customerIdColumn,
-                customerNameColumn,
-                customerAddressColumn,
-                customerSalaryColumn,
-                customerDeleteColumn
-        );
-
-        setFilters();
-        tblManageCustomers.setItems(getUsers());
-        tblManageCustomers.getStylesheets().add(getClass().getResource("../css/TableStyles.css").toExternalForm());
-        tblManageCustomers.getStyleClass().add("mfx-table-view");
     }
 
     private void deleteCustomer(CustomerTm id) throws SQLException, ClassNotFoundException {
@@ -156,37 +92,14 @@ public class ManageCustomersFormController {
             }
             confirmAlert.close();
             clearFields();
-            tblManageCustomers.setItems(getUsers());
+//            tblManageCustomers.setItems(getUsers());
         }
 
-    }
-
-    private void setFilters() {
-        tblManageCustomers.getFilters().addAll(
-                new StringFilter<>("Id", CustomerTm::getId),
-                new StringFilter<>("Name", CustomerTm::getName),
-                new StringFilter<>("Address", CustomerTm::getAddress),
-                new DoubleFilter<>("Salary", CustomerTm::getSalary)
-        );
     }
 
     private ObservableList<CustomerTm> getUsers() throws SQLException, ClassNotFoundException {
         ObservableList<CustomerTm> returnList = FXCollections.observableArrayList();
-        List<CustomerDto> dtoList = customerBo.allCustomers();
 
-        for (CustomerDto dto : dtoList) {
-            JFXButton deleteBtn = new JFXButton("Delete");
-
-            CustomerTm customerTm = new CustomerTm(
-                    dto.getId(),
-                    dto.getName(),
-                    dto.getAddress(),
-                    dto.getSalary(),
-                    ""
-            );
-
-            returnList.add(customerTm);
-        }
 
         return returnList;
     }
@@ -216,46 +129,47 @@ public class ManageCustomersFormController {
     }
 
     public void saveButtonOnAction(ActionEvent actionEvent) throws SQLException, ClassNotFoundException, NullPointerException {
-        //--Create an object and store the data from the fields
-        CustomerDto c = new CustomerDto(txtCustomerId.getText(),
-                txtCustomerName.getText(),
-                txtCustomerAddress.getText(),
-                Double.parseDouble(txtCustomerSalary.getText()
-                ));
-        //--Use customerModelImpl to save the customer
-        boolean isCustomerSaved = customerBo.saveCustomer(c);
-
-        if (isCustomerSaved){
-            new Alert(Alert.AlertType.INFORMATION,"Customer Saved!").show();
-           initialize();
-           loadCustomerTable();
-        }
+//        //--Create an object and store the data from the fields
+//        CustomerDto c = new CustomerDto(txtCustomerId.getText(),
+//                txtCustomerName.getText(),
+//                txtCustomerAddress.getText(),
+//                Double.parseDouble(txtCustomerSalary.getText()
+//                ));
+//        //--Use customerModelImpl to save the customer
+//        boolean isCustomerSaved = customerBo.saveCustomer(c);
+//
+//        if (isCustomerSaved){
+//            new Alert(Alert.AlertType.INFORMATION,"Customer Saved!").show();
+//           initialize();
+//           loadCustomerTable();
     }
 
     private void clearFields() {
-        txtCustomerSalary.clear();
-        txtCustomerAddress.clear();
-        txtCustomerName.clear();
         txtCustomerId.clear();
+        txtFirstName.clear();
+        txtlastName.clear();
+        txtCustomerAddress.clear();
+        txtEmailAddress.clear();
+        txtContactNumber.clear();
         txtCustomerId.setEditable(false);
     }
 
     public void updateButtonOnAction(ActionEvent actionEvent) throws SQLException, ClassNotFoundException {
-        CustomerDto c = new CustomerDto(
-                txtCustomerId.getText(),
-                txtCustomerName.getText(),
-                txtCustomerAddress.getText(),
-                Double.parseDouble(txtCustomerSalary.getText())
-        );
+//        CustomerDto c = new CustomerDto(
+//                txtCustomerId.getText(),
+//                txtCustomerName.getText(),
+//                txtCustomerAddress.getText(),
+//                Double.parseDouble(txtCustomerSalary.getText())
+//        );
 
         //--Use customerModel to update the entry
-        boolean isCustomerUpdated = customerBo.updateCustomer(c);
-
-        if (isCustomerUpdated){
-            new Alert(Alert.AlertType.INFORMATION,"Customer "+c.getId()+" Updated!").show();
-            loadCustomerTable();
-            clearFields();
-        }
+//        boolean isCustomerUpdated = customerBo.updateCustomer(c);
+//
+//        if (isCustomerUpdated){
+//            new Alert(Alert.AlertType.INFORMATION,"Customer "+c.getId()+" Updated!").show();
+//            loadCustomerTable();
+//            clearFields();
+//        }
 
     }
 
