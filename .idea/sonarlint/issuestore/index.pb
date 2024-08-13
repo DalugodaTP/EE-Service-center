@@ -774,3 +774,5 @@ Q.idea/sonarlint/securityhotspotstore/e/d/ed7cf1d3a0fe35d55dd99bc4007a7ab6f740cd
 Q.idea/sonarlint/securityhotspotstore/7/3/73d3a64aa933238bfd76804ba6a19fcfb6d2499f,7\b\7b9b495a9b0af53811890fa6daa144fb854952e0
 l
 <src/main/java/dao/util/idGenerators/CustomerIdGenerator.java,b\4\b4189f1c475d858f408bc31d743fe5c361febe10
+a
+1src/main/java/controller/util/ValidationUtil.java,6\6\664abc1657f8ddea501259286cf148c038d87176

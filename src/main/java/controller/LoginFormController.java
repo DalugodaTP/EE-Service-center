@@ -1,18 +1,23 @@
 package controller;
 
 import dto.CustomerDto;
+import dto.StaffDto;
 import io.github.palexdev.materialfx.controls.MFXPasswordField;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
 import java.io.IOException;
+import java.util.Objects;
 
 public class LoginFormController {
     public Hyperlink passwordReset_loginHere;
@@ -23,6 +28,7 @@ public class LoginFormController {
     public MFXPasswordField resetPassword_newPassword;
     public MFXPasswordField resetPassword_confirmPassword;
     public Hyperlink login_resetPassword;
+    public StackPane stackPane;
     @FXML
     private AnchorPane main_form;
 
@@ -118,22 +124,47 @@ public class LoginFormController {
         }
     }
 
-    public void loginButtonOnAction(ActionEvent actionEvent) {
-        Stage stage = (Stage)login_form.getScene().getWindow();
-        try {
-            stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("/view/ControlPanelForm.fxml"))));
-            stage.centerOnScreen();
-            stage.setResizable(true);
-            stage.show();
-        } catch (IOException e) {
-            e.printStackTrace();
-            System.out.println("Control Panel window in the path is missing");
-        }
+    public void loginButtonOnAction(ActionEvent actionEvent) throws IOException {
+        StaffDto loggedUser = new StaffDto(
+                login_username.getText(),
+                login_password.getText(),
+                "Staff"
+        );
+        loadControlPanel(loggedUser);
     }
 
     public void signUpButtonOnAction(ActionEvent actionEvent) {
     }
 
     public void sendOtpButtonOnAction(ActionEvent actionEvent) {
+    }
+
+    void loadControlPanel(StaffDto staff) throws IOException {
+
+        try {
+            //--Closing the login window
+            Stage stage = (Stage)login_form.getScene().getWindow();
+            stage.close();
+
+            //--Load Control Panel window
+            FXMLLoader loader = new FXMLLoader(Objects.requireNonNull(getClass().getResource("/view/ControlPanelForm.fxml")));
+            Parent root = loader.load();
+
+            //--Set styles and Display the window
+            Scene scene = new Scene(root);
+            Stage primaryStage = new Stage();
+            primaryStage.setScene(scene);
+            primaryStage.centerOnScreen();
+            primaryStage.setResizable(true);
+            primaryStage.show();
+
+            //--Transfer LoggedUser Data to Control panel
+            ControlPanelForm controlPanelForm = loader.getController();
+            controlPanelForm.initLoggedUser(staff);
+
+        } catch (IOException e) {
+            e.printStackTrace();
+            System.out.println("Control Panel window in the path is missing");
+        }
     }
 }

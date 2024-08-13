@@ -554,7 +554,7 @@
                               <Cursor fx:constant="HAND" />
                            </cursor>
                         </ImageView>
-                        <Label alignment="CENTER" contentDisplay="CENTER" text="User" textFill="#2590d1" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowSpan="2" GridPane.valignment="CENTER">
+                        <Label fx:id="lblUserName" alignment="CENTER" contentDisplay="CENTER" text="User" textFill="#2590d1" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowSpan="2" GridPane.valignment="CENTER">
                            <font>
                               <Font name="System Bold" size="28.0" />
                            </font>

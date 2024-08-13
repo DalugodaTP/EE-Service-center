@@ -34,9 +34,9 @@ public class CustomerDaoImpl implements CustomerDao {
         Customer customer = session.find(Customer.class, entity.getId());
 
         //--update data of that customer
-        customer.setName(entity.getName());
-        customer.setAddress(entity.getAddress());
-        customer.setSalary(entity.getSalary());
+//        customer.setName(entity.getName());
+//        customer.setAddress(entity.getAddress());
+//        customer.setSalary(entity.getSalary());
 
         //--save back the customer
         session.save(customer);
