@@ -1,54 +1,58 @@
 
 L
-java:S37403"/Provide the parametrized type for this generic.(ãÊÍ·8±ºí™’2
+java:S37409"/Provide the parametrized type for this generic.(ãÊÍ·8ö†¡ä”2
 €
-java:S1104"cMake passwordReset_loginHere a static final constant or non-public and provide accessors if needed.(–‘áò8¿¿©š’2
+java:S1104"cMake passwordReset_loginHere a static final constant or non-public and provide accessors if needed.(–‘áò8ø†¡ä”2
 {
-java:S1104"^Make resetPassword_form a static final constant or non-public and provide accessors if needed.(âğ´ß8¨°®š’2
+java:S1104"^Make resetPassword_form a static final constant or non-public and provide accessors if needed.(âğ´ß8ø†¡ä”2
 
-java:S1104"_Make resetPassword_email a static final constant or non-public and provide accessors if needed.(¸¿Åøşÿÿÿÿ8ÑäÌš’2
+java:S1104"_Make resetPassword_email a static final constant or non-public and provide accessors if needed.(¸¿Åøşÿÿÿÿ8ø†¡ä”2
 y
-java:S1104"]Make resetPassword_Otp a static final constant or non-public and provide accessors if needed.(¤˜¦p8Œ‰Íš’2
+java:S1104"]Make resetPassword_Otp a static final constant or non-public and provide accessors if needed.(¤˜¦p8ø†¡ä”2
 |
-java:S1104"_Make register_signUpBtn1 a static final constant or non-public and provide accessors if needed.(§Üøß8ù£Íš’2
+java:S1104"_Make register_signUpBtn1 a static final constant or non-public and provide accessors if needed.(§Üøß8ø†¡ä”2
 ‚
-java:S1104"eMake resetPassword_newPassword a static final constant or non-public and provide accessors if needed.(õˆì8½òÍš’2
+java:S1104"eMake resetPassword_newPassword a static final constant or non-public and provide accessors if needed.(õˆì8ø†¡ä”2
 †
-java:S1104"iMake resetPassword_confirmPassword a static final constant or non-public and provide accessors if needed.(™Òâü8¢•Îš’2
+java:S1104"iMake resetPassword_confirmPassword a static final constant or non-public and provide accessors if needed.(™Òâü8ø†¡ä”2
 |
-java:S1104"_Make login_resetPassword a static final constant or non-public and provide accessors if needed.(˜…É§8—ïŞš’2
-~	java:S116"bRename this field "passwordReset_loginHere" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(–‘áò8á¿©š’2
-y	java:S116"]Rename this field "resetPassword_form" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(âğ´ß8Ç°®š’2
-	java:S116"^Rename this field "resetPassword_email" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¸¿Åøşÿÿÿÿ8øäÌš’2
-w	java:S116"\Rename this field "resetPassword_Otp" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¤˜¦p8¤‰Íš’2
-z	java:S116"^Rename this field "register_signUpBtn1" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(§Üøß8¡¤Íš’2
-€	java:S116"dRename this field "resetPassword_newPassword" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(õˆì8×òÍš’2
-„	java:S116"hRename this field "resetPassword_confirmPassword" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(™Òâü8Ñ•Îš’2
-z	java:S116"^Rename this field "login_resetPassword" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(˜…É§8³ïŞš’2
-p	java:S116"TRename this field "main_form" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ûÔ³Ö8Éºí™’2
-q	java:S116"URename this field "login_form" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(·ê¦ç8Éºí™’2
-z	java:S116$"YRename this field "login_username" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ºô–²ùÿÿÿÿ8Éºí™’2
-u	java:S116'"YRename this field "login_password" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(„ÙÃÌ8Éºí™’2
-y	java:S116*"]Rename this field "login_showPassword" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¨‘Ù°8Éºí™’2
-u	java:S116-"YRename this field "login_checkBox" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(á„Ô8Éºí™’2
-u	java:S1160"YRename this field "login_loginBtn" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(á´ÌØ8Éºí™’2
-q	java:S1163"URename this field "login_user" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ãÊÍ·8Éºí™’2
-y	java:S1166"]Rename this field "login_registerHere" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¦¸¦8Éºí™’2
-y	java:S1169"XRename this field "register_form" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(»–µÆÿÿÿÿÿ8Éºí™’2
-u	java:S116<"YRename this field "register_email" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(³§©ç8Éºí™’2
-	java:S116?"`Rename this field "register_showPassword" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(³»Ş—øÿÿÿÿ8Éºí™’2
-x	java:S116B"\Rename this field "register_username" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ãö¯8Éºí™’2
-w	java:S116E"\Rename this field "register_password" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(à§“8Éºí™’2
-}	java:S116H"\Rename this field "register_checkBox" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ßæËÜşÿÿÿÿ8Éºí™’2
-~	java:S116K"]Rename this field "register_signUpBtn" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Çé‡ùøÿÿÿÿ8Éºí™’2
-x	java:S116N"]Rename this field "register_loginHere" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(é˜ª
-8Éºí™’2
+java:S1104"_Make login_resetPassword a static final constant or non-public and provide accessors if needed.(˜…É§8ø†¡ä”2
+w
+java:S1104"UMake stackPane a static final constant or non-public and provide accessors if needed.(÷¡ÚÕÿÿÿÿÿ8ø†¡ä”2
+~	java:S116"bRename this field "passwordReset_loginHere" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(–‘áò8 ‡¡ä”2
+y	java:S116"]Rename this field "resetPassword_form" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(âğ´ß8 ‡¡ä”2
+	java:S116"^Rename this field "resetPassword_email" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¸¿Åøşÿÿÿÿ8 ‡¡ä”2
+w	java:S116"\Rename this field "resetPassword_Otp" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¤˜¦p8 ‡¡ä”2
+z	java:S116"^Rename this field "register_signUpBtn1" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(§Üøß8 ‡¡ä”2
+€	java:S116"dRename this field "resetPassword_newPassword" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(õˆì8 ‡¡ä”2
+„	java:S116"hRename this field "resetPassword_confirmPassword" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(™Òâü8 ‡¡ä”2
+z	java:S116"^Rename this field "login_resetPassword" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(˜…É§8 ‡¡ä”2
+p	java:S116!"TRename this field "main_form" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ûÔ³Ö8 ‡¡ä”2
+q	java:S116$"URename this field "login_form" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(·ê¦ç8 ‡¡ä”2
+z	java:S116*"YRename this field "login_username" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ºô–²ùÿÿÿÿ8 ‡¡ä”2
+u	java:S116-"YRename this field "login_password" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(„ÙÃÌ8 ‡¡ä”2
+y	java:S1160"]Rename this field "login_showPassword" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¨‘Ù°8 ‡¡ä”2
+u	java:S1163"YRename this field "login_checkBox" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(á„Ô8 ‡¡ä”2
+u	java:S1166"YRename this field "login_loginBtn" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(á´ÌØ8 ‡¡ä”2
+q	java:S1169"URename this field "login_user" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ãÊÍ·8 ‡¡ä”2
+y	java:S116<"]Rename this field "login_registerHere" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¦¸¦8 ‡¡ä”2
+y	java:S116?"XRename this field "register_form" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(»–µÆÿÿÿÿÿ8 ‡¡ä”2
+u	java:S116B"YRename this field "register_email" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(³§©ç8 ‡¡ä”2
+	java:S116E"`Rename this field "register_showPassword" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(³»Ş—øÿÿÿÿ8 ‡¡ä”2
+x	java:S116H"\Rename this field "register_username" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ãö¯8¡‡¡ä”2
+w	java:S116K"\Rename this field "register_password" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(à§“8¡‡¡ä”2
+}	java:S116N"\Rename this field "register_checkBox" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ßæËÜşÿÿÿÿ8¡‡¡ä”2
+~	java:S116Q"]Rename this field "register_signUpBtn" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Çé‡ùøÿÿÿÿ8¡‡¡ä”2
+x	java:S116T"]Rename this field "register_loginHere" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(é˜ª
+8¡‡¡ä”2
 ¤
-java:S1186†"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(•åƒıÿÿÿÿ8Éºí™’2
+java:S1186ˆ"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(•åƒıÿÿÿÿ8¡‡¡ä”2
 Ÿ
-java:S1186‰"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(³ÏÀœ8›ÈÍš’2
-T
-java:S1172y"2Remove this unused method parameter "actionEvent".(Œ´Ø¹ûÿÿÿÿ8Îºí™’2
-M	java:S106‚"+Replace this use of System.out by a logger.(İóÇøÿÿÿÿ8Ôºí™’2
+java:S1186‹"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(³ÏÀœ8¡‡¡ä”2
+O
+java:S1172"2Remove this unused method parameter "actionEvent".(½íŸˆ8«‡¡ä”2
+M	java:S106§"+Replace this use of System.out by a logger.(İóÇøÿÿÿÿ8º‡¡ä”2
 N
-java:S1128",Remove this unused import 'dto.CustomerDto'.(ÛàÀÖüÿÿÿÿ8¸°î™’2
+java:S1128",Remove this unused import 'dto.CustomerDto'.(ÛàÀÖüÿÿÿÿ8»‡¡ä”2
+P
+java:S1128"4Remove this unused import 'javafx.stage.StageStyle'.(¶©28£¶ªä”2

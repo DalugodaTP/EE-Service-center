@@ -10,8 +10,9 @@ import java.util.List;
 @NoArgsConstructor
 @Setter
 @Getter
-@ToString
+
 @Entity
+@Table(name = "customer")
 public class Customer {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY, generator = "customer-id-generator")

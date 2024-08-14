@@ -1,9 +1,0 @@
-
-‚
-java:S1104"`Make orderDetailsViewPane a static final constant or non-public and provide accessors if needed.(¨¨€ôøÿÿÿÿ8·š¹›’2
-
-java:S1186"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(ÃÅ¯™8Âš¹›’2
-j	java:S100"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÃÅ¯™8Ãš¹›’2
-T
-java:S1172"2Remove this unused method parameter "actionEvent".(Íáå‘ùÿÿÿÿ8Äš¹›’2
-L	java:S106"+Replace this use of System.out by a logger.(İóÇøÿÿÿÿ8Ïš¹›’2
