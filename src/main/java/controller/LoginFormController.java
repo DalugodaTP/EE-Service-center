@@ -1,7 +1,10 @@
 package controller;
 
-import dto.CustomerDto;
+import bo.BoFactory;
+import bo.custom.UserAuthenticationBo;
+import bo.util.BoType;
 import dto.StaffDto;
+import dto.UserCredentialsDto;
 import io.github.palexdev.materialfx.controls.MFXPasswordField;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -14,7 +17,6 @@ import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
-import javafx.stage.StageStyle;
 
 import java.io.IOException;
 import java.util.Objects;
@@ -29,6 +31,7 @@ public class LoginFormController {
     public MFXPasswordField resetPassword_confirmPassword;
     public Hyperlink login_resetPassword;
     public StackPane stackPane;
+    public TextField login_email;
     @FXML
     private AnchorPane main_form;
 
@@ -37,9 +40,6 @@ public class LoginFormController {
 
     @FXML
     private Label txtPortalDescription;
-
-    @FXML
-    private TextField login_username;
 
     @FXML
     private PasswordField login_password;
@@ -83,6 +83,8 @@ public class LoginFormController {
     @FXML
     private Hyperlink register_loginHere;
 
+    UserAuthenticationBo userAuthenticationBo = BoFactory.getInstance().getBo(BoType.USER_AUTHENTICATION);
+
 
     public void initialize(){
         setRole();
@@ -125,12 +127,17 @@ public class LoginFormController {
     }
 
     public void loginButtonOnAction(ActionEvent actionEvent) throws IOException {
-        StaffDto loggedUser = new StaffDto(
-                login_username.getText(),
-                login_password.getText(),
-                "Staff"
+        //--Create a dto to trasfer to verification
+        UserCredentialsDto userCredentialsDto = new UserCredentialsDto(
+                login_email.getText(),
+                login_password.getText()
         );
-        loadControlPanel(loggedUser);
+
+        //
+        StaffDto loggedUser = userAuthenticationBo.verifyUser(userCredentialsDto);
+        if (!(loggedUser == null) && loggedUser.getRole().equals("staff")){
+            loadControlPanel(loggedUser);
+        }
     }
 
     public void signUpButtonOnAction(ActionEvent actionEvent) {

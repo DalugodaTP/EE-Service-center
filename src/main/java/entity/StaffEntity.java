@@ -15,12 +15,12 @@ import javax.persistence.*;
 @Table(name = "staff")
 public class StaffEntity {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY, generator = "staff-id-generator")
-    @GenericGenerator(
-            name = "staff-id-generator",
-            strategy = "dao.util.idgenerators.StaffIdGenerator",
-            parameters = @org.hibernate.annotations.Parameter(name = "prefix",value = "ST")
-    )
+//    @GeneratedValue(strategy = GenerationType.IDENTITY, generator = "staff-id-generator")
+//    @GenericGenerator(
+//            name = "staff-id-generator",
+//            strategy = "dao.util.idgenerators.StaffIdGenerator",
+//            parameters = @org.hibernate.annotations.Parameter(name = "prefix",value = "ST")
+//    )
     @Column(name = "staff_id",nullable = false,length = 5)
     private String staffId;
     @Column(nullable = false)

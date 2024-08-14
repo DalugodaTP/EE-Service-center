@@ -17,10 +17,8 @@ public class HibernateUtil {
                 .build();
 
         Metadata metadata = new MetadataSources( standardRegistry )
-                .addAnnotatedClass( Customer.class )
-                .addAnnotatedClass( Item.class )
-                .addAnnotatedClass( Orders.class )
-                .addAnnotatedClass( OrderDetail.class )
+                .addAnnotatedClass( CustomerEntity.class )
+                .addAnnotatedClass( StaffEntity.class )
                 .getMetadataBuilder()
                 .applyImplicitNamingStrategy( ImplicitNamingStrategyJpaCompliantImpl.INSTANCE )
                 .build();

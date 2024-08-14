@@ -31,7 +31,7 @@
                         <Font size="12.0" />
                      </font>
                   </Label>
-                  <TextField fx:id="login_username" layoutX="40.0" layoutY="178.0" prefHeight="40.0" prefWidth="250.0" promptText="Username" stylesheets="@../css/LoginForm.css">
+                  <TextField fx:id="login_email" layoutX="40.0" layoutY="178.0" prefHeight="40.0" prefWidth="250.0" promptText="Email" stylesheets="@../css/LoginForm.css">
                      <styleClass>
                         <String fx:value="textfield-1" />
                         <String fx:value="white-bg" />
