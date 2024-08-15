@@ -1,11 +1,14 @@
 package entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @NoArgsConstructor
 @Getter
@@ -35,6 +38,10 @@ public class StaffEntity {
     private String password;
     @Column(nullable = false)
     private String role;
+
+    @JsonIgnore
+    @OneToMany(mappedBy = "staff")
+    private List<CatalogEntity> catalogEntities = new ArrayList<>();
 
     public StaffEntity(String staffId, String firstName, String lastName, String contactNo, String email, String password, String role) {
         this.staffId = staffId;

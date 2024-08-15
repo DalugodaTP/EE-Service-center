@@ -175,8 +175,8 @@ public class LoginFormController {
             primaryStage.show();
 
             //--Transfer LoggedUser Data to Control panel
-            ControlPanelForm controlPanelForm = loader.getController();
-            controlPanelForm.initLoggedUser(staff);
+            ControlPanelFormController controlPanelFormController = loader.getController();
+            controlPanelFormController.initLoggedUser(staff);
 
         } catch (IOException e) {
             e.printStackTrace();

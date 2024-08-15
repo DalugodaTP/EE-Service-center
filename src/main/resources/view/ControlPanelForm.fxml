@@ -18,7 +18,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane fx:id="controlPanelPane" prefHeight="800.0" prefWidth="1400.0" style="-fx-background-color: #E4F8FC;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ControlPanelForm">
+<AnchorPane fx:id="controlPanelPane" prefHeight="800.0" prefWidth="1400.0" style="-fx-background-color: #E4F8FC;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ControlPanelFormController">
    <children>
       <BorderPane prefHeight="800.0" prefWidth="1400.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <left>
@@ -142,7 +142,7 @@
                         <RowConstraints maxHeight="-Infinity" minHeight="10.0" prefHeight="10.0" vgrow="SOMETIMES" />
                     </rowConstraints>
                      <children>
-                        <MFXButton buttonType="RAISED" contentDisplay="GRAPHIC_ONLY" depthLevel="LEVEL0" minHeight="-Infinity" prefHeight="100.0" prefWidth="200.0" rippleAnimateShadow="true" rippleAnimationSpeed="0.5" rippleRadiusMultiplier="4.0" style="-fx-border-width: 2; -fx-border-color: #2590d1; -fx-border-radius: 5; -fx-background-color: #DBF2FD;" text="Dashboard" textFill="WHITE" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+                        <MFXButton buttonType="RAISED" contentDisplay="GRAPHIC_ONLY" depthLevel="LEVEL0" minHeight="-Infinity" onAction="#catalogViewButtonOnAction" prefHeight="100.0" prefWidth="200.0" rippleAnimateShadow="true" rippleAnimationSpeed="0.5" rippleRadiusMultiplier="4.0" style="-fx-border-width: 2; -fx-border-color: #2590d1; -fx-border-radius: 5; -fx-background-color: #DBF2FD;" text="Dashboard" textFill="WHITE" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
                            <font>
                               <Font name="System Bold" size="15.0" />
                            </font>
@@ -157,7 +157,7 @@
                                           <Image url="@../img/icons8-clock-50.png" />
                                        </image>
                                     </ImageView>
-                                    <Label text="Time Clock" textFill="#3ea4c3" />
+                                    <Label text="Catalog View" textFill="#3ea4c3" />
                                  </children>
                               </VBox>
                            </graphic>

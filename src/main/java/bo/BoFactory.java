@@ -17,7 +17,7 @@ public class BoFactory {
     public <T extends SuperBo>T getBo(BoType type){
         switch (type){
             case USER_AUTHENTICATION: return (T)new UserAuthenticationBoImpl();
-
+            case CATALOG_ITEM: return (T)new CatalogBoImpl();
         }
         return null;
     }
