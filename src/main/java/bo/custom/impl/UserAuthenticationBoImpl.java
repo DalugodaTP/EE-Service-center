@@ -1,6 +1,7 @@
 package bo.custom.impl;
 
 import bo.custom.UserAuthenticationBo;
+import bo.util.EncryptionUtil;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import dao.DaoFactory;
 import dao.custom.UserAuthenticationDao;

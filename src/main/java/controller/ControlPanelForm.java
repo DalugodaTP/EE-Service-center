@@ -86,7 +86,7 @@ public class ControlPanelForm {
         this.loggedStaff = staff;
           //Authenticate user
           //Change the label text
-        lblUserName.setText(staff.getEmail());
+        lblUserName.setText("Staff");
 
         //--Loading initial view
 

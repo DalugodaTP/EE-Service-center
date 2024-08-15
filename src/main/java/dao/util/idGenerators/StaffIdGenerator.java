@@ -12,8 +12,8 @@ import java.sql.Statement;
 
 public class StaffIdGenerator implements IdentifierGenerator {
     @Override
-    public Serializable generate(SharedSessionContractImplementor sharedSessionContractImplementor, Object o) throws HibernateException {
-        Connection connection = sharedSessionContractImplementor.connection();
+    public Serializable generate(SharedSessionContractImplementor session, Object o) throws HibernateException {
+        Connection connection = session.connection();
 
         try (Statement statement = connection.createStatement()) {
             ResultSet rs = statement.executeQuery("SELECT MAX(CAST(SUBSTRING(staff_id, 3) AS SIGNED)) FROM staff");

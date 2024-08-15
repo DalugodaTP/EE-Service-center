@@ -83,7 +83,8 @@ public class LoginFormController {
     @FXML
     private Hyperlink register_loginHere;
 
-    UserAuthenticationBo userAuthenticationBo = BoFactory.getInstance().getBo(BoType.USER_AUTHENTICATION);
+    //--create instance for user authentication
+     UserAuthenticationBo userAuthenticationBo = BoFactory.getInstance().getBo(BoType.USER_AUTHENTICATION);
 
 
     public void initialize(){
@@ -127,16 +128,24 @@ public class LoginFormController {
     }
 
     public void loginButtonOnAction(ActionEvent actionEvent) throws IOException {
+
         //--Create a dto to trasfer to verification
         UserCredentialsDto userCredentialsDto = new UserCredentialsDto(
                 login_email.getText(),
                 login_password.getText()
         );
 
-        //
+        //--authenticated as returns a staffDto without password
         StaffDto loggedUser = userAuthenticationBo.verifyUser(userCredentialsDto);
-        if (!(loggedUser == null) && loggedUser.getRole().equals("staff")){
+
+        //--For staff access
+        if (loggedUser != null && loggedUser.getRole().equals("staff")){
             loadControlPanel(loggedUser);
+        }
+
+        //--for admin access
+        if (loggedUser != null && loggedUser.getRole().equals("admin")){
+            //--pending
         }
     }
 

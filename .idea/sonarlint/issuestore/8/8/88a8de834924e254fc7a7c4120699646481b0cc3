@@ -1,12 +1,0 @@
-
-H
-java:S1168"+Return an empty collection instead of null.(¥¹ï8®öˆø2
-]	java:S125"<This block of commented-out lines of code should be removed.(è×æˆûÿÿÿÿ8®Ôˆø2
-M
-java:S1128"0Remove this unused import 'dao.custom.OrderDao'.(³Ï–í8È˜òÉ‘2
-K
-java:S1128	"/Remove this unused import 'entity.OrderDetail'.(ã“˜8È˜òÉ‘2
-M
-java:S1128"0Remove this unused import 'java.util.ArrayList'.(÷‰îƒ8È˜òÉ‘2
-U
-java:S1068"3Remove this unused "orderDetailsDao" private field.(Ÿ€¦…ùÿÿÿÿ8®Ôˆø2
