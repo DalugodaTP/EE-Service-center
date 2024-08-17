@@ -1,0 +1,10 @@
+
+
+java:S1488;"]Immediately return this expression instead of assigning it to the temporary variable "staff".(úÃˆØüÿÿÿÿ8€é˜‹•2
+L	java:S106""+Replace this use of System.out by a logger.(¸ã§îûÿÿÿÿ8¡Ş‘‹•2
+G	java:S106%"+Replace this use of System.out by a logger.(¨ÍîÇ8Œé˜‹•2
+G	java:S106'"+Replace this use of System.out by a logger.(õùÆ½8Œé˜‹•2
+L	java:S106>"+Replace this use of System.out by a logger.(úÃ§²øÿÿÿÿ8Å¢ğ‹•2
+L	java:S106@"+Replace this use of System.out by a logger.(´Õôõûÿÿÿÿ8íÍ •2
+H
+java:S1168W"+Return an empty collection instead of null.(¥¹ï8˜ ³Š•2

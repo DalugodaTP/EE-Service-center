@@ -1,0 +1,44 @@
+
+g	java:S112}"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òéüÿÿÿÿ8üŞ•ä•2
+g	java:S112"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òéüÿÿÿÿ8üŞ•ä•2
+L
+java:S3740%"/Provide the parametrized type for this generic.(¬²¹ø8ıŞ•ä•2
+Q
+java:S3740("/Provide the parametrized type for this generic.(ğ¹Ÿáşÿÿÿÿ8ıŞ•ä•2
+L
+java:S3740+"/Provide the parametrized type for this generic.(•¸µ8ıŞ•ä•2
+Q
+java:S3740."/Provide the parametrized type for this generic.(Å„ÛÃşÿÿÿÿ8ıŞ•ä•2
+L
+java:S37401"/Provide the parametrized type for this generic.(Úœô«8ıŞ•ä•2
+K
+java:S37404"/Provide the parametrized type for this generic.(·şÓq8ıŞ•ä•2
+L
+java:S3740@"/Provide the parametrized type for this generic.(Û÷Ü8ıŞ•ä•2
+w
+java:S1104 "UMake imageView a static final constant or non-public and provide accessors if needed.(…Çªúÿÿÿÿ8şŞ•ä•2
+¤
+java:S1186Ÿ"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(œÕ“úÿÿÿÿ8¢ß•ä•2
+¤
+java:S1186£"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(ÑõØ—ûÿÿÿÿ8¢ß•ä•2
+Ÿ
+java:S1186¨"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(¬¤­§8¢ß•ä•2
+Ÿ
+java:S1186Ğ"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(Ú®Úª8¢ß•ä•2
+¤
+java:S1186Õ"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(üº‰¿ıÿÿÿÿ8¢ß•ä•2
+Ÿ
+java:S1186Û"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(ùŸ’8¢ß•ä•2
+¤
+java:S1186à"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(ïğé¼úÿÿÿÿ8¢ß•ä•2
+Ÿ
+java:S1186ä"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(ÃØ„ß8¢ß•ä•2
+Ÿ
+java:S1186ç"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(å‚¾Ë8¢ß•ä•2
+^
+java:S1075Z"ARefactor your code to get this URI from a customizable parameter.(Åùõ8©ß•ä•2
+b
+java:S2147~"ECombine this catch with the one at line 124, which has the same body.(ıàÑÎ8°ß•ä•2
+p	java:S100£"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÑõØ—ûÿÿÿÿ8¶ß•ä•2
+k	java:S100¨"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¬¤­§8¶ß•ä•2
+Z	java:S899À"=Do something with the "boolean" value returned by "renameTo".(á÷ÅŒ8¸ß•ä•2
